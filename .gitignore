@@ -1,0 +1,8 @@
+# RAISE — pack internals, rendered host commands, and derived state.
+# Engagement artifacts and the ledger are tracked deliberately.
+.raise/
+.claude/skills/raise-*/
+.cursor/commands/raise-*.md
+.devin/skills/raise-*/
+.github/prompts/raise-*.prompt.md
+.codex/prompts/raise-*.md

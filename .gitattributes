@@ -1,0 +1,12 @@
+# RAISE — engagement artifacts are identified by content hash, so their
+# bytes must not change between platforms.
+engagement/** text eol=lf
+# Client inputs are not artifacts — nothing hashes or approves them — so a
+# PDF or spreadsheet the client handed over must not be normalised as text.
+engagement/inputs/** -text
+# The allowed-signers file is derived from the ledger, so two operators
+# registering keys concurrently generate overlapping versions of it. A union
+# merge keeps both sides rather than producing this feature’s only merge
+# conflict — and it grants nothing, because `raise verify` rebuilds the file
+# from its events and reports any line they do not account for.
+engagement/keys/allowed-signers merge=union
