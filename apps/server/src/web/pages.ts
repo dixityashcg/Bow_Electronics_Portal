@@ -20,24 +20,31 @@ export const WEB_INDEX = Symbol('WebIndexHtml');
 const NOT_BUILT = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bow Reseller Portal</title></head>
 <body><p>The browser application has not been built. Run <code>./scripts/dev.sh</code>.</p></body></html>`;
 
-/** Decoded, lower-cased, with repeated slashes collapsed: how a browser router may read a path. */
+/**
+ * Fully decoded (a double-encoded %252F included), backslashes read as
+ * slashes, repeated slashes collapsed, lower-cased. Dot segments are NOT
+ * resolved: a browser never sends one it could resolve, so one that arrives
+ * here was hidden behind an encoding, and resolving it would make the server
+ * and the browser disagree about which page the address names (review N-3).
+ */
 export function canonicalPath(path: string): string {
   let decoded = path;
-  try {
-    decoded = decodeURIComponent(path);
-  } catch {
-    // An undecodable path is compared as it came.
+  for (let i = 0; i < 3; i++) {
+    let next: string;
+    try {
+      next = decodeURIComponent(decoded);
+    } catch {
+      break;
+    }
+    if (next === decoded) break;
+    decoded = next;
   }
-  // Backslashes and dot segments are resolved the way a browser resolves them (review N-2).
-  const slashed = decoded.replace(/\\/g, '/').replace(/\/{2,}/g, '/');
-  let resolved = slashed;
-  try {
-    resolved = new URL(slashed, 'http://portal.invalid').pathname;
-    resolved = decodeURIComponent(resolved);
-  } catch {
-    // Compared as it came.
-  }
-  return resolved.replace(/\/{2,}/g, '/').toLowerCase().replace(/(.)\/$/, '$1');
+  return decoded.replace(/\\/g, '/').replace(/\/{2,}/g, '/').toLowerCase().replace(/(.)\/$/, '$1');
+}
+
+/** What no address to an internal page may hold: a dot segment, or a control or separator character. */
+function unservable(canonical: string): boolean {
+  return canonical.split('/').some((segment) => segment === '.' || segment === '..') || /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(canonical);
 }
 
 function escapeHtml(text: string): string {
@@ -80,8 +87,8 @@ export class PagesController {
     // refused and recorded like the page itself, never served here.
     if (canonical === '/sales' || canonical.startsWith('/sales/')) {
       // Already in the guarded spelling yet not matched by the guarded route,
-      // or holding characters no address should: never serve it (review N-1).
-      if (canonical === path || /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(canonical)) throw new NotFoundException();
+      // or holding a hidden dot segment or a control character: never serve it (N-1, N-3).
+      if (canonical === path || unservable(canonical)) throw new NotFoundException();
       return reply.redirect(`${encodeURI(canonical)}${query !== undefined ? `?${query}` : ''}`, 308);
     }
     // The /dev pages exist only when the dev module is loaded; everything else under /api or /dev is not found.

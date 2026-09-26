@@ -1,5 +1,5 @@
 import ExcelJS from 'exceljs';
-import { PRICE_SCALE, parsePriceText } from '@bow/shared';
+import { PART_NUMBER_MAX_LENGTH, PRICE_SCALE, parsePriceText } from '@bow/shared';
 import { erpColumnMapping, type ErpField } from './erp-mapping.ts';
 
 /**
@@ -31,6 +31,14 @@ export interface ErpReadResult {
 }
 
 export class ErpFileRefused extends Error {}
+
+/**
+ * One rule for both ways into the store (FDE decision, 2026-09-26, critique
+ * Q2): the load refuses what the add-product screen refuses — a blank
+ * description, or a part number over the screen's limit. The limit itself is
+ * provisional until it is set from the longest part number in the real ERP.
+ */
+const MAX_PART_NUMBER_LENGTH = PART_NUMBER_MAX_LENGTH;
 
 type CellValue = ExcelJS.CellValue;
 
@@ -217,10 +225,12 @@ export async function readErpWorkbook(buffer: Buffer | ArrayBuffer): Promise<Erp
     let partNumber: string | null = null;
     if (!part.ok) reasons.push(part.reason);
     else if (part.text === '') reasons.push('no part number');
+    else if (part.text.length > MAX_PART_NUMBER_LENGTH) reasons.push(`part number is longer than ${MAX_PART_NUMBER_LENGTH} characters`);
     else partNumber = part.text;
 
     const description = readText(descriptionCell, 'description');
     if (!description.ok) reasons.push(description.reason);
+    else if (description.text === '') reasons.push('no description');
 
     const price = readPrice(priceCell);
     if (!price.ok) reasons.push(price.reason);

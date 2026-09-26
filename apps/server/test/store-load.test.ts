@@ -298,6 +298,21 @@ describe('hand-built ERP files', () => {
     expect(await productCount(portal)).toBe(0);
   });
 
+  test('[story-01-01#3] a row the add-product screen would refuse — blank description, over-long part number — is listed with its reason (FDE decision, critique Q2)', async () => {
+    const { summary } = await freshLoad([
+      ['BWE-NODESC', '', 1],
+      ['BWE-SPACES', '   ', 1],
+      ['BWE-' + 'X'.repeat(61), 'Sixty-five characters', 1],
+      ['BWE-' + 'Y'.repeat(60), 'Exactly sixty-four characters', 1],
+    ]);
+    expect(summary.notLoaded.map((r: any) => [r.rowNumber, r.reason])).toEqual([
+      [2, 'no description'],
+      [3, 'no description'],
+      [4, 'part number is longer than 64 characters'],
+    ]);
+    expect(summary.rowsLoaded).toBe(1);
+  });
+
   test('[story-01-01#3] a numeric price too large to hold exactly is listed with its reason', async () => {
     const { summary } = await freshLoad([['BWE-HUGE', 'Huge price', 1e15], ['BWE-FINE', 'Fine', 1]]);
     expect(summary.notLoaded).toEqual([expect.objectContaining({ rowNumber: 2, reason: 'price is too large: "1000000000000000"' })]);

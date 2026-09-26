@@ -85,7 +85,7 @@ describe('store changes are refused to anyone not named', () => {
     }
   });
 
-  test('[story-01-04#3] spellings with control characters or dot segments are refused or resolved, never a server error (review round 2)', async () => {
+  test('[story-01-04#3] spellings with control characters or hidden dot segments are refused, never served and never a server error (review rounds 2 and 3)', async () => {
     for (const spelling of ['/SALES/%0d%0aSet-Cookie:%20x=1', '/SALES/%00', '/SALES/x%0aY', '/SALES/%E2%80%A8']) {
       const response = await casey.get(spelling);
       expect([308, 404], spelling).toContain(response.status);
@@ -96,11 +96,26 @@ describe('store changes are refused to anyone not named', () => {
         expect((await casey.get(location)).status, location).toBe(403);
       }
     }
-    const dots = await casey.get('/SALES/store/..%2F..%2Fsales%2Fstore');
-    expect(dots.status).toBe(308);
-    expect(dots.headers.location).toBe('/sales/store');
-    const away = await casey.get('/sales%2f..%2fdev%2fmailbox');
-    expect(away.status).toBe(404);
+    // A dot segment hidden behind an encoding is never resolved, redirected or served (N-3).
+    for (const hidden of [
+      '/SALES/store/..%2F..%2Fsales%2Fstore',
+      '/sales%2f..%2fdev%2fmailbox',
+      '/SALES/store/products/1%2f..%2f..%2f..%2f..%2fhome',
+      '/Sales/Store/Products/1%2F..%2F..%2F..%2F..',
+      '/SALES/named-users%2f..%2f..%2fx',
+      '/SALES/%5C..%5C..%5C%5Cevil.com',
+      '/sales%252f..%252fdev',
+    ]) {
+      const response = await casey.get(hidden);
+      expect(response.status, hidden).toBe(404);
+      expect(response.body, hidden).not.toContain(INDEX_HTML);
+    }
+    // Double-encoded and padded spellings reach the guarded page and are refused.
+    for (const spelling of ['/SALES%252Fstore', '/sales%252Fstore']) {
+      const first = await casey.get(spelling);
+      expect(first.status, spelling).toBe(308);
+      expect((await casey.get(String(first.headers.location))).status, spelling).toBe(403);
+    }
   });
 
   test('[story-01-04#4] a store page opened under another spelling is recorded as a refused page', async () => {
