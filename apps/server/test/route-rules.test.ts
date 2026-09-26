@@ -22,7 +22,7 @@ function routes() {
   return CONTROLLERS.flatMap((controller) =>
     Object.getOwnPropertyNames(controller.prototype)
       .filter((name) => name !== 'constructor')
-      .map((name) => ({ controller: controller.name, name, handler: controller.prototype[name] }))
+      .map((name) => ({ controller: controller.name, name, handler: (controller.prototype as unknown as Record<string, unknown>)[name] as object }))
       .filter((r) => Reflect.getMetadata(PATH_METADATA, r.handler) !== undefined),
   );
 }

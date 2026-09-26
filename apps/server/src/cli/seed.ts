@@ -15,14 +15,15 @@ async function main() {
   const args = process.argv.slice(2);
   const afterEpicIndex = args.indexOf('--after-epic');
   const afterEpic = afterEpicIndex >= 0 ? args[afterEpicIndex + 1] : undefined;
+  if (afterEpic !== undefined && afterEpic !== '01') {
+    console.error(`--after-epic ${afterEpic} is not built yet; only 01 exists. Nothing was seeded.`);
+    process.exit(2);
+  }
   const clock = new LocalClock();
   const { db } = openDatabase(resolve(process.env.DATABASE_FILE ?? '.local/portal.db'));
   await seed(db, clock);
 
   if (afterEpic !== undefined) {
-    if (afterEpic !== '01') {
-      throw new Error(`--after-epic ${afterEpic} is not built yet; only 01 exists.`);
-    }
     const pat = await db.selectFrom('internal_user').select('internal_user_id').where('entra_object_id', '=', 'local-staff-pat').executeTakeFirstOrThrow();
     const { workbook } = await buildSampleErp();
     const read = await readErpWorkbook(Buffer.from(await workbook.xlsx.writeBuffer()));

@@ -55,7 +55,7 @@ function toResponse(result: { statusCode: number; body: string; headers: Record<
   return { status: result.statusCode, body: result.body, json, headers: result.headers };
 }
 
-export async function startPortal(): Promise<Portal> {
+export async function startPortal(options: { devPages?: boolean } = {}): Promise<Portal> {
   const dir = mkdtempSync(join(tmpdir(), 'bow-portal-test-'));
   const { db, raw } = openDatabase(join(dir, 'portal.db'));
   const clock = new LocalClock();
@@ -66,7 +66,7 @@ export async function startPortal(): Promise<Portal> {
     clock,
     signIn: new LocalSignIn(localDirectory()),
     indexHtml: INDEX_HTML,
-    devModule: DevModule,
+    devModule: options.devPages === false ? undefined : DevModule,
     logger: false,
   });
   const fastify = app.getHttpAdapter().getInstance();

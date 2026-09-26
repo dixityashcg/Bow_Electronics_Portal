@@ -72,41 +72,47 @@ const makers: Maker[] = [
       price: priceBetween(random, 40, 300, 5),
     };
   },
-  (random, n) => ({
-    partNumber: `BWE-L${pick(random, ['1008', '1210', '2520'])}-${n}`,
-    description: `Inductor, ${pick(random, ['1 µH', '4.7 µH', '10 µH', '47 µH'])}, ${pick(random, ['0.5 A', '1.2 A', '2 A'])}, shielded`,
-    price: priceBetween(random, 500, 9000, 50),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-D${pick(random, ['SOD123', 'SMA', 'SOD323'])}-${n}`,
-    description: `Diode, ${pick(random, ['Schottky', 'rectifier', 'Zener 5.1 V', 'TVS 15 V'])}, ${pick(random, ['SOD-123', 'SMA', 'SOD-323'])}`,
-    price: priceBetween(random, 150, 6000, 50),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-Q${pick(random, ['N', 'P'])}${pick(random, ['30', '60', '100'])}-${n}`,
-    description: `MOSFET, ${pick(random, ['N-channel', 'P-channel'])}, ${pick(random, ['30 V', '60 V', '100 V'])}, ${pick(random, ['SOT-23', 'DPAK', 'SO-8'])}`,
-    price: priceBetween(random, 1000, 25000, 100),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-U${pick(random, ['LDO', 'BUCK'])}-${n}`,
-    description: `Voltage regulator, ${pick(random, ['LDO 3.3 V 500 mA', 'LDO 5 V 1 A', 'buck 3.3 V 2 A', 'buck 5 V 3 A'])}`,
-    price: priceBetween(random, 2000, 40000, 100),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-MCU${pick(random, ['32', '64', '128', '256'])}K-${n}`,
-    description: `Microcontroller, 32-bit, ${pick(random, ['48 MHz', '72 MHz', '120 MHz', '240 MHz'])}, ${pick(random, ['32 KB', '64 KB', '128 KB', '256 KB'])} flash, ${pick(random, ['QFN-32', 'LQFP-48', 'LQFP-64'])}`,
-    price: priceBetween(random, 8000, 1_800_000, 100),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-J${pick(random, ['USB', 'HDR', 'RJ45'])}-${n}`,
-    description: `Connector, ${pick(random, ['USB-C receptacle', 'pin header 2×10', 'RJ45 with magnetics', 'terminal block 3-way'])}`,
-    price: priceBetween(random, 1500, 45000, 100),
-  }),
-  (random, n) => ({
-    partNumber: `BWE-Y${pick(random, ['8', '12', '16', '25'])}M-${n}`,
-    description: `Crystal, ${pick(random, ['8 MHz', '12 MHz', '16 MHz', '25 MHz'])}, ${pick(random, ['10 ppm', '20 ppm'])}, 3.2 × 2.5 mm`,
-    price: priceBetween(random, 1000, 9000, 50),
-  }),
+  (random, n) => {
+    const [code, value, current] = pick(random, [['1R0', '1 µH', '2 A'], ['4R7', '4.7 µH', '1.2 A'], ['100', '10 µH', '1.2 A'], ['470', '47 µH', '0.5 A']] as const);
+    return { partNumber: `BWE-L${code}-${n}`, description: `Inductor, ${value}, ${current}, shielded`, price: priceBetween(random, 500, 9000, 50) };
+  },
+  (random, n) => {
+    const [code, kind, pkg] = pick(random, [['SOD123', 'Schottky', 'SOD-123'], ['SMA', 'rectifier', 'SMA'], ['SOD323', 'Zener 5.1 V', 'SOD-323'], ['SMA', 'TVS 15 V', 'SMA']] as const);
+    return { partNumber: `BWE-D${code}-${n}`, description: `Diode, ${kind}, ${pkg}`, price: priceBetween(random, 150, 6000, 50) };
+  },
+  (random, n) => {
+    const [pol, channel] = pick(random, [['N', 'N-channel'], ['P', 'P-channel']] as const);
+    const volts = pick(random, ['30', '60', '100']);
+    return {
+      partNumber: `BWE-Q${pol}${volts}-${n}`,
+      description: `MOSFET, ${channel}, ${volts} V, ${pick(random, ['SOT-23', 'DPAK', 'SO-8'])}`,
+      price: priceBetween(random, 1000, 25000, 100),
+    };
+  },
+  (random, n) => {
+    const [code, text] = pick(random, [['LDO33', 'LDO 3.3 V 500 mA'], ['LDO50', 'LDO 5 V 1 A'], ['BUCK33', 'buck 3.3 V 2 A'], ['BUCK50', 'buck 5 V 3 A']] as const);
+    return { partNumber: `BWE-U${code}-${n}`, description: `Voltage regulator, ${text}`, price: priceBetween(random, 2000, 40000, 100) };
+  },
+  (random, n) => {
+    const flash = pick(random, ['32', '64', '128', '256']);
+    return {
+      partNumber: `BWE-MCU${flash}K-${n}`,
+      description: `Microcontroller, 32-bit, ${pick(random, ['48 MHz', '72 MHz', '120 MHz', '240 MHz'])}, ${flash} KB flash, ${pick(random, ['QFN-32', 'LQFP-48', 'LQFP-64'])}`,
+      price: priceBetween(random, 8000, 1_800_000, 100),
+    };
+  },
+  (random, n) => {
+    const [code, text] = pick(random, [['USBC', 'USB-C receptacle'], ['HDR20', 'pin header 2×10'], ['RJ45', 'RJ45 with magnetics'], ['TB3', 'terminal block 3-way']] as const);
+    return { partNumber: `BWE-J${code}-${n}`, description: `Connector, ${text}`, price: priceBetween(random, 1500, 45000, 100) };
+  },
+  (random, n) => {
+    const mhz = pick(random, ['8', '12', '16', '25']);
+    return {
+      partNumber: `BWE-Y${mhz}M-${n}`,
+      description: `Crystal, ${mhz} MHz, ${pick(random, ['10 ppm', '20 ppm'])}, 3.2 × 2.5 mm`,
+      price: priceBetween(random, 1000, 9000, 50),
+    };
+  },
 ];
 
 export async function buildSampleErp(options: { rows?: number; seed?: number } = {}): Promise<{ workbook: ExcelJS.Workbook; facts: SampleErpFacts }> {

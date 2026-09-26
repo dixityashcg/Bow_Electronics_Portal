@@ -9,9 +9,11 @@ import { openDatabase } from './db/database.ts';
 import { localDirectory } from './seed/people.ts';
 import { loadIndexHtml } from './web/pages.ts';
 
-/** Replaced with "production" by the production build, which leaves the /dev module out entirely. */
-declare const PORTAL_BUILD: string | undefined;
-const productionBuild = typeof PORTAL_BUILD !== 'undefined' && PORTAL_BUILD === 'production';
+/**
+ * process.env.PORTAL_BUILD is replaced with "production" by the production
+ * build (build.mjs), which then drops the /dev branch below as dead code, so
+ * the stand-in module is not in the bundle at all.
+ */
 
 function refuseToStart(message: string): never {
   console.error(`\nThe portal refused to start: ${message}\n`);
@@ -33,12 +35,12 @@ async function main() {
   if (real.length > 0) {
     refuseToStart(`the real ${real.join(', ')} adapter${real.length > 1 ? 's are' : ' is'} Stage 2 work and not built yet (architecture §4.7).`);
   }
-  if (productionBuild) refuseToStart('this is a production build, and it has no local stand-ins to run with.');
+  if (process.env.PORTAL_BUILD === 'production') refuseToStart('this is a production build, and it has no local stand-ins to run with.');
 
   const { db } = openDatabase(resolve(config.databaseFile));
   const webDist = process.env.WEB_DIST_DIR ?? resolve(import.meta.dirname, '../../web/dist');
   let devModule: Type | undefined;
-  if (!productionBuild) devModule = (await import('./dev/dev.module.ts')).DevModule;
+  if (process.env.PORTAL_BUILD !== 'production') devModule = (await import('./dev/dev.module.ts')).DevModule;
 
   const app = await createApp({
     config,
