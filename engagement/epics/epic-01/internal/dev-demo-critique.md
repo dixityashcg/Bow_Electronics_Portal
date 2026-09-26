@@ -172,6 +172,18 @@ Ranked by the cost if it happens.
   - A change request adds these clauses to story-01-02 c1 and story-01-03 c1, plus a reopen criterion (in epic-01, or in epic-02 beside search).
   - R-10 is closed by the decision.
 
+### Decided by the decider
+
+All five questions were put to Yash Dixit (FDE, operator) in one sitting on 2026-09-26, each with the recommendation above. Each was answered with the recommended resolution. The changes each implies are below; nothing here approves a gate.
+
+| # | Decision (Yash Dixit, FDE, 2026-09-26) | Applied to the work |
+|---|---|---|
+| Q1 | A check-only run of the load, raised as a change request. T-15 stays for the live store. Runbook 2 is rewritten | **cr-01** raised (open): adds story-01-01#6. Not built: it changes approved scope and waits on the change's acceptance. R-6 is moved from "accepted with reservations" to this decision in the review record |
+| Q2 | The add-product screen's rule applies to both paths, together with Q1 | **Built** at 762f093. The load lists a blank description ("no description") and a part number over the limit ("part number is longer than 64 characters") as not loaded, with tests under story-01-01 c3. The 64-character limit is now one shared, provisional constant, to be set from the longest part number in the real ERP. R-4 is closed |
+| Q3 | epic-01 goes to the Epic Review with story-01-01 recorded as NOT done. Elon Musk names the ERP owner before epic-02's build starts. The first real-file check runs within two weeks of the naming. The owner signs a column-disposition table covering every ERP column | Recorded in the demo record's *Known gaps* and in `ac-verification.md` (c1 and c2 pass on the synthetic sample only; the story is not done). The naming and the date are Elon Musk's and the ERP owner's actions, carried to the Epic Review |
+| Q4 | A full reconciliation report, raised as a change request. The 20-product comparison stays as a cross-check | **cr-02** raised (open): adds story-01-01#7. Not built |
+| Q5 | Who and when for adding and closing a product, and a recorded reopen, raised as a change request | **cr-03** raised (open): adds story-01-02#4, story-01-03#2 and story-01-03#3. Not built. R-10 is closed by the decision |
+
 ## 5. Reconciliation (revisions only)
 
 This is a first pass, not a revision, so the reconciliation checks do not apply.

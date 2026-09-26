@@ -16,7 +16,7 @@ Two readings by contexts that did not write the code, both after the build and b
 - **Senior review.** A separate senior-reviewer context composed from six senior-reviewer personas: security, TypeScript, SQL, testing strategy, data modelling and React. It followed the `code-review` playbook: criteria, then correctness, contract, security, scope.
 - **Adversarial per-criterion reading.** Its 19 verdicts are in `assessments/adversarial-review.md`.
 
-Both reviewers ran the suite and probed the running code in-process, with throwaway scripts outside the repository. Round 1 was at c71983d–3f57cf1; round 2 re-checked the fixes at 2ce51fe.
+Both reviewers ran the suite and probed the running code in-process, with throwaway scripts outside the repository. Round 1 was at c71983d–3f57cf1. Round 2 re-checked the fixes at 2ce51fe, and round 3 at 95974a6. The build's own fix for round 3's one finding (762f093) was not re-read by a reviewer; see §3a.
 
 | Story | Area | Reviewed |
 |---|---|---|
@@ -55,12 +55,27 @@ Both reviewers ran the suite and probed the running code in-process, with throwa
 | R-9 | hardening | Escape the text on the error page | No user input reaches it today | done, 2ce51fe |
 | R-12 | React | Clear stale errors after a later success; keep the chosen user when naming fails | Wrong messages on screen | done, 2ce51fe |
 
-Round 2's re-check is recorded under §3a.
+### 3a. Rounds 2 and 3
+
+| # | Round | Story | What was required or found | Status |
+|---|---|---|---|---|
+| R-1 … R-12 | 2 | — | Re-checked at 2ce51fe: R-1, R-3, R-5, R-9 done; R-2, R-8 and R-12 done with gaps, which became the items below | closed |
+| N-1 | 2 | story-01-04 | The R-2 redirect put a decoded path into the `Location` header; control characters gave a 500 that anyone could trigger. Non-blocking, fixed | done, 95974a6 (404 for control characters; target encoded) |
+| N-2 | 2 | story-01-04 | Dot segments survived canonicalisation (odd same-site redirects). Non-blocking | done at 95974a6; superseded by N-3's fix |
+| R-8′ | 2 | T-23 hygiene | A tab or newline in `next` still left the site | done, 95974a6 (`new URL` with a same-origin check) |
+| R-12′ | 2 | React | A second failure kept showing the first error | done, 95974a6 |
+| A-1 | 2 (adversarial) | story-01-01 c1 | A second table beside the first, under a repeated heading, was read as one row, with the load reported complete | done, 95974a6: a repeated mapped heading refuses the file |
+| A-2 | 2 (adversarial) | story-01-01 c2 | Number formats other than `0.00` and `00000` loaded in a form other than the one shown; date descriptions became local-time text | done, 95974a6: only General, zero padding and fixed decimals are rendered (rounded as Excel shows); anything else, and dates, is listed as not loaded |
+| N-3 | 3 | story-01-04 c3, c4 | N-2's fix resolved dot segments hidden behind `%2F`. The server and the browser then disagreed about the page, and `/SALES/store/products/1%2f..%2f…` served the page shell with no refusal recorded. The third fix attempt on this family | done, 762f093: addresses are fully decoded before the `/sales` check, and hidden dot segments are never resolved or served (404). **Verified only by the build**: a fuzz of 1,505 spellings, as a reseller, in-process, found none served and no 500. No reviewer has re-read this fix. Carried to QA (§5) |
+| R-4 | FDE ruling | story-01-01 | Blank description and over-long part number from the ERP | done, 762f093, per the FDE's decision (critique Q2) |
+| R-6, R-10 | FDE ruling | story-01-01, 01-03 | No route to a complete summary; no who or when for add and close | decided by the FDE: change requests cr-01, cr-02 and cr-03 raised; not built in this Epic |
+
+The internal review loop ran three rounds: round 1 continue, round 2 continue, round 3 resolved. R-1 was the only required change across all three and closed in round 2. The adversarial reviewer's verdicts at 95974a6: 19 agree, after one disagree-with-evidence and two disagree-with-concern in round 1.
 
 ## 4. Accepted with reservations
 
-- **R-4, story-01-01: the ERP path accepts what the screen refuses.** A blank description loads from the ERP although *Add a product* requires one. The ERP loads part numbers over 64 characters, the screen's limit. Put to the FDE as a critique question. Not changed until answered.
-- **R-6, story-01-01: an incomplete load can never become complete.** Any not-loaded row makes the store non-empty, T-15 refuses a second load, and the summary reads "Load not complete" forever. So the sign-off the story's "so that" describes needs a runbook step. Put to the FDE as a critique question.
+- **R-4, story-01-01: the ERP path accepted what the screen refused.** Decided by the FDE (critique Q2) and built: see §3a.
+- **R-6, story-01-01: an incomplete load can never become complete.** Decided by the FDE (critique Q1): a check-only run, raised as cr-01. Until it is accepted and built, the live load still has one attempt.
 - **R-7, story-01-01 DoD.** The story is not done until the run against a real ERP copy with the mapping agreed with its owner. `ac-verification.md` carries the c1 and c2 passes on the synthetic sample only, and says so.
 - **R-10, story-01-03.** Closing a product records no who or when. `product_history` keeps only the earlier row. `superseded_at` in every `*_history` table comes from the database clock, not the clock adapter. No criterion asks for more, but BR-17's accountability intent may. Left for the FDE.
 - **R-11, story-01-05 c3/c4, scope.** The minimal set action also brought a reseller list, a discount-history read and a Resellers page. They are there so the result can be observed. The set action accepts 0 % and 100 %; epic-04 should confirm the bounds.
@@ -77,6 +92,8 @@ Where the reviewers are unsure. These sharpen a test; they do not explain why th
   - Load workbooks with hidden rows, merged part-number cells, a title row above the headings, a heading spelled "Part No.", a currency-formatted numeric price, a hyperlink cell, a trailing "Total" row, and a numeric part number in any format other than `0.00` or `00000`.
   - For each, compare loaded plus not loaded with the count you make by hand in Excel, not the count the loader reports.
   - A row holding only a note in an unused column is counted as a product row and listed "no part number; no price". Check that the Product Owner accepts that.
+- **Encoded dot segments and other spellings (story-01-04 c3, c4; N-3, fixed and verified only by the build).** As a reseller, in a real browser, open `/SALES/store/products/1%2f..%2f..%2f..%2f..%2fhome`, `/SALES/named-users%2f..%2f..%2fx`, `/sales%252Fstore` and `/SALES/%0d%0a`. Expect 404 or "Access refused", never an internal screen and never a 500. Expect an "open page" line for each one that is refused.
+- **Workbook refusals (story-01-01).** A second worksheet with data (hidden ones included) or a repeated heading refuses the whole file. Numeric part numbers in any format other than General, zero padding or fixed decimals are listed as not loaded, and so are dates. With a real ERP export, check how many rows that is, and that the operator can act on the messages. A General-format part number of 12 or more digits is stored in full, as the formula bar shows it, not as a narrow cell shows it.
 - **Page guard, in a real browser (story-01-04 c3, c4).** As a reseller, open `/SALES/store`, `/Sales/store/products/1`, `//sales/store` and `/sales%2Fstore`. Record what renders, and whether *Refused attempts* shows an "open page" line for each.
 - **Load summary on the demo path (story-01-01 c5).** The sample file always carries bad rows, so the demo summary always reads "Not complete". Add a rejected part by hand afterwards and see what the summary says (R-6).
 - **T-15 under concurrency.** Two simultaneous loads into an empty store are serialised by SQLite here. Re-test on SQL Server in Stage 2: one load wins, one set of products.
