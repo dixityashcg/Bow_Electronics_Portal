@@ -4,6 +4,7 @@ Compiled by rule from the memory stores — nothing here was written by a model.
 
 ## From the engagement
 
+- **2026-09-26 · v1-architecture** — When customers hold an identifier on paper, choosing its format is an architecture decision, not a detail. A counter has two costs that are easy to miss: any customer comparing two of their own IDs learns the business's volume, and a restore from backup hands out again numbers already printed on customers' emails. Random codes from an alphabet with no look-alikes remove both. But do the birthday arithmetic before writing down a collision rate: 1.8 million draws from 850 billion codes repeat an existing ID about twice, not once in centuries. The unique constraint and a redraw make that harmless, and the record has to say so correctly, because an EA who checks the arithmetic and finds it wrong stops trusting the rest of the record. _(bow-electronics-reseller-portal, note)_
 - **2026-09-26 · d1-brd** — A discount a rep applies from memory is a judgement; the same discount pre-filled by a system is a price policy. When a quote workflow is asked to hold per-reseller discount terms, the requirement is small, but it brings a go-live dependency the request never mentioned: the terms have to be found, written down in one shape, and signed by someone commercial before they are loaded — otherwise the build turns today's habits into policy nobody agreed to. Write the pre-fill, the override-with-reason and the no-terms-on-file path as requirements, and write the signed terms list as a go-live constraint with an owner. Also record the shape you assumed (one number per reseller), because if the terms vary by product, quantity or contract, the requirement grows into a pricing rules table. _(bow-electronics-reseller-portal, note)_
 
 ## From the practice
@@ -16,7 +17,7 @@ Compiled by rule from the memory stores — nothing here was written by a model.
 
 ## Practice for this phase
 
-Selected by rule from the declared modules — 1 of them, the most
+Selected by rule from the declared modules — 3 of them, the most
 specific first. **When you act on one of these, name it in the artifact**: a
 citation is the only way anyone can tell later whether this reached the work.
 
@@ -24,13 +25,25 @@ For this phase that means: **name it in the architecture or the decision it info
 Nothing refuses if you do not; whether a piece of practice fits this Epic is
 your judgement. What is not your judgement is whether anyone can tell later.
 
+### Compliance screening gate design · `electronics-distribution-compliance-screening-gate`
+
+**When**: Open when designing any order or shipment workflow that must run export or restricted-party screening — makes the check a gate the workflow cannot bypass under load.
+
+From electronics-distribution (playbook) — matched on bypas, cannot, export, gate, load, order. Full text: `domains/electronics-distribution/playbooks/electronics-distribution-compliance-screening-gate.md`
+
+### Partner EDI onboarding · `electronics-distribution-edi-onboarding`
+
+**When**: Open when scoping a new partner file or EDI integration — prices the rejection path and the malformed sample before the mapping meeting, not after.
+
+From electronics-distribution (playbook) — matched on integration, partner, path, price. Full text: `domains/electronics-distribution/playbooks/electronics-distribution-edi-onboarding.md`
+
 ### as-is assessment · `ed-allocation-rule-assessment`
 
 **When**: Read when assessing an existing allocation rule before a new demand channel — shows finding who actually owns it and how often it is overridden.
 
-From electronics-distribution (example) — matched on assessment, existing, finding. Full text: `domains/electronics-distribution/examples/ed-allocation-rule-assessment.md`
+From electronics-distribution (example) — matched on assessment, channel, existing, owns. Full text: `domains/electronics-distribution/examples/ed-allocation-rule-assessment.md`
 
 ## Compiled from
 
-- `engagement/memory/lessons.md` · 9d08a3fd4605
+- `engagement/memory/lessons.md` · dff215516e4d
 - `~/.raise/memory/practice/lessons.md` · 6c2778ff4ce6
