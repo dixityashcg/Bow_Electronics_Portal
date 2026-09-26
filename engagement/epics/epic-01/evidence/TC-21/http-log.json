@@ -1,0 +1,138 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.481Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "description": "QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "241",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":7,\"partNumber\":\"QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"description\":\"QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.6
+  },
+  {
+    "at": "2026-09-26T21:29:39.524Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "241",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":7,\"partNumber\":\"QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"description\":\"QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 43.5
+  },
+  {
+    "at": "2026-09-26T21:29:39.543Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "description": "QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "243",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":8,\"partNumber\":\"QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"description\":\"QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 18.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.545Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "243",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":8,\"partNumber\":\"QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"description\":\"QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.5
+  },
+  {
+    "at": "2026-09-26T21:29:39.548Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "description": "QA product QA-LEN-XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX",
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "69",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"A part number is at most 64 characters\"}"
+    },
+    "ms": 2.3
+  }
+]

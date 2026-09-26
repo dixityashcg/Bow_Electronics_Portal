@@ -1,0 +1,71 @@
+### local stand-ins on a public address
+env: PORTAL_PUBLIC_URL=https://portal.bow.example SIGN_IN_ADAPTER=local DATABASE_ADAPTER=local EMAIL_ADAPTER=local CLOCK_ADAPTER=local
+
+The portal refused to start: PORTAL_PUBLIC_URL is https://portal.bow.example, but local stand-ins are selected (SIGN_IN_ADAPTER=local, DATABASE_ADAPTER=local, EMAIL_ADAPTER=local, CLOCK_ADAPTER=local). Stand-ins may only run on localhost or 127.0.0.1.
+
+exit code: 1
+
+### production mode with stand-ins
+env: PORTAL_MODE=production PORTAL_PUBLIC_URL=http://localhost:3399
+
+The portal refused to start: PORTAL_MODE=production, but local stand-ins are selected (SIGN_IN_ADAPTER=local, DATABASE_ADAPTER=local, EMAIL_ADAPTER=local, CLOCK_ADAPTER=local).
+
+exit code: 1
+
+### one stand-in on a public address (email only)
+env: PORTAL_PUBLIC_URL=https://portal.bow.example SIGN_IN_ADAPTER=real DATABASE_ADAPTER=real EMAIL_ADAPTER=local CLOCK_ADAPTER=real
+
+The portal refused to start: PORTAL_PUBLIC_URL is https://portal.bow.example, but local stand-ins are selected (EMAIL_ADAPTER=local). Stand-ins may only run on localhost or 127.0.0.1.
+
+exit code: 1
+
+### mixed sign-in/database
+env: PORTAL_PUBLIC_URL=http://localhost:3399 SIGN_IN_ADAPTER=real DATABASE_ADAPTER=local
+
+The portal refused to start: SIGN_IN_ADAPTER=real with DATABASE_ADAPTER=local: real sign-in and the local database (or the reverse) are never mixed.
+
+exit code: 1
+
+### public address given as 0.0.0.0
+env: PORTAL_PUBLIC_URL=http://0.0.0.0:3399
+
+The portal refused to start: PORTAL_PUBLIC_URL is http://0.0.0.0:3399, but local stand-ins are selected (SIGN_IN_ADAPTER=local, DATABASE_ADAPTER=local, EMAIL_ADAPTER=local, CLOCK_ADAPTER=local). Stand-ins may only run on localhost or 127.0.0.1.
+
+exit code: 1
+
+### localhost look-alike host
+env: PORTAL_PUBLIC_URL=http://localhost.bow.example:3399
+
+The portal refused to start: PORTAL_PUBLIC_URL is http://localhost.bow.example:3399, but local stand-ins are selected (SIGN_IN_ADAPTER=local, DATABASE_ADAPTER=local, EMAIL_ADAPTER=local, CLOCK_ADAPTER=local). Stand-ins may only run on localhost or 127.0.0.1.
+
+exit code: 1
+
+### adapter value typo
+env: PORTAL_PUBLIC_URL=http://localhost:3399 EMAIL_ADAPTER=Local
+
+The portal refused to start: EMAIL_ADAPTER must be "local" or "real", not "Local"
+
+exit code: 1
+
+### control: a good local configuration starts (killed after 20 s by the alarm)
+env: PORTAL_PUBLIC_URL=http://localhost:3399
+
+Bow Reseller Portal (Stage 1, local stand-ins) on http://localhost:3399
+control check: GET http://localhost:3399/api/session -> 200
+  Sign in:  http://localhost:3399/dev/sign-in
+
+exit code: 142
+
+### production bundle (apps/server/dist/main.js) run directly
+
+The portal refused to start: this is a production build, and it has no local stand-ins to run with.
+
+exit code: 1
+
+### /dev in the production bundles (built by npm run build at the build under test)
+server dist/main.js: lines matching dev/api/sign-in|DevController|api/people:
+0
+web dist: occurrences of /dev/sign-in and dev/api/*:
+   1 /dev/sign-in
+context of /dev/sign-in in the web bundle (a link on the sign-in page, not the page itself):
+t})})},i.to))})]})}function Rj(){const e=new URLSearchParams(window.location.search).get("next"),r=`/dev/sign-in${e?`?next=${encodeURIComponent(e)}`:""}`;return T.jsxs(T.Fr

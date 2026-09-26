@@ -1,0 +1,401 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.406Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.407Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.4
+  },
+  {
+    "at": "2026-09-26T21:29:34.407Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.408Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.409Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/load-summary",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.409Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/load-summary",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.410Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/products/5",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:34.411Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/products/5",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.412Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/products/new",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.412Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store/products/new",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.413Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.4
+  },
+  {
+    "at": "2026-09-26T21:29:34.413Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.4
+  },
+  {
+    "at": "2026-09-26T21:29:34.413Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.4
+  },
+  {
+    "at": "2026-09-26T21:29:34.414Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.414Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.414Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "cache-control": "no-store",
+        "connection": "keep-alive",
+        "content-length": "328",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html>\n<html lang=\"en\">\n  <head>\n    <meta charset=\"utf-8\" />\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1\" />\n    <title>Bow Reseller Portal</title>\n    <script type=\"module\" crossorigin src=\"/assets/index-BD46GkgR.js\"></script>\n  </head>\n  <body>\n    <div id=\"root\"></div>\n  </body>\n</html>\n"
+    },
+    "ms": 0.4
+  },
+  {
+    "at": "2026-09-26T21:29:34.415Z",
+    "who": "Riley (Reseller A, admin)",
+    "request": {
+      "method": "GET",
+      "path": "/sales/store",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "410",
+        "content-type": "text/html",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "<!doctype html><html lang=\"en\"><head><meta charset=\"utf-8\"><title>Access refused — Bow Reseller Portal</title>\n<style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>\n<body><h1>Access refused</h1><p>You do not have access to this page. The attempt has been recorded.</p><p><a href=\"/\">Back to the portal</a></p></body></html>"
+    },
+    "ms": 0.4
+  }
+]

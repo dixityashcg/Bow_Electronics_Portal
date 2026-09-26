@@ -1,0 +1,54 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.459Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/6/price",
+      "headers": {
+        "accept": "application/json",
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "1-J3AKbowL8UmqV-rWgcapI3w7s7KOmkGHp7Yiy1-Yg"
+      },
+      "body": {
+        "price": "0.01"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "74",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a price maintainer can change a price.\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.461Z",
+    "who": "Jo (internal admin)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "1845",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":13,\"userKind\":\"internal\",\"user\":\"Sam (rep)\",\"action\":\"change a price (POST /api/sales/store/products/6/price)\",\"at\":\"2026-09-26T21:29:34.459Z\"},{\"id\":12,\"userKind\":\"reseller\",\"user\":\"Riley (Reseller A, admin)\",\"action\":\"open page /sales/store\",\"at\":\"2026-09-26T21:29:34.415Z\"},{\"id\":11,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/refused-attempts\",\"at\":\"2026-09-26T21:29:34.414Z\"},{\"id\":10,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/resellers\",\"at\":\"2026-09-26T21:29:34.413Z\"},{\"id\":9,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/named-users\",\"at\":\"2026-09-26T21:29:34.412Z\"},{\"id\":8,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/store/products/new\",\"at\":\"2026-09-26T21:29:34.411Z\"},{\"id\":7,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/store/products/5\",\"at\":\"2026-09-26T21:29:34.410Z\"},{\"id\":6,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/store/load-summary\",\"at\":\"2026-09-26T21:29:34.408Z\"},{\"id\":5,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales/store\",\"at\":\"2026-09-26T21:29:34.407Z\"},{\"id\":4,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open page /sales\",\"at\":\"2026-09-26T21:29:34.406Z\"},{\"id\":3,\"userKind\":\"internal\",\"user\":\"Sam (rep)\",\"action\":\"close a product for quoting (POST /api/sales/store/products/4/close)\",\"at\":\"2026-09-26T21:29:34.402Z\"},{\"id\":2,\"userKind\":\"internal\",\"user\":\"Sam (rep)\",\"action\":\"add a product (POST /api/sales/store/products)\",\"at\":\"2026-09-26T21:29:34.399Z\"},{\"id\":1,\"userKind\":\"internal\",\"user\":\"Sam (rep)\",\"action\":\"change a price (POST /api/sales/store/products/3/price)\",\"at\":\"2026-09-26T21:29:34.396Z\"}]"
+    },
+    "ms": 0.7
+  }
+]

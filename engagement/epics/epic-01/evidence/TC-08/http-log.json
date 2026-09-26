@@ -1,0 +1,162 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.412Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-HIST-3X",
+        "description": "QA product QA-HIST-3X",
+        "price": "1.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"partNumber\":\"QA-HIST-3X\",\"description\":\"QA product QA-HIST-3X\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.6
+  },
+  {
+    "at": "2026-09-26T21:29:39.413Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-HIST-3X",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"partNumber\":\"QA-HIST-3X\",\"description\":\"QA product QA-HIST-3X\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.6
+  },
+  {
+    "at": "2026-09-26T21:29:39.415Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/3/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "2.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"partNumber\":\"QA-HIST-3X\",\"description\":\"QA product QA-HIST-3X\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.7
+  },
+  {
+    "at": "2026-09-26T21:29:39.446Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/3/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "3.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"partNumber\":\"QA-HIST-3X\",\"description\":\"QA product QA-HIST-3X\",\"price\":30000,\"priceText\":\"3.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 30.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.448Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/3/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "4.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"partNumber\":\"QA-HIST-3X\",\"description\":\"QA product QA-HIST-3X\",\"price\":40000,\"priceText\":\"4.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:29:39.456Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/3/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "304",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"oldPrice\":\"1.00\",\"newPrice\":\"2.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.414Z\"},{\"oldPrice\":\"2.00\",\"newPrice\":\"3.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.445Z\"},{\"oldPrice\":\"3.00\",\"newPrice\":\"4.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.447Z\"}]"
+    },
+    "ms": 8.2
+  }
+]

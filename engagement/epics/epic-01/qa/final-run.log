@@ -1,0 +1,34 @@
+
+ RUN  v4.1.11 /Users/yashdixit/Bow_Electronics_Portal
+
+ ❯ engagement/epics/epic-01/qa/epic01.qa.ts (55 tests | 1 failed | 1 skipped) 106448ms
+     × TC-28 4492ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  engagement/epics/epic-01/qa/epic01.qa.ts > D: the ERP load, hand-built workbooks > TC-28
+AssertionError: "QA-R2" / "  padded  ": stored byte-for-byte or listed: stored part "QA-R2" description "padded"
+"QA-R4 " / "part number with a trailing space": stored byte-for-byte or listed: stored part "QA-R4" description "part number with a trailing space": expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ runCase engagement/epics/epic-01/qa/epic01.qa.ts:28:47
+     26|   const pass = ev.save(extra?.() ?? {});
+     27|   results[id] = { pass, checks: ev.checks.length, failed: ev.checks.fi…
+     28|   expect(pass, results[id].failed.join('\n')).toBe(true);
+       |                                               ^
+     29| }
+     30|
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 53 passed | 1 skipped (55)
+   Start at  15:29:27
+   Duration  107.05s (transform 161ms, setup 0ms, import 426ms, tests 106.45s, environment 0ms)
+

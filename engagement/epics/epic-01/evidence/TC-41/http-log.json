@@ -1,0 +1,73 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.383Z",
+    "who": "Chris (Bow, not on the list)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-chris"
+      }
+    },
+    "response": {
+      "status": 401,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "93",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":401,\"message\":\"This Bow account is not on the portal’s internal users list.\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.384Z",
+    "who": "Chris (Bow, not on the list)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/load-summary",
+      "headers": {}
+    },
+    "response": {
+      "status": 401,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "51",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":401,\"message\":\"Sign in to continue.\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.386Z",
+    "who": "Jo (internal admin)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "170",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"userKind\":\"staff not listed\",\"user\":\"Chris (Bow, not on the list) <chris@bow.example>\",\"action\":\"sign in to the internal side\",\"at\":\"2026-09-26T21:29:39.383Z\"}]"
+    },
+    "ms": 1.3
+  }
+]

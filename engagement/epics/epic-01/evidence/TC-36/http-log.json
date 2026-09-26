@@ -1,0 +1,224 @@
+[
+  {
+    "at": "2026-09-26T21:30:08.577Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-morgan"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=dx8D9d2wAUEeWuUpy3a1sihes24_LkvpL641CZVVF3E; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 8.2
+  },
+  {
+    "at": "2026-09-26T21:30:08.579Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "183",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Morgan (role manager)\",\"roles\":[\"role manager\"],\"isAdmin\":false},\"csrfToken\":\"hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:30:08.582Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      },
+      "body": {
+        "internalUserId": 1,
+        "role": "price maintainer"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": ""
+    },
+    "ms": 3
+  },
+  {
+    "at": "2026-09-26T21:30:08.584Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      },
+      "body": {
+        "internalUserId": 1,
+        "role": "price maintainer"
+      }
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "75",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"That user is already named price maintainer.\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:30:08.587Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/1/price%20maintainer",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": ""
+    },
+    "ms": 1.5
+  },
+  {
+    "at": "2026-09-26T21:30:08.588Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/1/price%20maintainer",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      }
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "71",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"That user is not named price maintainer.\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:30:08.589Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/2/discount%20setter",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      }
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "70",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"That user is not named discount setter.\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:08.590Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/2/emperor",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "hOzNnSlIeG5KBnc61Cycv82A3Q60GLlr5ZXHuwa-Guk"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "88",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"\\\"emperor\\\" is not a list the named users screen changes.\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:08.591Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "539",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:08 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"roles\":[\"price maintainer\",\"discount setter\"],\"users\":[{\"id\":2,\"name\":\"Alex (rep)\",\"email\":\"alex@bow.example\",\"roles\":[]},{\"id\":5,\"name\":\"Jo (internal admin)\",\"email\":\"jo@bow.example\",\"roles\":[\"internal admin\"]},{\"id\":4,\"name\":\"Lee (rep)\",\"email\":\"lee@bow.example\",\"roles\":[\"discount setter\"]},{\"id\":6,\"name\":\"Morgan (role manager)\",\"email\":\"morgan@bow.example\",\"roles\":[\"role manager\"]},{\"id\":3,\"name\":\"Pat (rep)\",\"email\":\"pat@bow.example\",\"roles\":[\"price maintainer\"]},{\"id\":1,\"name\":\"Sam (rep)\",\"email\":\"sam@bow.example\",\"roles\":[]}]}"
+    },
+    "ms": 1.4
+  }
+]

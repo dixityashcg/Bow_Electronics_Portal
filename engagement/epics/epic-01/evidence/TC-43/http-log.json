@@ -1,0 +1,163 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.706Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "88",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a internal admin can read the refused attempts list.\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.707Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "88",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a internal admin can read the refused attempts list.\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.708Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "88",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a internal admin can read the refused attempts list.\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:34.709Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "88",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a internal admin can read the refused attempts list.\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.709Z",
+    "who": "Casey (Reseller A, buyer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "62",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"You do not have access to this.\"}"
+    },
+    "ms": 0.6
+  },
+  {
+    "at": "2026-09-26T21:29:34.710Z",
+    "who": "Riley (Reseller A, admin)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "62",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"You do not have access to this.\"}"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.711Z",
+    "who": "Jo (internal admin)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/refused-attempts",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "6302",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":40,\"userKind\":\"reseller\",\"user\":\"Riley (Reseller A, admin)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.710Z\"},{\"id\":39,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.709Z\"},{\"id\":38,\"userKind\":\"internal\",\"user\":\"Lee (rep)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.708Z\"},{\"id\":37,\"userKind\":\"internal\",\"user\":\"Morgan (role manager)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.708Z\"},{\"id\":36,\"userKind\":\"internal\",\"user\":\"Pat (rep)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.707Z\"},{\"id\":35,\"userKind\":\"internal\",\"user\":\"Sam (rep)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.706Z\"},{\"id\":34,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"read the refused attempts list (GET /api/sales/refused-attempts)\",\"at\":\"2026-09-26T21:29:34.609Z\"},{\"id\":33,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"change who is named (DELETE /api/sales/named-users/2/discount%20setter)\",\"at\":\"2026-09-26T21:29:34.607Z\"},{\"id\":32,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"change who is named (POST /api/sales/named-users)\",\"at\":\"2026-09-26T21:29:34.602Z\"},{\"id\":31,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"see the named users (GET /api/sales/named-users)\",\"at\":\"2026-09-26T21:29:34.600Z\"},{\"id\":30,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"set a standard discount (POST /api/sales/resellers/1/standard-discount)\",\"at\":\"2026-09-26T21:29:34.596Z\"},{\"id\":29,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open a discount history (GET /api/sales/resellers/1/discount-history)\",\"at\":\"2026-09-26T21:29:34.592Z\"},{\"id\":28,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"see resellers (GET /api/sales/resellers)\",\"at\":\"2026-09-26T21:29:34.590Z\"},{\"id\":27,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"run the ERP load (POST /api/sales/store/load)\",\"at\":\"2026-09-26T21:29:34.588Z\"},{\"id\":26,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"open the load summary (GET /api/sales/store/load-summary)\",\"at\":\"2026-09-26T21:29:34.582Z\"},{\"id\":25,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"close a product for quoting (POST /api/sales/store/products/9/close)\",\"at\":\"2026-09-26T21:29:34.581Z\"},{\"id\":24,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"change a price (POST /api/sales/store/products/9/price)\",\"at\":\"2026-09-26T21:29:34.581Z\"},{\"id\":23,\"userKind\":\"reseller\",\"user\":\"Casey (Reseller A, buyer)\",\"action\":\"add a product (POST /api/sales/store/products)\",\"at\":\"2026-09-26T21… (6302 chars)"
+    },
+    "ms": 1
+  }
+]

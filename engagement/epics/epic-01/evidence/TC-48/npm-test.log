@@ -1,0 +1,15 @@
+
+> test
+> node scripts/test.mjs
+
+
+ RUN  v4.1.11 /Users/yashdixit/Bow_Electronics_Portal
+
+[31m[Nest] 88706  - [39m09/26/2026, 3:16:46 PM [31m  ERROR[39m [38;5;3m[AccessGuard] [39m[31mRefused GET /api/undeclared: the route declares no rule[39m
+
+ Test Files  9 passed (9)
+      Tests  110 passed (110)
+   Start at  15:16:44
+   Duration  4.03s (transform 807ms, setup 0ms, import 14.98s, tests 4.12s, environment 1ms)
+
+exit 0

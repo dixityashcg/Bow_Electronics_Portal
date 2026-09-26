@@ -1,0 +1,404 @@
+[
+  {
+    "at": "2026-09-26T21:30:17.909Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-pat"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=2gNUHePgOKCMsE7vVGkRYjQ7uvsEplSjf7YpyXElpDM; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 12.7
+  },
+  {
+    "at": "2026-09-26T21:30:17.911Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Pat (rep)\",\"roles\":[\"price maintainer\"],\"isAdmin\":false},\"csrfToken\":\"mFmGo6zaziOS-IP0_oFQggEoV-YIvfowAnxtDCErfSg\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:30:17.912Z",
+    "who": "Lee",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-lee"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=Y3KTbSnvm03XXyFznvs_Qg-sQUDXo1lbGdaEvwk3wAw; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 1.7
+  },
+  {
+    "at": "2026-09-26T21:30:17.914Z",
+    "who": "Lee",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "174",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Lee (rep)\",\"roles\":[\"discount setter\"],\"isAdmin\":false},\"csrfToken\":\"iZGcX-K75OPR7tqkXbrhV6DzTzH3gpLnxtpYHEg7i0Q\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:17.915Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-morgan"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=-hYQr02160cN9lsxNBc7RfU9KFYTorIzNJxZYVwc5jc; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:17.916Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "183",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Morgan (role manager)\",\"roles\":[\"role manager\"],\"isAdmin\":false},\"csrfToken\":\"cWsS_zgCvfebbWn-UEWNGFTxbuMtyDBZ9R0hoHI-6lw\"}"
+    },
+    "ms": 1.2
+  },
+  {
+    "at": "2026-09-26T21:30:17.920Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "mFmGo6zaziOS-IP0_oFQggEoV-YIvfowAnxtDCErfSg"
+      },
+      "body": {
+        "partNumber": "QA-N09",
+        "description": "QA product QA-N09",
+        "price": "2.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "125",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-N09\",\"description\":\"QA product QA-N09\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 3.9
+  },
+  {
+    "at": "2026-09-26T21:30:17.921Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-N09",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "125",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-N09\",\"description\":\"QA product QA-N09\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.3
+  },
+  {
+    "at": "2026-09-26T21:30:17.924Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/1/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "mFmGo6zaziOS-IP0_oFQggEoV-YIvfowAnxtDCErfSg"
+      },
+      "body": {
+        "price": "2.10"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "125",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-N09\",\"description\":\"QA product QA-N09\",\"price\":21000,\"priceText\":\"2.10\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.7
+  },
+  {
+    "at": "2026-09-26T21:30:17.928Z",
+    "who": "Lee",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/3/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "iZGcX-K75OPR7tqkXbrhV6DzTzH3gpLnxtpYHEg7i0Q"
+      },
+      "body": {
+        "percent": "11"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "87",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1100,\"standardDiscountText\":\"11 %\"}"
+    },
+    "ms": 3.6
+  },
+  {
+    "at": "2026-09-26T21:30:17.929Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/3/price%20maintainer",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "cWsS_zgCvfebbWn-UEWNGFTxbuMtyDBZ9R0hoHI-6lw"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": ""
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:30:17.930Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/4/discount%20setter",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "cWsS_zgCvfebbWn-UEWNGFTxbuMtyDBZ9R0hoHI-6lw"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": ""
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:30:17.932Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/1/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "mFmGo6zaziOS-IP0_oFQggEoV-YIvfowAnxtDCErfSg"
+      },
+      "body": {
+        "price": "2.20"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "74",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a price maintainer can change a price.\"}"
+    },
+    "ms": 1.6
+  },
+  {
+    "at": "2026-09-26T21:30:17.933Z",
+    "who": "Lee",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/3/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "iZGcX-K75OPR7tqkXbrhV6DzTzH3gpLnxtpYHEg7i0Q"
+      },
+      "body": {
+        "percent": "12"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "82",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a discount setter can set a standard discount.\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:17.934Z",
+    "who": "Lee",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "473",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1100,\"standardDiscountText\":\"11 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:17.935Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "125",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:17 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-N09\",\"description\":\"QA product QA-N09\",\"price\":21000,\"priceText\":\"2.10\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  }
+]

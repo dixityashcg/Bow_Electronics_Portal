@@ -1,0 +1,259 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.567Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-SAME-1000",
+        "description": "QA product QA-SAME-1000",
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":11,\"partNumber\":\"QA-SAME-1000\",\"description\":\"QA product QA-SAME-1000\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.568Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-SAME-1000",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":11,\"partNumber\":\"QA-SAME-1000\",\"description\":\"QA product QA-SAME-1000\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.569Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/11/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "79",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The price is already 10.00. Nothing was changed.\"}"
+    },
+    "ms": 1.3
+  },
+  {
+    "at": "2026-09-26T21:29:39.570Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/11/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "abc"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "95",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The price was not changed: price is not a plain number: \\\"abc\\\".\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:39.571Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/11/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "2",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[]"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.572Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/999999/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "1.00"
+      }
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "55",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":404,\"message\":\"No product with that id.\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:39.573Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/x/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "1.00"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "77",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"Validation failed (numeric string is expected)\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:39.574Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/999999/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "55",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":404,\"message\":\"No product with that id.\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:39.575Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/999999",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "55",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":404,\"message\":\"No product with that id.\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.576Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/99999999999999999999",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "55",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":404,\"message\":\"No product with that id.\"}"
+    },
+    "ms": 1
+  }
+]

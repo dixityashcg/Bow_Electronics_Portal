@@ -1,0 +1,300 @@
+[
+  {
+    "at": "2026-09-26T21:29:48.761Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-pat"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=z7UCQ9hFBK0qAViKv3hkZuR9_5BqQkE3yFx9Frwb81I; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 22.5
+  },
+  {
+    "at": "2026-09-26T21:29:48.763Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Pat (rep)\",\"roles\":[\"price maintainer\"],\"isAdmin\":false},\"csrfToken\":\"b0F50hcmvoLa8GsGFfcS6FPS39thq8RVFVAn04JTGR4\"}"
+    },
+    "ms": 2.2
+  },
+  {
+    "at": "2026-09-26T21:29:48.765Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-morgan"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=v2x_hRorffM_kHuBIGrNA4LdC5K7qHxpKpi91AX0ssc; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 1.9
+  },
+  {
+    "at": "2026-09-26T21:29:48.767Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "183",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Morgan (role manager)\",\"roles\":[\"role manager\"],\"isAdmin\":false},\"csrfToken\":\"NZf20Fvp076HoX-KPry32WU-a3delZrYkN0Irm7l8Wk\"}"
+    },
+    "ms": 1.3
+  },
+  {
+    "at": "2026-09-26T21:29:48.770Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "b0F50hcmvoLa8GsGFfcS6FPS39thq8RVFVAn04JTGR4"
+      },
+      "body": {
+        "partNumber": "QA-REVOKE-1",
+        "description": "QA product QA-REVOKE-1",
+        "price": "2.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-REVOKE-1\",\"description\":\"QA product QA-REVOKE-1\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 3.4
+  },
+  {
+    "at": "2026-09-26T21:29:48.771Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-REVOKE-1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-REVOKE-1\",\"description\":\"QA product QA-REVOKE-1\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:48.774Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/1/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "b0F50hcmvoLa8GsGFfcS6FPS39thq8RVFVAn04JTGR4"
+      },
+      "body": {
+        "price": "2.50"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-REVOKE-1\",\"description\":\"QA product QA-REVOKE-1\",\"price\":25000,\"priceText\":\"2.50\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.3
+  },
+  {
+    "at": "2026-09-26T21:29:48.775Z",
+    "who": "Morgan (role manager)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/3/price%20maintainer",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "NZf20Fvp076HoX-KPry32WU-a3delZrYkN0Irm7l8Wk"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": ""
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:29:48.777Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/1/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"oldPrice\":\"2.00\",\"newPrice\":\"2.50\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:48.773Z\"}]"
+    },
+    "ms": 1.9
+  },
+  {
+    "at": "2026-09-26T21:29:48.779Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/1/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "b0F50hcmvoLa8GsGFfcS6FPS39thq8RVFVAn04JTGR4"
+      },
+      "body": {
+        "price": "9.00"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "74",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a price maintainer can change a price.\"}"
+    },
+    "ms": 1.5
+  },
+  {
+    "at": "2026-09-26T21:29:48.780Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-REVOKE-1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-REVOKE-1\",\"description\":\"QA product QA-REVOKE-1\",\"price\":25000,\"priceText\":\"2.50\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:48.781Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/1/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "102",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:48 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"oldPrice\":\"2.00\",\"newPrice\":\"2.50\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:48.773Z\"}]"
+    },
+    "ms": 0.9
+  }
+]

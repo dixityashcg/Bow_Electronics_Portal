@@ -2,23 +2,19 @@
 
 **Raised by**: independent QA agents · **Answered by**: Yash Dixit
 
-<!--
-  Failures where the acceptance criterion appears wrong rather than the code.
-  These are NOT defects and do not go to the build team — they go to the
-  operator, and the criterion stays exactly as approved until someone with
-  the authority changes it. Filing one of these as a defect sends the build
-  team to change code that was never specified.
+These are behaviours where the approved criteria (or the criteria read beside the approved architecture) do not say what the system should do, or can be read two ways. None of them is a defect: the code does something reasonable, and nothing approved says it is wrong. Each goes to the operator. The criteria stay exactly as approved until someone with the authority changes them. A change of scope goes through the Business Analyst and the backlog gate, never into the code.
 
-  One row per question. Give every question the answer you recommend and
-  why; the operator's answer is recorded in its own cell, in their words,
-  with who answered. A question with an empty answer cell is open: completion
-  names it, and the Epic Review brief carries it to the humans — so a QA
-  context that runs where it cannot ask (a sub-agent, a background job)
-  still gets its questions answered before anyone decides.
-
-  If the answer changes the criterion, that is a scope change: it goes back
-  through the Business Analyst and the backlog gate, never into the code.
--->
+This QA context ran as a sub-agent and could not ask the operator directly. Each row carries the answer QA recommends. The answer cells are empty for the operator to fill in, and the Epic Review brief carries the questions to the humans.
 
 | # | Story / criterion | Observed behaviour | Why the criterion may be wrong | Recommended answer | Operator's answer | Answered by |
 |---|---|---|---|---|---|---|
+| CQ-01 | story-01-01 #2 ("the fields in the first table below match the ERP row") | **TC-28.** The load trims spaces before and after a part number and a description. A cell holding `"  padded  "` is stored as `"padded"`, and a part number `"QA-R4 "` as `"QA-R4"`. The row loads and is not listed. Spaces inside the text, line breaks, tabs and `µ Ω ±` are kept byte for byte. The same trimming makes `" QA-D3 "` and `"QA-D3"` a duplicate pair (TC-23). | Read literally, "match" means the stored text equals the cell, and a trimmed value does not. Read as a person reads a spreadsheet, the spaces around a cell's text carry no information, and trimming them is what lets duplicates be caught. The criterion does not say which reading was approved. The real ERP may hold such spaces, and nobody has seen it (no ERP owner, C-10). | **Treat trimming of surrounding spaces as a match**, and keep the criterion as written. Record the rule ("surrounding spaces are removed from part numbers and descriptions") in the column mapping the ERP owner signs (story-01-01 definition of done), so the ERP owner agrees to it rather than inheriting it. No code change. | | |
+| CQ-02 | story-01-01 #1 and #5, at N = 0 | **TC-25.** A workbook with a heading row and no product rows loads with "Load complete: all 0 product rows in the ERP were loaded." The count identity holds (0 + 0 = 0), and criterion 5 is met vacuously, because no row was left out. The store stays empty, so a later real load is still allowed (checked). | The summary is what Jensen Huang signs off to freeze the ERP (story-01-01's "so that"). A summary reading "Load complete" for an empty or wrong worksheet satisfies both criteria and could be signed. The criteria do not say whether an ERP of zero product rows is a complete load or the wrong file. | **Refuse a workbook with no product rows as the wrong file**, the way a workbook with data on more than one worksheet is already refused whole. It is a small change to scope, so it goes through a change request (it sits naturally beside cr-01's check-only run). Until then, the Epic Review states the behaviour. | | |
+| CQ-03 | story-01-01 (the load) beside story-01-02 #1 (add a product) and architecture T-15 | **TC-54, TC-55.** A price maintainer can add a product to the empty store before the ERP has been loaded. After that, the go-live load is refused: "The store already holds 1 products, so the ERP load was refused and nothing changed." Nothing can remove the added product. No screen or route does, and the database refuses the delete even with the application's own identity. In TC-55, adds sent while the load was reading the file got in first, and the load was refused whole. The store was never left half-loaded. | Each approved document is met on its own terms. story-01-02 allows adding at any time. T-15 makes the load refuse a store that holds any product, to protect maintained prices. The records are append-only by design. Together they mean one early "Add a product", including a trial one on go-live morning, stops the ERP being loaded at all, with no recovery inside the portal. No criterion says which document gives way. | **Refuse *Add a product* until an ERP load has run** (a change request, because it changes story-01-02's behaviour), and name the order in the go-live runbook (§10.4): load first, then name anyone else price maintainer. If the operator prefers no code change, the runbook step alone is the fallback. The risk then stays open, and the Epic Review should state it. | | |
+
+## Observations that are not questions
+
+These are recorded so they are not lost. QA does not ask for a decision on them.
+
+- **A closed product's price can still be changed** (TC-34). No criterion covers it either way. The history stays consistent, and the product stays Closed. cr-03 (a recorded reopen) is where this naturally gets decided.
+- **The production web bundle links to `/dev/sign-in`** from its sign-in page (TC-47). The page itself is absent from the production server bundle, and the production bundle refuses to start in Stage 1. Real sign-in is Stage 2 work.

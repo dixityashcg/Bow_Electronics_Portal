@@ -1,0 +1,213 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.663Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-CSRF-1",
+        "description": "QA product QA-CSRF-1",
+        "price": "5.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "132",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":14,\"partNumber\":\"QA-CSRF-1\",\"description\":\"QA product QA-CSRF-1\",\"price\":50000,\"priceText\":\"5.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.7
+  },
+  {
+    "at": "2026-09-26T21:29:39.664Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-CSRF-1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "132",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":14,\"partNumber\":\"QA-CSRF-1\",\"description\":\"QA product QA-CSRF-1\",\"price\":50000,\"priceText\":\"5.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:39.666Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/14/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json"
+      },
+      "body": {
+        "price": "6.00"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "91",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"The request did not carry the portal’s anti-forgery token.\"}"
+    },
+    "ms": 1.8
+  },
+  {
+    "at": "2026-09-26T21:29:39.700Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/14/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "not-the-token"
+      },
+      "body": {
+        "price": "6.00"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "91",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"The request did not carry the portal’s anti-forgery token.\"}"
+    },
+    "ms": 34.7
+  },
+  {
+    "at": "2026-09-26T21:29:39.706Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/14/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "-LIWTwOWI4gbm1tRD_mqTrVX5sjyyGJ5eQL7-skEkLo"
+      },
+      "body": {
+        "price": "6.00"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "91",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"The request did not carry the portal’s anti-forgery token.\"}"
+    },
+    "ms": 5.7
+  },
+  {
+    "at": "2026-09-26T21:29:39.709Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/14/price",
+      "headers": {
+        "content-type": "application/x-www-form-urlencoded",
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "91",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"The request did not carry the portal’s anti-forgery token.\"}"
+    },
+    "ms": 2.6
+  },
+  {
+    "at": "2026-09-26T21:29:39.710Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-CSRF-1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "132",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":14,\"partNumber\":\"QA-CSRF-1\",\"description\":\"QA product QA-CSRF-1\",\"price\":50000,\"priceText\":\"5.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:39.722Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/14/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "6.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "132",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":14,\"partNumber\":\"QA-CSRF-1\",\"description\":\"QA product QA-CSRF-1\",\"price\":60000,\"priceText\":\"6.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 9.5
+  }
+]

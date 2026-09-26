@@ -1,0 +1,55 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.463Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/7/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "BrLi2X4jtpBx1cyL3rhFrb7xebCNs5UtYUC5W523IIg"
+      },
+      "body": {
+        "price": "77.77"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "150",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":7,\"partNumber\":\"BWE-Y8M-7\",\"description\":\"Crystal, 8 MHz, 20 ppm, 3.2 × 2.5 mm\",\"price\":777700,\"priceText\":\"77.77\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:34.529Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "BrLi2X4jtpBx1cyL3rhFrb7xebCNs5UtYUC5W523IIg"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "159",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The store already holds 2000 products, so the ERP load was refused and nothing changed. The load runs once, into an empty store.\"}"
+    },
+    "ms": 64.6
+  }
+]

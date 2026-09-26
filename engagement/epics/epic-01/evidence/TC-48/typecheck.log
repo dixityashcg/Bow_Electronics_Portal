@@ -1,0 +1,5 @@
+
+> typecheck
+> tsc -p packages/shared && tsc -p apps/server && tsc -p apps/web
+
+exit 0

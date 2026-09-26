@@ -1,0 +1,76 @@
+[
+  {
+    "at": "2026-09-26T21:30:31.076Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-pat"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:31 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=WJDFV35vrsuLyyp_legAxE-gbIvuiLYD8NcM-Es-wj0; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 8.8
+  },
+  {
+    "at": "2026-09-26T21:30:31.077Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:31 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Pat (rep)\",\"roles\":[\"price maintainer\"],\"isAdmin\":false},\"csrfToken\":\"Bim783iD9Siab_SrnqYC1bFlfQzudzZmit3mXlCwdmI\"}"
+    },
+    "ms": 1.5
+  },
+  {
+    "at": "2026-09-26T21:30:31.155Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "Bim783iD9Siab_SrnqYC1bFlfQzudzZmit3mXlCwdmI"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "463",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:31 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"summary\":{\"loadRunId\":1,\"fileName\":\"erp.xlsx\",\"runBy\":\"Pat (rep)\",\"runAt\":\"2026-09-26T21:30:31.152Z\",\"rowsInErp\":3,\"rowsLoaded\":2,\"rowsNotLoaded\":1,\"complete\":false,\"statusText\":\"Load not complete: 1 of 3 product rows in the ERP were not loaded. Each is listed below with its reason.\",\"notLoaded\":[{\"rowNumber\":4,\"partNumber\":\"QA-LEN-YYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYY\",\"price\":\"1\",\"reason\":\"part number is longer than 64 characters\"}]}}"
+    },
+    "ms": 72.2
+  }
+]

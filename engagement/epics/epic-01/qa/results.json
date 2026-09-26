@@ -1,0 +1,353 @@
+{
+  "TC-01": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.323Z"
+  },
+  "TC-02": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.363Z"
+  },
+  "TC-03": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.366Z"
+  },
+  "TC-04": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.369Z"
+  },
+  "TC-05": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.387Z"
+  },
+  "TC-09": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.393Z"
+  },
+  "TC-10": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.398Z"
+  },
+  "TC-11": {
+    "pass": true,
+    "checks": 6,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.404Z"
+  },
+  "TC-12": {
+    "pass": true,
+    "checks": 17,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.415Z"
+  },
+  "TC-13": {
+    "pass": true,
+    "checks": 9,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.419Z"
+  },
+  "TC-14": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.461Z"
+  },
+  "TC-24": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.536Z"
+  },
+  "TC-34": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.551Z"
+  },
+  "TC-38": {
+    "pass": true,
+    "checks": 6,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.573Z"
+  },
+  "TC-39": {
+    "pass": true,
+    "checks": 50,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.689Z"
+  },
+  "TC-40": {
+    "pass": true,
+    "checks": 17,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.705Z"
+  },
+  "TC-43": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.711Z"
+  },
+  "TC-44": {
+    "pass": true,
+    "checks": 11,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.722Z"
+  },
+  "TC-50": {
+    "pass": true,
+    "checks": 10,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.730Z"
+  },
+  "TC-49-measure": {
+    "pass": true,
+    "checks": 0,
+    "failed": [
+      "p50=16.0 p95=34.7 max=37.0"
+    ],
+    "at": "2026-09-26T21:29:34.848Z"
+  },
+  "TC-49": {
+    "pass": true,
+    "checks": 2,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.849Z"
+  },
+  "TC-45": {
+    "pass": true,
+    "checks": 21,
+    "failed": [],
+    "at": "2026-09-26T21:29:34.852Z"
+  },
+  "TC-52": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.382Z"
+  },
+  "TC-41": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.386Z"
+  },
+  "TC-06": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.394Z"
+  },
+  "TC-07": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.409Z"
+  },
+  "TC-08": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.457Z"
+  },
+  "TC-29": {
+    "pass": true,
+    "checks": 20,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.479Z"
+  },
+  "TC-21": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.549Z"
+  },
+  "TC-30": {
+    "pass": true,
+    "checks": 9,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.565Z"
+  },
+  "TC-31": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.577Z"
+  },
+  "TC-32": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.651Z"
+  },
+  "TC-33": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.661Z"
+  },
+  "TC-42": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:29:39.722Z"
+  },
+  "TC-15": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:44.327Z"
+  },
+  "TC-16": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:48.781Z"
+  },
+  "TC-17": {
+    "pass": true,
+    "checks": 5,
+    "failed": [],
+    "at": "2026-09-26T21:29:53.459Z"
+  },
+  "TC-18": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:29:57.684Z"
+  },
+  "TC-19": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:30:01.085Z"
+  },
+  "TC-35": {
+    "pass": true,
+    "checks": 8,
+    "failed": [],
+    "at": "2026-09-26T21:30:04.657Z"
+  },
+  "TC-36": {
+    "pass": true,
+    "checks": 8,
+    "failed": [],
+    "at": "2026-09-26T21:30:08.592Z"
+  },
+  "TC-37": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:30:13.510Z"
+  },
+  "TC-46": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:30:17.936Z"
+  },
+  "TC-51": {
+    "pass": true,
+    "checks": 21,
+    "failed": [],
+    "at": "2026-09-26T21:30:21.833Z"
+  },
+  "TC-20": {
+    "pass": true,
+    "checks": 13,
+    "failed": [],
+    "at": "2026-09-26T21:30:26.458Z"
+  },
+  "TC-53": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:30:26.465Z"
+  },
+  "TC-21/load": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:30:31.158Z"
+  },
+  "TC-22": {
+    "pass": true,
+    "checks": 15,
+    "failed": [],
+    "at": "2026-09-26T21:30:35.220Z"
+  },
+  "TC-23": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:30:39.365Z"
+  },
+  "TC-25": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:30:49.782Z"
+  },
+  "TC-26": {
+    "pass": true,
+    "checks": 7,
+    "failed": [],
+    "at": "2026-09-26T21:30:55.196Z"
+  },
+  "TC-27": {
+    "pass": true,
+    "checks": 4,
+    "failed": [],
+    "at": "2026-09-26T21:31:00.845Z"
+  },
+  "TC-28": {
+    "pass": false,
+    "checks": 6,
+    "failed": [
+      "\"QA-R2\" / \"  padded  \": stored byte-for-byte or listed: stored part \"QA-R2\" description \"padded\"",
+      "\"QA-R4 \" / \"part number with a trailing space\": stored byte-for-byte or listed: stored part \"QA-R4\" description \"part number with a trailing space\""
+    ],
+    "at": "2026-09-26T21:31:05.327Z"
+  },
+  "TC-54": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:31:10.312Z"
+  },
+  "TC-55": {
+    "pass": true,
+    "checks": 3,
+    "failed": [],
+    "at": "2026-09-26T21:31:14.770Z"
+  },
+  "TC-49B-measure": {
+    "pass": true,
+    "checks": 0,
+    "failed": [
+      "load=27.8s p50=1107 p95=2288 max=2459"
+    ],
+    "at": "2026-09-26T21:29:03.622Z"
+  },
+  "TC-49B": {
+    "pass": false,
+    "checks": 3,
+    "failed": [
+      "p95 ≤ 1.0 s (N-01), measured locally on SQLite, not the committed Azure tier: 2288 ms"
+    ],
+    "at": "2026-09-26T21:29:03.623Z"
+  }
+}

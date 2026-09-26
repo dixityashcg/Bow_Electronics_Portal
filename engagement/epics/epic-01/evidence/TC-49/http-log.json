@@ -1,0 +1,232 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.754Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=capacitor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "8426",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1563,\"partNumber\":\"BWE-C0201C0G103K-1563\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":595,\"priceText\":\"0.0595\",\"status\":\"Open for quoting\"},{\"id\":16,\"partNumber\":\"BWE-C0201C0G103K-16\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":805,\"priceText\":\"0.0805\",\"status\":\"Open for quoting\"},{\"id\":1821,\"partNumber\":\"BWE-C0201C0G103K-1821\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":695,\"priceText\":\"0.0695\",\"status\":\"Open for quoting\"},{\"id\":1835,\"partNumber\":\"BWE-C0201C0G103K-1835\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, C0G, 0201\",\"price\":735,\"priceText\":\"0.0735\",\"status\":\"Open for quoting\"},{\"id\":723,\"partNumber\":\"BWE-C0201C0G103K-723\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":680,\"priceText\":\"0.0680\",\"status\":\"Open for quoting\"},{\"id\":725,\"partNumber\":\"BWE-C0201C0G103K-725\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":405,\"priceText\":\"0.0405\",\"status\":\"Open for quoting\"},{\"id\":859,\"partNumber\":\"BWE-C0201C0G103K-859\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":810,\"priceText\":\"0.0810\",\"status\":\"Open for quoting\"},{\"id\":1720,\"partNumber\":\"BWE-C0201C0G104K-1720\",\"description\":\"Capacitor, ceramic, 0.1 µF, 16 V, C0G, 0201\",\"price\":540,\"priceText\":\"0.0540\",\"status\":\"Open for quoting\"},{\"id\":1841,\"partNumber\":\"BWE-C0201C0G104K-1841\",\"description\":\"Capacitor, ceramic, 0.1 µF, 6.3 V, C0G, 0201\",\"price\":810,\"priceText\":\"0.0810\",\"status\":\"Open for quoting\"},{\"id\":426,\"partNumber\":\"BWE-C0201C0G104K-426\",\"description\":\"Capacitor, ceramic, 0.1 µF, 50 V, C0G, 0201\",\"price\":185,\"priceText\":\"0.0185\",\"status\":\"Open for quoting\"},{\"id\":718,\"partNumber\":\"BWE-C0201C0G104K-718\",\"description\":\"Capacitor, ceramic, 0.1 µF, 50 V, C0G, 0201\",\"price\":875,\"priceText\":\"0.0875\",\"status\":\"Open for quoting\"},{\"id\":195,\"partNumber\":\"BWE-C0201C0G105K-195\",\"description\":\"Capacitor, ceramic, 1 µF, 16 V, C0G, 0201\",\"price\":700,\"priceText\":\"0.07\",\"status\":\"Open for quoting\"},{\"id\":1020,\"partNumber\":\"BWE-C0201C0G220K-1020\",\"description\":\"Capacitor, ceramic, 22 pF, 6.3 V, C0G, 0201\",\"price\":660,\"priceText\":\"0.0660\",\"status\":\"Open for quoting\"},{\"id\":137,\"partNumber\":\"BWE-C0201C0G220K-137\",\"description\":\"Capacitor, ceramic, 22 pF, 6.3 V, C0G, 0201\",\"price\":660,\"priceText\":\"0.0660\",\"status\":\"Open for quoting\"},{\"id\":67,\"partNumber\":\"BWE-C0201C0G220K-67\",\"description\":\"Capacitor, ceramic, 22 pF, 25 V, C0G, 0201\",\"price\":665,\"priceText\":\"0.0665\",\"status\":\"Open for quoting\"},{\"id\":790,\"partNumber\":\"BWE-C0201C0G220K-790\",\"description\":\"Capacitor, ceramic, 22 pF, 50 V, C0G, 0201\",\"price\":550,\"priceText\":\"0.0550\",\"status\":\"Open for quoting\"},{\"id\":123,\"partNumber\":\"BWE-C0201C0G475K-123\",\"description\":\"Capacitor, ceramic, 4.7 µF, 25 V, C0G, 0201\",\"price\":580,\"priceText\":\"0.0580\",\"status\":\"Open for quoting\"},{\"id\":1543,\"partNumber\":\"BWE-C0201X5R103K-1543\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, X5R, 0201\",\"price\":345,\"priceText\":\"0.0345\",\"statu… (8403 chars)"
+    },
+    "ms": 23.1
+  },
+  {
+    "at": "2026-09-26T21:29:34.755Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=BWE-C0402",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "6765",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1506,\"partNumber\":\"BWE-C0402C0G103K-1506\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0402\",\"price\":640,\"priceText\":\"0.0640\",\"status\":\"Open for quoting\"},{\"id\":381,\"partNumber\":\"BWE-C0402C0G103K-381\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, C0G, 0402\",\"price\":200,\"priceText\":\"0.02\",\"status\":\"Open for quoting\"},{\"id\":1636,\"partNumber\":\"BWE-C0402C0G104K-1636\",\"description\":\"Capacitor, ceramic, 0.1 µF, 6.3 V, C0G, 0402\",\"price\":300,\"priceText\":\"0.03\",\"status\":\"Open for quoting\"},{\"id\":868,\"partNumber\":\"BWE-C0402C0G104K-868\",\"description\":\"Capacitor, ceramic, 0.1 µF, 50 V, C0G, 0402\",\"price\":465,\"priceText\":\"0.0465\",\"status\":\"Open for quoting\"},{\"id\":1141,\"partNumber\":\"BWE-C0402C0G105K-1141\",\"description\":\"Capacitor, ceramic, 1 µF, 6.3 V, C0G, 0402\",\"price\":275,\"priceText\":\"0.0275\",\"status\":\"Open for quoting\"},{\"id\":1551,\"partNumber\":\"BWE-C0402C0G105K-1551\",\"description\":\"Capacitor, ceramic, 1 µF, 50 V, C0G, 0402\",\"price\":240,\"priceText\":\"0.0240\",\"status\":\"Open for quoting\"},{\"id\":1010,\"partNumber\":\"BWE-C0402C0G220K-1010\",\"description\":\"Capacitor, ceramic, 22 pF, 16 V, C0G, 0402\",\"price\":645,\"priceText\":\"0.0645\",\"status\":\"Open for quoting\"},{\"id\":1041,\"partNumber\":\"BWE-C0402C0G220K-1041\",\"description\":\"Capacitor, ceramic, 22 pF, 16 V, C0G, 0402\",\"price\":365,\"priceText\":\"0.0365\",\"status\":\"Open for quoting\"},{\"id\":1481,\"partNumber\":\"BWE-C0402C0G220K-1481\",\"description\":\"Capacitor, ceramic, 22 pF, 25 V, C0G, 0402\",\"price\":175,\"priceText\":\"0.0175\",\"status\":\"Open for quoting\"},{\"id\":1375,\"partNumber\":\"BWE-C0402C0G475K-1375\",\"description\":\"Capacitor, ceramic, 4.7 µF, 25 V, C0G, 0402\",\"price\":325,\"priceText\":\"0.0325\",\"status\":\"Open for quoting\"},{\"id\":1602,\"partNumber\":\"BWE-C0402C0G475K-1602\",\"description\":\"Capacitor, ceramic, 4.7 µF, 16 V, C0G, 0402\",\"price\":435,\"priceText\":\"0.0435\",\"status\":\"Open for quoting\"},{\"id\":1719,\"partNumber\":\"BWE-C0402C0G475K-1719\",\"description\":\"Capacitor, ceramic, 4.7 µF, 6.3 V, C0G, 0402\",\"price\":360,\"priceText\":\"0.0360\",\"status\":\"Open for quoting\"},{\"id\":1896,\"partNumber\":\"BWE-C0402C0G475K-1896\",\"description\":\"Capacitor, ceramic, 4.7 µF, 6.3 V, C0G, 0402\",\"price\":115,\"priceText\":\"0.0115\",\"status\":\"Open for quoting\"},{\"id\":274,\"partNumber\":\"BWE-C0402C0G475K-274\",\"description\":\"Capacitor, ceramic, 4.7 µF, 25 V, C0G, 0402\",\"price\":415,\"priceText\":\"0.0415\",\"status\":\"Open for quoting\"},{\"id\":491,\"partNumber\":\"BWE-C0402C0G475K-491\",\"description\":\"Capacitor, ceramic, 4.7 µF, 6.3 V, C0G, 0402\",\"price\":465,\"priceText\":\"0.0465\",\"status\":\"Open for quoting\"},{\"id\":658,\"partNumber\":\"BWE-C0402C0G475K-658\",\"description\":\"Capacitor, ceramic, 4.7 µF, 25 V, C0G, 0402\",\"price\":195,\"priceText\":\"0.0195\",\"status\":\"Open for quoting\"},{\"id\":1471,\"partNumber\":\"BWE-C0402X5R103K-1471\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, X5R, 0402\",\"price\":145,\"priceText\":\"0.0145\",\"status\":\"Open for quoting\"},{\"id\":1293,\"partNumber\":\"BWE-C0402X5R104K-1293\",\"description\":\"Capacitor, ceramic, 0.1 µF, 50 V, X5R, 0402\",\"price\":410,\"priceT… (6740 chars)"
+    },
+    "ms": 24.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.755Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=resistor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7914",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1015,\"partNumber\":\"BWE-R0402-1015\",\"description\":\"Resistor, thick film, 100 kΩ, 1 %, 0402\",\"price\":55,\"priceText\":\"0.0055\",\"status\":\"Open for quoting\"},{\"id\":102,\"partNumber\":\"BWE-R0402-102\",\"description\":\"Resistor, thick film, 1 kΩ, 1 %, 0402\",\"price\":70,\"priceText\":\"0.0070\",\"status\":\"Open for quoting\"},{\"id\":1034,\"partNumber\":\"BWE-R0402-1034\",\"description\":\"Resistor, thick film, 10 Ω, 5 %, 0402\",\"price\":205,\"priceText\":\"0.0205\",\"status\":\"Open for quoting\"},{\"id\":1040,\"partNumber\":\"BWE-R0402-1040\",\"description\":\"Resistor, thick film, 10 kΩ, 1 %, 0402\",\"price\":165,\"priceText\":\"0.0165\",\"status\":\"Open for quoting\"},{\"id\":1051,\"partNumber\":\"BWE-R0402-1051\",\"description\":\"Resistor, thick film, 4.7 kΩ, 1 %, 0402\",\"price\":245,\"priceText\":\"0.0245\",\"status\":\"Open for quoting\"},{\"id\":1107,\"partNumber\":\"BWE-R0402-1107\",\"description\":\"Resistor, thick film, 10 Ω, 5 %, 0402\",\"price\":160,\"priceText\":\"0.0160\",\"status\":\"Open for quoting\"},{\"id\":1113,\"partNumber\":\"BWE-R0402-1113\",\"description\":\"Resistor, thick film, 10 Ω, 5 %, 0402\",\"price\":145,\"priceText\":\"0.0145\",\"status\":\"Open for quoting\"},{\"id\":1125,\"partNumber\":\"BWE-R0402-1125\",\"description\":\"Resistor, thick film, 100 kΩ, 1 %, 0402\",\"price\":55,\"priceText\":\"0.0055\",\"status\":\"Open for quoting\"},{\"id\":1196,\"partNumber\":\"BWE-R0402-1196\",\"description\":\"Resistor, thick film, 100 Ω, 1 %, 0402\",\"price\":45,\"priceText\":\"0.0045\",\"status\":\"Open for quoting\"},{\"id\":1197,\"partNumber\":\"BWE-R0402-1197\",\"description\":\"Resistor, thick film, 100 kΩ, 5 %, 0402\",\"price\":85,\"priceText\":\"0.0085\",\"status\":\"Open for quoting\"},{\"id\":121,\"partNumber\":\"BWE-R0402-121\",\"description\":\"Resistor, thick film, 4.7 kΩ, 5 %, 0402\",\"price\":235,\"priceText\":\"0.0235\",\"status\":\"Open for quoting\"},{\"id\":1210,\"partNumber\":\"BWE-R0402-1210\",\"description\":\"Resistor, thick film, 100 kΩ, 5 %, 0402\",\"price\":295,\"priceText\":\"0.0295\",\"status\":\"Open for quoting\"},{\"id\":1271,\"partNumber\":\"BWE-R0402-1271\",\"description\":\"Resistor, thick film, 10 Ω, 1 %, 0402\",\"price\":90,\"priceText\":\"0.0090\",\"status\":\"Open for quoting\"},{\"id\":1277,\"partNumber\":\"BWE-R0402-1277\",\"description\":\"Resistor, thick film, 4.7 kΩ, 1 %, 0402\",\"price\":65,\"priceText\":\"0.0065\",\"status\":\"Open for quoting\"},{\"id\":1311,\"partNumber\":\"BWE-R0402-1311\",\"description\":\"Resistor, thick film, 1 kΩ, 5 %, 0402\",\"price\":120,\"priceText\":\"0.0120\",\"status\":\"Open for quoting\"},{\"id\":1342,\"partNumber\":\"BWE-R0402-1342\",\"description\":\"Resistor, thick film, 4.7 kΩ, 1 %, 0402\",\"price\":155,\"priceText\":\"0.0155\",\"status\":\"Open for quoting\"},{\"id\":1351,\"partNumber\":\"BWE-R0402-1351\",\"description\":\"Resistor, thick film, 4.7 kΩ, 1 %, 0402\",\"price\":275,\"priceText\":\"0.0275\",\"status\":\"Open for quoting\"},{\"id\":1373,\"partNumber\":\"BWE-R0402-1373\",\"description\":\"Resistor, thick film, 10 Ω, 1 %, 0402\",\"price\":270,\"priceText\":\"0.0270\",\"status\":\"Open for quoting\"},{\"id\":1413,\"partNumber\":\"BWE-R0402-1413\",\"description\":\"Resistor, thick film, 4.7 kΩ, 5 %, 0402\",\"price\":180,\"priceText\":\"0.0180\",\"status\":\"Open for quoting\"},{\"id\"… (7864 chars)"
+    },
+    "ms": 24.6
+  },
+  {
+    "at": "2026-09-26T21:29:34.756Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=ceramic%2010%20nF",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "8402",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1563,\"partNumber\":\"BWE-C0201C0G103K-1563\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":595,\"priceText\":\"0.0595\",\"status\":\"Open for quoting\"},{\"id\":16,\"partNumber\":\"BWE-C0201C0G103K-16\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":805,\"priceText\":\"0.0805\",\"status\":\"Open for quoting\"},{\"id\":1821,\"partNumber\":\"BWE-C0201C0G103K-1821\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":695,\"priceText\":\"0.0695\",\"status\":\"Open for quoting\"},{\"id\":1835,\"partNumber\":\"BWE-C0201C0G103K-1835\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, C0G, 0201\",\"price\":735,\"priceText\":\"0.0735\",\"status\":\"Open for quoting\"},{\"id\":723,\"partNumber\":\"BWE-C0201C0G103K-723\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0201\",\"price\":680,\"priceText\":\"0.0680\",\"status\":\"Open for quoting\"},{\"id\":725,\"partNumber\":\"BWE-C0201C0G103K-725\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":405,\"priceText\":\"0.0405\",\"status\":\"Open for quoting\"},{\"id\":859,\"partNumber\":\"BWE-C0201C0G103K-859\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, C0G, 0201\",\"price\":810,\"priceText\":\"0.0810\",\"status\":\"Open for quoting\"},{\"id\":1543,\"partNumber\":\"BWE-C0201X5R103K-1543\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, X5R, 0201\",\"price\":345,\"priceText\":\"0.0345\",\"status\":\"Open for quoting\"},{\"id\":1561,\"partNumber\":\"BWE-C0201X5R103K-1561\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, X5R, 0201\",\"price\":230,\"priceText\":\"0.0230\",\"status\":\"Open for quoting\"},{\"id\":740,\"partNumber\":\"BWE-C0201X5R103K-740\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, X5R, 0201\",\"price\":445,\"priceText\":\"0.0445\",\"status\":\"Open for quoting\"},{\"id\":1121,\"partNumber\":\"BWE-C0201X7R103K-1121\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, X7R, 0201\",\"price\":780,\"priceText\":\"0.0780\",\"status\":\"Open for quoting\"},{\"id\":387,\"partNumber\":\"BWE-C0201X7R103K-387\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, X7R, 0201\",\"price\":725,\"priceText\":\"0.0725\",\"status\":\"Open for quoting\"},{\"id\":441,\"partNumber\":\"BWE-C0201X7R103K-441\",\"description\":\"Capacitor, ceramic, 10 nF, 50 V, X7R, 0201\",\"price\":690,\"priceText\":\"0.0690\",\"status\":\"Open for quoting\"},{\"id\":1506,\"partNumber\":\"BWE-C0402C0G103K-1506\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, C0G, 0402\",\"price\":640,\"priceText\":\"0.0640\",\"status\":\"Open for quoting\"},{\"id\":381,\"partNumber\":\"BWE-C0402C0G103K-381\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, C0G, 0402\",\"price\":200,\"priceText\":\"0.02\",\"status\":\"Open for quoting\"},{\"id\":1471,\"partNumber\":\"BWE-C0402X5R103K-1471\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, X5R, 0402\",\"price\":145,\"priceText\":\"0.0145\",\"status\":\"Open for quoting\"},{\"id\":138,\"partNumber\":\"BWE-C0402X7R103K-138\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, X7R, 0402\",\"price\":90,\"priceText\":\"0.0090\",\"status\":\"Open for quoting\"},{\"id\":163,\"partNumber\":\"BWE-C0402X7R103K-163\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, X7R, 0402\",\"price\":220,\"priceText\":\"0.0220\",\"status\"… (8402 chars)"
+    },
+    "ms": 24.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.756Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=MOSFET",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7412",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"partNumber\":\"BWE-QN100-1\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":17600,\"priceText\":\"1.76\",\"status\":\"Open for quoting\"},{\"id\":1103,\"partNumber\":\"BWE-QN100-1103\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":14600,\"priceText\":\"1.46\",\"status\":\"Open for quoting\"},{\"id\":1149,\"partNumber\":\"BWE-QN100-1149\",\"description\":\"MOSFET, N-channel, 100 V, SOT-23\",\"price\":21000,\"priceText\":\"2.10\",\"status\":\"Open for quoting\"},{\"id\":1170,\"partNumber\":\"BWE-QN100-1170\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":23300,\"priceText\":\"2.33\",\"status\":\"Open for quoting\"},{\"id\":1174,\"partNumber\":\"BWE-QN100-1174\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":13500,\"priceText\":\"1.35\",\"status\":\"Open for quoting\"},{\"id\":1181,\"partNumber\":\"BWE-QN100-1181\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":15300,\"priceText\":\"1.53\",\"status\":\"Open for quoting\"},{\"id\":1218,\"partNumber\":\"BWE-QN100-1218\",\"description\":\"MOSFET, N-channel, 100 V, DPAK\",\"price\":6800,\"priceText\":\"0.68\",\"status\":\"Open for quoting\"},{\"id\":1227,\"partNumber\":\"BWE-QN100-1227\",\"description\":\"MOSFET, N-channel, 100 V, DPAK\",\"price\":2900,\"priceText\":\"0.29\",\"status\":\"Open for quoting\"},{\"id\":126,\"partNumber\":\"BWE-QN100-126\",\"description\":\"MOSFET, N-channel, 100 V, SOT-23\",\"price\":5200,\"priceText\":\"0.52\",\"status\":\"Open for quoting\"},{\"id\":1565,\"partNumber\":\"BWE-QN100-1565\",\"description\":\"MOSFET, N-channel, 100 V, DPAK\",\"price\":7800,\"priceText\":\"0.78\",\"status\":\"Open for quoting\"},{\"id\":164,\"partNumber\":\"BWE-QN100-164\",\"description\":\"MOSFET, N-channel, 100 V, DPAK\",\"price\":19100,\"priceText\":\"1.91\",\"status\":\"Open for quoting\"},{\"id\":1677,\"partNumber\":\"BWE-QN100-1677\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":9800,\"priceText\":\"0.98\",\"status\":\"Open for quoting\"},{\"id\":1693,\"partNumber\":\"BWE-QN100-1693\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":16900,\"priceText\":\"1.69\",\"status\":\"Open for quoting\"},{\"id\":187,\"partNumber\":\"BWE-QN100-187\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":10100,\"priceText\":\"1.01\",\"status\":\"Open for quoting\"},{\"id\":1949,\"partNumber\":\"BWE-QN100-1949\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":11600,\"priceText\":\"1.16\",\"status\":\"Open for quoting\"},{\"id\":1988,\"partNumber\":\"BWE-QN100-1988\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":2000,\"priceText\":\"0.20\",\"status\":\"Open for quoting\"},{\"id\":37,\"partNumber\":\"BWE-QN100-37\",\"description\":\"MOSFET, N-channel, 100 V, SOT-23\",\"price\":6200,\"priceText\":\"0.62\",\"status\":\"Open for quoting\"},{\"id\":392,\"partNumber\":\"BWE-QN100-392\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":14500,\"priceText\":\"1.45\",\"status\":\"Open for quoting\"},{\"id\":486,\"partNumber\":\"BWE-QN100-486\",\"description\":\"MOSFET, N-channel, 100 V, SOT-23\",\"price\":8800,\"priceText\":\"0.88\",\"status\":\"Open for quoting\"},{\"id\":49,\"partNumber\":\"BWE-QN100-49\",\"description\":\"MOSFET, N-channel, 100 V, DPAK\",\"price\":21100,\"priceText\":\"2.11\",\"status\":\"Open for quoting\"},{\"id\":634,\"partNumber\":… (7412 chars)"
+    },
+    "ms": 24.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.757Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=connector",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7358",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1013,\"partNumber\":\"BWE-JHDR20-1013\",\"description\":\"Connector, pin header 2×10\",\"price\":2400,\"priceText\":\"0.24\",\"status\":\"Open for quoting\"},{\"id\":1033,\"partNumber\":\"BWE-JHDR20-1033\",\"description\":\"Connector, pin header 2×10\",\"price\":22700,\"priceText\":\"2.27\",\"status\":\"Open for quoting\"},{\"id\":1036,\"partNumber\":\"BWE-JHDR20-1036\",\"description\":\"Connector, pin header 2×10\",\"price\":5600,\"priceText\":\"0.56\",\"status\":\"Open for quoting\"},{\"id\":1136,\"partNumber\":\"BWE-JHDR20-1136\",\"description\":\"Connector, pin header 2×10\",\"price\":33900,\"priceText\":\"3.39\",\"status\":\"Open for quoting\"},{\"id\":1163,\"partNumber\":\"BWE-JHDR20-1163\",\"description\":\"Connector, pin header 2×10\",\"price\":34500,\"priceText\":\"3.45\",\"status\":\"Open for quoting\"},{\"id\":1224,\"partNumber\":\"BWE-JHDR20-1224\",\"description\":\"Connector, pin header 2×10\",\"price\":40200,\"priceText\":\"4.02\",\"status\":\"Open for quoting\"},{\"id\":1347,\"partNumber\":\"BWE-JHDR20-1347\",\"description\":\"Connector, pin header 2×10\",\"price\":26500,\"priceText\":\"2.65\",\"status\":\"Open for quoting\"},{\"id\":1356,\"partNumber\":\"BWE-JHDR20-1356\",\"description\":\"Connector, pin header 2×10\",\"price\":42100,\"priceText\":\"4.21\",\"status\":\"Open for quoting\"},{\"id\":1388,\"partNumber\":\"BWE-JHDR20-1388\",\"description\":\"Connector, pin header 2×10\",\"price\":25900,\"priceText\":\"2.59\",\"status\":\"Open for quoting\"},{\"id\":1404,\"partNumber\":\"BWE-JHDR20-1404\",\"description\":\"Connector, pin header 2×10\",\"price\":18700,\"priceText\":\"1.87\",\"status\":\"Open for quoting\"},{\"id\":1445,\"partNumber\":\"BWE-JHDR20-1445\",\"description\":\"Connector, pin header 2×10\",\"price\":6400,\"priceText\":\"0.64\",\"status\":\"Open for quoting\"},{\"id\":1446,\"partNumber\":\"BWE-JHDR20-1446\",\"description\":\"Connector, pin header 2×10\",\"price\":14000,\"priceText\":\"1.40\",\"status\":\"Open for quoting\"},{\"id\":1507,\"partNumber\":\"BWE-JHDR20-1507\",\"description\":\"Connector, pin header 2×10\",\"price\":14500,\"priceText\":\"1.45\",\"status\":\"Open for quoting\"},{\"id\":157,\"partNumber\":\"BWE-JHDR20-157\",\"description\":\"Connector, pin header 2×10\",\"price\":27000,\"priceText\":\"2.70\",\"status\":\"Open for quoting\"},{\"id\":1604,\"partNumber\":\"BWE-JHDR20-1604\",\"description\":\"Connector, pin header 2×10\",\"price\":44600,\"priceText\":\"4.46\",\"status\":\"Open for quoting\"},{\"id\":1657,\"partNumber\":\"BWE-JHDR20-1657\",\"description\":\"Connector, pin header 2×10\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"},{\"id\":1715,\"partNumber\":\"BWE-JHDR20-1715\",\"description\":\"Connector, pin header 2×10\",\"price\":23700,\"priceText\":\"2.37\",\"status\":\"Open for quoting\"},{\"id\":1744,\"partNumber\":\"BWE-JHDR20-1744\",\"description\":\"Connector, pin header 2×10\",\"price\":36200,\"priceText\":\"3.62\",\"status\":\"Open for quoting\"},{\"id\":1836,\"partNumber\":\"BWE-JHDR20-1836\",\"description\":\"Connector, pin header 2×10\",\"price\":27200,\"priceText\":\"2.72\",\"status\":\"Open for quoting\"},{\"id\":1880,\"partNumber\":\"BWE-JHDR20-1880\",\"description\":\"Connector, pin header 2×10\",\"price\":3300,\"priceText\":\"0.33\",\"status\":\"Open for quoting\"},{\"id\":1913,\"partNumber\":\"BWE-JHDR20-1913\",\"description\":\"Connecto… (7314 chars)"
+    },
+    "ms": 25.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.757Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=inductor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7549",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1028,\"partNumber\":\"BWE-L100-1028\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":7600,\"priceText\":\"0.76\",\"status\":\"Open for quoting\"},{\"id\":1082,\"partNumber\":\"BWE-L100-1082\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":6550,\"priceText\":\"0.6550\",\"status\":\"Open for quoting\"},{\"id\":1093,\"partNumber\":\"BWE-L100-1093\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":2700,\"priceText\":\"0.27\",\"status\":\"Open for quoting\"},{\"id\":1095,\"partNumber\":\"BWE-L100-1095\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":3500,\"priceText\":\"0.35\",\"status\":\"Open for quoting\"},{\"id\":1143,\"partNumber\":\"BWE-L100-1143\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":2500,\"priceText\":\"0.25\",\"status\":\"Open for quoting\"},{\"id\":1165,\"partNumber\":\"BWE-L100-1165\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":7850,\"priceText\":\"0.7850\",\"status\":\"Open for quoting\"},{\"id\":1167,\"partNumber\":\"BWE-L100-1167\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":4450,\"priceText\":\"0.4450\",\"status\":\"Open for quoting\"},{\"id\":1172,\"partNumber\":\"BWE-L100-1172\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":6800,\"priceText\":\"0.68\",\"status\":\"Open for quoting\"},{\"id\":1190,\"partNumber\":\"BWE-L100-1190\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":3100,\"priceText\":\"0.31\",\"status\":\"Open for quoting\"},{\"id\":1235,\"partNumber\":\"BWE-L100-1235\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":3300,\"priceText\":\"0.33\",\"status\":\"Open for quoting\"},{\"id\":1241,\"partNumber\":\"BWE-L100-1241\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":8650,\"priceText\":\"0.8650\",\"status\":\"Open for quoting\"},{\"id\":1307,\"partNumber\":\"BWE-L100-1307\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":8250,\"priceText\":\"0.8250\",\"status\":\"Open for quoting\"},{\"id\":1343,\"partNumber\":\"BWE-L100-1343\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":8600,\"priceText\":\"0.86\",\"status\":\"Open for quoting\"},{\"id\":1364,\"partNumber\":\"BWE-L100-1364\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":8750,\"priceText\":\"0.8750\",\"status\":\"Open for quoting\"},{\"id\":1385,\"partNumber\":\"BWE-L100-1385\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":4050,\"priceText\":\"0.4050\",\"status\":\"Open for quoting\"},{\"id\":1393,\"partNumber\":\"BWE-L100-1393\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":7500,\"priceText\":\"0.75\",\"status\":\"Open for quoting\"},{\"id\":1428,\"partNumber\":\"BWE-L100-1428\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":8550,\"priceText\":\"0.8550\",\"status\":\"Open for quoting\"},{\"id\":1430,\"partNumber\":\"BWE-L100-1430\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":5400,\"priceText\":\"0.54\",\"status\":\"Open for quoting\"},{\"id\":1462,\"partNumber\":\"BWE-L100-1462\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":6200,\"priceText\":\"0.62\",\"status\":\"Open for quoting\"},{\"id\":1463,\"partNumber\":\"BWE-L100-1463\",\"description\":\"Inductor, 10 µH, 1.2 A, shielded\",\"price\":5350,\"priceText\":\"0.5350\",\"status\":\"… (7499 chars)"
+    },
+    "ms": 25.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.757Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=SO-8",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7364",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"partNumber\":\"BWE-QN100-1\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":17600,\"priceText\":\"1.76\",\"status\":\"Open for quoting\"},{\"id\":1103,\"partNumber\":\"BWE-QN100-1103\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":14600,\"priceText\":\"1.46\",\"status\":\"Open for quoting\"},{\"id\":1170,\"partNumber\":\"BWE-QN100-1170\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":23300,\"priceText\":\"2.33\",\"status\":\"Open for quoting\"},{\"id\":1174,\"partNumber\":\"BWE-QN100-1174\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":13500,\"priceText\":\"1.35\",\"status\":\"Open for quoting\"},{\"id\":1181,\"partNumber\":\"BWE-QN100-1181\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":15300,\"priceText\":\"1.53\",\"status\":\"Open for quoting\"},{\"id\":1677,\"partNumber\":\"BWE-QN100-1677\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":9800,\"priceText\":\"0.98\",\"status\":\"Open for quoting\"},{\"id\":1693,\"partNumber\":\"BWE-QN100-1693\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":16900,\"priceText\":\"1.69\",\"status\":\"Open for quoting\"},{\"id\":187,\"partNumber\":\"BWE-QN100-187\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":10100,\"priceText\":\"1.01\",\"status\":\"Open for quoting\"},{\"id\":1949,\"partNumber\":\"BWE-QN100-1949\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":11600,\"priceText\":\"1.16\",\"status\":\"Open for quoting\"},{\"id\":1988,\"partNumber\":\"BWE-QN100-1988\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":2000,\"priceText\":\"0.20\",\"status\":\"Open for quoting\"},{\"id\":392,\"partNumber\":\"BWE-QN100-392\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":14500,\"priceText\":\"1.45\",\"status\":\"Open for quoting\"},{\"id\":657,\"partNumber\":\"BWE-QN100-657\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":1200,\"priceText\":\"0.12\",\"status\":\"Open for quoting\"},{\"id\":767,\"partNumber\":\"BWE-QN100-767\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":23000,\"priceText\":\"2.30\",\"status\":\"Open for quoting\"},{\"id\":831,\"partNumber\":\"BWE-QN100-831\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":15100,\"priceText\":\"1.51\",\"status\":\"Open for quoting\"},{\"id\":856,\"partNumber\":\"BWE-QN100-856\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":21900,\"priceText\":\"2.19\",\"status\":\"Open for quoting\"},{\"id\":913,\"partNumber\":\"BWE-QN100-913\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":7600,\"priceText\":\"0.76\",\"status\":\"Open for quoting\"},{\"id\":1030,\"partNumber\":\"BWE-QN30-1030\",\"description\":\"MOSFET, N-channel, 30 V, SO-8\",\"price\":19200,\"priceText\":\"1.92\",\"status\":\"Open for quoting\"},{\"id\":1097,\"partNumber\":\"BWE-QN30-1097\",\"description\":\"MOSFET, N-channel, 30 V, SO-8\",\"price\":3300,\"priceText\":\"0.33\",\"status\":\"Open for quoting\"},{\"id\":1112,\"partNumber\":\"BWE-QN30-1112\",\"description\":\"MOSFET, N-channel, 30 V, SO-8\",\"price\":21600,\"priceText\":\"2.16\",\"status\":\"Open for quoting\"},{\"id\":1250,\"partNumber\":\"BWE-QN30-1250\",\"description\":\"MOSFET, N-channel, 30 V, SO-8\",\"price\":15500,\"priceText\":\"1.55\",\"status\":\"Open for quoting\"},{\"id\":1408,\"partNumber\":\"BWE-QN3… (7364 chars)"
+    },
+    "ms": 25.6
+  },
+  {
+    "at": "2026-09-26T21:29:34.757Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=0603",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "8287",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":945,\"partNumber\":\"BWE-C0603C0G103K-945\",\"description\":\"Capacitor, ceramic, 10 nF, 6.3 V, C0G, 0603\",\"price\":80,\"priceText\":\"0.0080\",\"status\":\"Open for quoting\"},{\"id\":1622,\"partNumber\":\"BWE-C0603C0G104K-1622\",\"description\":\"Capacitor, ceramic, 0.1 µF, 6.3 V, C0G, 0603\",\"price\":560,\"priceText\":\"0.0560\",\"status\":\"Open for quoting\"},{\"id\":305,\"partNumber\":\"BWE-C0603C0G104K-305\",\"description\":\"Capacitor, ceramic, 0.1 µF, 25 V, C0G, 0603\",\"price\":625,\"priceText\":\"0.0625\",\"status\":\"Open for quoting\"},{\"id\":369,\"partNumber\":\"BWE-C0603C0G104K-369\",\"description\":\"Capacitor, ceramic, 0.1 µF, 16 V, C0G, 0603\",\"price\":150,\"priceText\":\"0.0150\",\"status\":\"Open for quoting\"},{\"id\":376,\"partNumber\":\"BWE-C0603C0G104K-376\",\"description\":\"Capacitor, ceramic, 0.1 µF, 50 V, C0G, 0603\",\"price\":225,\"priceText\":\"0.0225\",\"status\":\"Open for quoting\"},{\"id\":1083,\"partNumber\":\"BWE-C0603C0G105K-1083\",\"description\":\"Capacitor, ceramic, 1 µF, 6.3 V, C0G, 0603\",\"price\":250,\"priceText\":\"0.0250\",\"status\":\"Open for quoting\"},{\"id\":1433,\"partNumber\":\"BWE-C0603C0G105K-1433\",\"description\":\"Capacitor, ceramic, 1 µF, 50 V, C0G, 0603\",\"price\":750,\"priceText\":\"0.0750\",\"status\":\"Open for quoting\"},{\"id\":214,\"partNumber\":\"BWE-C0603C0G105K-214\",\"description\":\"Capacitor, ceramic, 1 µF, 50 V, C0G, 0603\",\"price\":55,\"priceText\":\"0.0055\",\"status\":\"Open for quoting\"},{\"id\":429,\"partNumber\":\"BWE-C0603C0G105K-429\",\"description\":\"Capacitor, ceramic, 1 µF, 25 V, C0G, 0603\",\"price\":360,\"priceText\":\"0.0360\",\"status\":\"Open for quoting\"},{\"id\":629,\"partNumber\":\"BWE-C0603C0G105K-629\",\"description\":\"Capacitor, ceramic, 1 µF, 6.3 V, C0G, 0603\",\"price\":255,\"priceText\":\"0.0255\",\"status\":\"Open for quoting\"},{\"id\":350,\"partNumber\":\"BWE-C0603C0G220K-350\",\"description\":\"Capacitor, ceramic, 22 pF, 16 V, C0G, 0603\",\"price\":825,\"priceText\":\"0.0825\",\"status\":\"Open for quoting\"},{\"id\":444,\"partNumber\":\"BWE-C0603C0G220K-444\",\"description\":\"Capacitor, ceramic, 22 pF, 50 V, C0G, 0603\",\"price\":330,\"priceText\":\"0.0330\",\"status\":\"Open for quoting\"},{\"id\":910,\"partNumber\":\"BWE-C0603C0G220K-910\",\"description\":\"Capacitor, ceramic, 22 pF, 50 V, C0G, 0603\",\"price\":235,\"priceText\":\"0.0235\",\"status\":\"Open for quoting\"},{\"id\":1678,\"partNumber\":\"BWE-C0603C0G475K-1678\",\"description\":\"Capacitor, ceramic, 4.7 µF, 16 V, C0G, 0603\",\"price\":500,\"priceText\":\"0.05\",\"status\":\"Open for quoting\"},{\"id\":1762,\"partNumber\":\"BWE-C0603C0G475K-1762\",\"description\":\"Capacitor, ceramic, 4.7 µF, 16 V, C0G, 0603\",\"price\":705,\"priceText\":\"0.0705\",\"status\":\"Open for quoting\"},{\"id\":571,\"partNumber\":\"BWE-C0603C0G475K-571\",\"description\":\"Capacitor, ceramic, 4.7 µF, 16 V, C0G, 0603\",\"price\":560,\"priceText\":\"0.0560\",\"status\":\"Open for quoting\"},{\"id\":810,\"partNumber\":\"BWE-C0603C0G475K-810\",\"description\":\"Capacitor, ceramic, 4.7 µF, 6.3 V, C0G, 0603\",\"price\":365,\"priceText\":\"0.0365\",\"status\":\"Open for quoting\"},{\"id\":958,\"partNumber\":\"BWE-C0603C0G475K-958\",\"description\":\"Capacitor, ceramic, 4.7 µF, 16 V, C0G, 0603\",\"price\":445,\"priceText\":\"0.0445\",\"status… (8249 chars)"
+    },
+    "ms": 25.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.758Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=diode",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "6981",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1037,\"partNumber\":\"BWE-DSMA-1037\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":1350,\"priceText\":\"0.1350\",\"status\":\"Open for quoting\"},{\"id\":1042,\"partNumber\":\"BWE-DSMA-1042\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":4850,\"priceText\":\"0.4850\",\"status\":\"Open for quoting\"},{\"id\":1075,\"partNumber\":\"BWE-DSMA-1075\",\"description\":\"Diode, rectifier, SMA\",\"price\":3050,\"priceText\":\"0.3050\",\"status\":\"Open for quoting\"},{\"id\":1101,\"partNumber\":\"BWE-DSMA-1101\",\"description\":\"Diode, rectifier, SMA\",\"price\":5900,\"priceText\":\"0.59\",\"status\":\"Open for quoting\"},{\"id\":1115,\"partNumber\":\"BWE-DSMA-1115\",\"description\":\"Diode, rectifier, SMA\",\"price\":2450,\"priceText\":\"0.2450\",\"status\":\"Open for quoting\"},{\"id\":1118,\"partNumber\":\"BWE-DSMA-1118\",\"description\":\"Diode, rectifier, SMA\",\"price\":1250,\"priceText\":\"0.1250\",\"status\":\"Open for quoting\"},{\"id\":1132,\"partNumber\":\"BWE-DSMA-1132\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":4450,\"priceText\":\"0.4450\",\"status\":\"Open for quoting\"},{\"id\":1134,\"partNumber\":\"BWE-DSMA-1134\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":5750,\"priceText\":\"0.5750\",\"status\":\"Open for quoting\"},{\"id\":1138,\"partNumber\":\"BWE-DSMA-1138\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":3850,\"priceText\":\"0.3850\",\"status\":\"Open for quoting\"},{\"id\":1152,\"partNumber\":\"BWE-DSMA-1152\",\"description\":\"Diode, rectifier, SMA\",\"price\":650,\"priceText\":\"0.0650\",\"status\":\"Open for quoting\"},{\"id\":1154,\"partNumber\":\"BWE-DSMA-1154\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":4900,\"priceText\":\"0.49\",\"status\":\"Open for quoting\"},{\"id\":1180,\"partNumber\":\"BWE-DSMA-1180\",\"description\":\"Diode, rectifier, SMA\",\"price\":5750,\"priceText\":\"0.5750\",\"status\":\"Open for quoting\"},{\"id\":1189,\"partNumber\":\"BWE-DSMA-1189\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":3100,\"priceText\":\"0.31\",\"status\":\"Open for quoting\"},{\"id\":1221,\"partNumber\":\"BWE-DSMA-1221\",\"description\":\"Diode, rectifier, SMA\",\"price\":5400,\"priceText\":\"0.54\",\"status\":\"Open for quoting\"},{\"id\":1232,\"partNumber\":\"BWE-DSMA-1232\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":4850,\"priceText\":\"0.4850\",\"status\":\"Open for quoting\"},{\"id\":1237,\"partNumber\":\"BWE-DSMA-1237\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":1200,\"priceText\":\"0.12\",\"status\":\"Open for quoting\"},{\"id\":1249,\"partNumber\":\"BWE-DSMA-1249\",\"description\":\"Diode, rectifier, SMA\",\"price\":4350,\"priceText\":\"0.4350\",\"status\":\"Open for quoting\"},{\"id\":1264,\"partNumber\":\"BWE-DSMA-1264\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":3300,\"priceText\":\"0.33\",\"status\":\"Open for quoting\"},{\"id\":1272,\"partNumber\":\"BWE-DSMA-1272\",\"description\":\"Diode, rectifier, SMA\",\"price\":450,\"priceText\":\"0.0450\",\"status\":\"Open for quoting\"},{\"id\":1292,\"partNumber\":\"BWE-DSMA-1292\",\"description\":\"Diode, rectifier, SMA\",\"price\":3200,\"priceText\":\"0.32\",\"status\":\"Open for quoting\"},{\"id\":1294,\"partNumber\":\"BWE-DSMA-1294\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":5350,\"priceText\":\"0.5350\",\"status\":\"Open for quoting\"},{\"id\":131,\"partNumber\":\"BWE-DSMA-131\",\"description\":\"Diode, recti… (6981 chars)"
+    },
+    "ms": 26
+  }
+]

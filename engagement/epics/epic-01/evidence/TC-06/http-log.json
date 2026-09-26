@@ -1,0 +1,78 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.390Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-ADD-0001",
+        "description": "QA resistor 4k7 0603",
+        "price": "4.25"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-ADD-0001\",\"description\":\"QA resistor 4k7 0603\",\"price\":42500,\"priceText\":\"4.25\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 3.6
+  },
+  {
+    "at": "2026-09-26T21:29:39.391Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-ADD-0001",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "133",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"QA-ADD-0001\",\"description\":\"QA resistor 4k7 0603\",\"price\":42500,\"priceText\":\"4.25\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:39.393Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=QA-ADD-0001",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"partNumber\":\"QA-ADD-0001\",\"description\":\"QA resistor 4k7 0603\",\"price\":42500,\"priceText\":\"4.25\",\"status\":\"Open for quoting\"}]"
+    },
+    "ms": 1.6
+  }
+]

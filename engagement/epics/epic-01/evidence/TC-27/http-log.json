@@ -1,0 +1,176 @@
+[
+  {
+    "at": "2026-09-26T21:30:59.356Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-pat"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:59 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=LAWIE8Z4Jz4E-AxKlWqWj0a-SQby6H-LS04rEDs5eJo; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 9.3
+  },
+  {
+    "at": "2026-09-26T21:30:59.359Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:59 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Pat (rep)\",\"roles\":[\"price maintainer\"],\"isAdmin\":false},\"csrfToken\":\"U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc\"}"
+    },
+    "ms": 2.1
+  },
+  {
+    "at": "2026-09-26T21:31:00.555Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "1121",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:59 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"summary\":{\"loadRunId\":1,\"fileName\":\"sample-erp.xlsx\",\"runBy\":\"Pat (rep)\",\"runAt\":\"2026-09-26T21:31:00.511Z\",\"rowsInErp\":2008,\"rowsLoaded\":2000,\"rowsNotLoaded\":8,\"complete\":false,\"statusText\":\"Load not complete: 8 of 2008 product rows in the ERP were not loaded. Each is listed below with its reason.\",\"notLoaded\":[{\"rowNumber\":37,\"partNumber\":\"\",\"price\":\"0.004\",\"reason\":\"no part number\"},{\"rowNumber\":211,\"partNumber\":\"BWE-R0603-100419\",\"price\":null,\"reason\":\"no price\"},{\"rowNumber\":498,\"partNumber\":\"BWE-L1210-100992\",\"price\":\"$12\",\"reason\":\"price is not a plain number: \\\"$12\\\"\"},{\"rowNumber\":777,\"partNumber\":\"BWE-MCU512K-101549\",\"price\":\"1,234.50\",\"reason\":\"price is not a plain number: \\\"1,234.50\\\"\"},{\"rowNumber\":1024,\"partNumber\":\"BWE-DSMA-102042\",\"price\":\"#REF!\",\"reason\":\"price is an error value: \\\"#REF!\\\"\"},{\"rowNumber\":1333,\"partNumber\":\"BWE-Y16M-102659\",\"price\":\"=C3*2\",\"reason\":\"price is a formula\"},{\"rowNumber\":1600,\"partNumber\":\"BWE-C0402X7R104K\",\"price\":\"0.0045\",\"reason\":\"duplicate part number\"},{\"rowNumber\":1601,\"partNumber\":\"BWE-C0402X7R104K\",\"price\":\"0.005\",\"reason\":\"duplicate part number\"}]}}"
+    },
+    "ms": 1196
+  },
+  {
+    "at": "2026-09-26T21:31:00.634Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "159",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:31:00 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The store already holds 2000 products, so the ERP load was refused and nothing changed. The load runs once, into an empty store.\"}"
+    },
+    "ms": 1274.8
+  },
+  {
+    "at": "2026-09-26T21:31:00.774Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "159",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:31:00 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The store already holds 2000 products, so the ERP load was refused and nothing changed. The load runs once, into an empty store.\"}"
+    },
+    "ms": 1414.2
+  },
+  {
+    "at": "2026-09-26T21:31:00.791Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "159",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:31:00 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The store already holds 2000 products, so the ERP load was refused and nothing changed. The load runs once, into an empty store.\"}"
+    },
+    "ms": 1431
+  },
+  {
+    "at": "2026-09-26T21:31:00.842Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "U2tls35xhubMRWwDVWZDGNfNqv333OTjrwOd5ckGdEc"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 409,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "159",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:31:00 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":409,\"message\":\"The store already holds 2000 products, so the ERP load was refused and nothing changed. The load runs once, into an empty store.\"}"
+    },
+    "ms": 1482.8
+  }
+]

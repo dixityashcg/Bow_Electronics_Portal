@@ -1,0 +1,133 @@
+[
+  {
+    "at": "2026-09-26T21:30:01.075Z",
+    "who": "Sam (rep)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-sam"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:01 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=CsKPbA6le4-MBWsbITv9PA8enBHaGPx7ZC6TPCnn158; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 8.4
+  },
+  {
+    "at": "2026-09-26T21:30:01.077Z",
+    "who": "Sam (rep)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "157",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:01 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Sam (rep)\",\"roles\":[],\"isAdmin\":false},\"csrfToken\":\"ldQFmmLvAHoz4Yc8Im5gd19i-63vu9R7-Qm_yL9HgwU\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:30:01.081Z",
+    "who": "Sam (rep)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "ldQFmmLvAHoz4Yc8Im5gd19i-63vu9R7-Qm_yL9HgwU"
+      },
+      "body": {
+        "internalUserId": 1,
+        "role": "price maintainer"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "75",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:01 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a role manager can change who is named.\"}"
+    },
+    "ms": 2.5
+  },
+  {
+    "at": "2026-09-26T21:30:01.082Z",
+    "who": "Sam (rep)",
+    "request": {
+      "method": "DELETE",
+      "path": "/api/sales/named-users/3/price%20maintainer",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "ldQFmmLvAHoz4Yc8Im5gd19i-63vu9R7-Qm_yL9HgwU"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "75",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:01 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a role manager can change who is named.\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:30:01.083Z",
+    "who": "Sam (rep)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/named-users",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "ldQFmmLvAHoz4Yc8Im5gd19i-63vu9R7-Qm_yL9HgwU"
+      },
+      "body": {
+        "internalUserId": 2,
+        "role": "discount setter"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "75",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:01 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a role manager can change who is named.\"}"
+    },
+    "ms": 1.2
+  }
+]

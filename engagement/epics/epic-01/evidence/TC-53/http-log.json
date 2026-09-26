@@ -1,0 +1,101 @@
+[
+  {
+    "at": "2026-09-26T21:30:26.460Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-P-MINT",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "123",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:26 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":2,\"partNumber\":\"QA-P-MINT\",\"description\":\"smallest, text\",\"price\":1,\"priceText\":\"0.0001\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.6
+  },
+  {
+    "at": "2026-09-26T21:30:26.462Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "q54irO85FBDar3HHESMWld4odFaVaKSUhkpv62YwOso"
+      },
+      "body": {
+        "partNumber": "QA-FOURPLACE",
+        "description": "QA product QA-FOURPLACE",
+        "price": "0.0040"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "136",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:26 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":6,\"partNumber\":\"QA-FOURPLACE\",\"description\":\"QA product QA-FOURPLACE\",\"price\":40,\"priceText\":\"0.0040\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.5
+  },
+  {
+    "at": "2026-09-26T21:30:26.463Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-FOURPLACE",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "136",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:26 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":6,\"partNumber\":\"QA-FOURPLACE\",\"description\":\"QA product QA-FOURPLACE\",\"price\":40,\"priceText\":\"0.0040\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:30:26.464Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-P-MAXT",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "154",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:26 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":4,\"partNumber\":\"QA-P-MAXT\",\"description\":\"largest exact, text\",\"price\":9007199254740991,\"priceText\":\"900719925474.0991\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  }
+]

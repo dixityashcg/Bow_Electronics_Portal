@@ -1,0 +1,968 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.329Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN100-1",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "143",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"partNumber\":\"BWE-QN100-1\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":17600,\"priceText\":\"1.76\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.330Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-ULDO33-2000",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "155",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":2000,\"partNumber\":\"BWE-ULDO33-2000\",\"description\":\"Voltage regulator, LDO 3.3 V 500 mA\",\"price\":12500,\"priceText\":\"1.25\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.3
+  },
+  {
+    "at": "2026-09-26T21:29:34.331Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN60-1920",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "146",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1920,\"partNumber\":\"BWE-QN60-1920\",\"description\":\"MOSFET, N-channel, 60 V, DPAK\",\"price\":2800,\"priceText\":\"0.28\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.332Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-L1R0-1839",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "149",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1839,\"partNumber\":\"BWE-L1R0-1839\",\"description\":\"Inductor, 1 µH, 2 A, shielded\",\"price\":6150,\"priceText\":\"0.6150\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.333Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-MCU256K-1758",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "180",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1758,\"partNumber\":\"BWE-MCU256K-1758\",\"description\":\"Microcontroller, 32-bit, 240 MHz, 256 KB flash, LQFP-64\",\"price\":1452600,\"priceText\":\"145.26\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.333Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN100-1677",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "148",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1677,\"partNumber\":\"BWE-QN100-1677\",\"description\":\"MOSFET, N-channel, 100 V, SO-8\",\"price\":9800,\"priceText\":\"0.98\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.335Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C1206X5R475K-1596",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "170",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1596,\"partNumber\":\"BWE-C1206X5R475K-1596\",\"description\":\"Capacitor, ceramic, 4.7 µF, 50 V, X5R, 1206\",\"price\":705,\"priceText\":\"0.0705\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.335Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-UBUCK33-1515",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "154",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1515,\"partNumber\":\"BWE-UBUCK33-1515\",\"description\":\"Voltage regulator, buck 3.3 V 2 A\",\"price\":27600,\"priceText\":\"2.76\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:34.336Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN30-1434",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "146",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1434,\"partNumber\":\"BWE-QN30-1434\",\"description\":\"MOSFET, N-channel, 30 V, DPAK\",\"price\":1800,\"priceText\":\"0.18\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.337Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-Y12M-1353",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "157",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1353,\"partNumber\":\"BWE-Y12M-1353\",\"description\":\"Crystal, 12 MHz, 20 ppm, 3.2 × 2.5 mm\",\"price\":8850,\"priceText\":\"0.8850\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.338Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSMA-1272",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "139",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1272,\"partNumber\":\"BWE-DSMA-1272\",\"description\":\"Diode, rectifier, SMA\",\"price\":450,\"priceText\":\"0.0450\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.339Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-Y16M-1191",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "157",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1191,\"partNumber\":\"BWE-Y16M-1191\",\"description\":\"Crystal, 16 MHz, 20 ppm, 3.2 × 2.5 mm\",\"price\":7350,\"priceText\":\"0.7350\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.340Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-Y25M-1110",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "157",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1110,\"partNumber\":\"BWE-Y25M-1110\",\"description\":\"Crystal, 25 MHz, 10 ppm, 3.2 × 2.5 mm\",\"price\":2950,\"priceText\":\"0.2950\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.341Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C0805X7R220K-1029",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "168",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1029,\"partNumber\":\"BWE-C0805X7R220K-1029\",\"description\":\"Capacitor, ceramic, 22 pF, 16 V, X7R, 0805\",\"price\":240,\"priceText\":\"0.0240\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.342Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSMA-948",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":948,\"partNumber\":\"BWE-DSMA-948\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":1400,\"priceText\":\"0.14\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:34.343Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-ULDO50-867",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "148",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":867,\"partNumber\":\"BWE-ULDO50-867\",\"description\":\"Voltage regulator, LDO 5 V 1 A\",\"price\":34400,\"priceText\":\"3.44\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.344Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-R0402-786",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "156",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":786,\"partNumber\":\"BWE-R0402-786\",\"description\":\"Resistor, thick film, 10 kΩ, 5 %, 0402\",\"price\":150,\"priceText\":\"0.0150\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.344Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSMA-705",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "135",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":705,\"partNumber\":\"BWE-DSMA-705\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":2700,\"priceText\":\"0.27\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.345Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-R0603-624",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "154",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":624,\"partNumber\":\"BWE-R0603-624\",\"description\":\"Resistor, thick film, 10 kΩ, 5 %, 0603\",\"price\":300,\"priceText\":\"0.03\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.346Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-JTB3-543",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "146",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":543,\"partNumber\":\"BWE-JTB3-543\",\"description\":\"Connector, terminal block 3-way\",\"price\":6200,\"priceText\":\"0.62\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.347Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-MCU32K-462",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":462,\"partNumber\":\"BWE-MCU32K-462\",\"description\":\"Microcontroller, 32-bit, 240 MHz, 32 KB flash, QFN-32\",\"price\":1782200,\"priceText\":\"178.22\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.347Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C0402C0G103K-381",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "164",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":381,\"partNumber\":\"BWE-C0402C0G103K-381\",\"description\":\"Capacitor, ceramic, 10 nF, 16 V, C0G, 0402\",\"price\":200,\"priceText\":\"0.02\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.348Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-JRJ45-300",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "147",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":300,\"partNumber\":\"BWE-JRJ45-300\",\"description\":\"Connector, RJ45 with magnetics\",\"price\":33400,\"priceText\":\"3.34\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.349Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSOD323-219",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "145",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":219,\"partNumber\":\"BWE-DSOD323-219\",\"description\":\"Diode, Zener 5.1 V, SOD-323\",\"price\":1000,\"priceText\":\"0.10\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.350Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C0402X7R103K-138",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "165",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":138,\"partNumber\":\"BWE-C0402X7R103K-138\",\"description\":\"Capacitor, ceramic, 10 nF, 25 V, X7R, 0402\",\"price\":90,\"priceText\":\"0.0090\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.351Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-MCU32K-57",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "173",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":57,\"partNumber\":\"BWE-MCU32K-57\",\"description\":\"Microcontroller, 32-bit, 72 MHz, 32 KB flash, LQFP-48\",\"price\":1549400,\"priceText\":\"154.94\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:34.352Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QP30-1976",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "147",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1976,\"partNumber\":\"BWE-QP30-1976\",\"description\":\"MOSFET, P-channel, 30 V, SO-8\",\"price\":16200,\"priceText\":\"1.62\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:34.353Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-MCU128K-1895",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "177",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1895,\"partNumber\":\"BWE-MCU128K-1895\",\"description\":\"Microcontroller, 32-bit, 240 MHz, 128 KB flash, QFN-32\",\"price\":469200,\"priceText\":\"46.92\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.353Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN30-1814",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "149",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1814,\"partNumber\":\"BWE-QN30-1814\",\"description\":\"MOSFET, N-channel, 30 V, SOT-23\",\"price\":24000,\"priceText\":\"2.40\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.354Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSOD323-1733",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "149",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1733,\"partNumber\":\"BWE-DSOD323-1733\",\"description\":\"Diode, Zener 5.1 V, SOD-323\",\"price\":1650,\"priceText\":\"0.1650\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.355Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-L470-1652",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "150",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1652,\"partNumber\":\"BWE-L470-1652\",\"description\":\"Inductor, 47 µH, 0.5 A, shielded\",\"price\":2700,\"priceText\":\"0.27\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.355Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-JRJ45-1571",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "148",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1571,\"partNumber\":\"BWE-JRJ45-1571\",\"description\":\"Connector, RJ45 with magnetics\",\"price\":8800,\"priceText\":\"0.88\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.356Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QP60-1490",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "146",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1490,\"partNumber\":\"BWE-QP60-1490\",\"description\":\"MOSFET, P-channel, 60 V, DPAK\",\"price\":8300,\"priceText\":\"0.83\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.356Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-R0805-1409",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "158",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1409,\"partNumber\":\"BWE-R0805-1409\",\"description\":\"Resistor, thick film, 10 kΩ, 1 %, 0805\",\"price\":130,\"priceText\":\"0.0130\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.357Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-QN60-1328",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "149",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1328,\"partNumber\":\"BWE-QN60-1328\",\"description\":\"MOSFET, N-channel, 60 V, SOT-23\",\"price\":12800,\"priceText\":\"1.28\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:29:34.358Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-L1R0-1247",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "148",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1247,\"partNumber\":\"BWE-L1R0-1247\",\"description\":\"Inductor, 1 µH, 2 A, shielded\",\"price\":850,\"priceText\":\"0.0850\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.5
+  },
+  {
+    "at": "2026-09-26T21:29:34.359Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C0201X5R104K-1166",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "170",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1166,\"partNumber\":\"BWE-C0201X5R104K-1166\",\"description\":\"Capacitor, ceramic, 0.1 µF, 25 V, X5R, 0201\",\"price\":830,\"priceText\":\"0.0830\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.360Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C0603X5R104K-1085",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "170",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1085,\"partNumber\":\"BWE-C0603X5R104K-1085\",\"description\":\"Capacitor, ceramic, 0.1 µF, 25 V, X5R, 0603\",\"price\":340,\"priceText\":\"0.0340\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.360Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-C1206X5R475K-1004",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "171",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1004,\"partNumber\":\"BWE-C1206X5R475K-1004\",\"description\":\"Capacitor, ceramic, 4.7 µF, 6.3 V, X5R, 1206\",\"price\":285,\"priceText\":\"0.0285\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.361Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-UBUCK33-923",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "152",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":923,\"partNumber\":\"BWE-UBUCK33-923\",\"description\":\"Voltage regulator, buck 3.3 V 2 A\",\"price\":31900,\"priceText\":\"3.19\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.6
+  },
+  {
+    "at": "2026-09-26T21:29:34.362Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-DSMA-842",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "137",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":842,\"partNumber\":\"BWE-DSMA-842\",\"description\":\"Diode, TVS 15 V, SMA\",\"price\":3350,\"priceText\":\"0.3350\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:29:34.363Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-ULDO50-761",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "147",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":761,\"partNumber\":\"BWE-ULDO50-761\",\"description\":\"Voltage regulator, LDO 5 V 1 A\",\"price\":4100,\"priceText\":\"0.41\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.7
+  }
+]

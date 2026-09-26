@@ -1,0 +1,381 @@
+[
+  {
+    "at": "2026-09-26T21:29:39.578Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "partNumber": "QA-CONC-PRICE",
+        "description": "QA product QA-CONC-PRICE",
+        "price": "1.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.579Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-CONC-PRICE",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:29:39.581Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "2.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":20000,\"priceText\":\"2.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2
+  },
+  {
+    "at": "2026-09-26T21:29:39.582Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "3.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":30000,\"priceText\":\"3.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 2.2
+  },
+  {
+    "at": "2026-09-26T21:29:39.583Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "5.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":50000,\"priceText\":\"5.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 3.1
+  },
+  {
+    "at": "2026-09-26T21:29:39.584Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "6.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":60000,\"priceText\":\"6.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 3.8
+  },
+  {
+    "at": "2026-09-26T21:29:39.584Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "7.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":70000,\"priceText\":\"7.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 4.2
+  },
+  {
+    "at": "2026-09-26T21:29:39.585Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "4.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":40000,\"priceText\":\"4.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 5.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.586Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "9.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":90000,\"priceText\":\"9.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 5.7
+  },
+  {
+    "at": "2026-09-26T21:29:39.586Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "10.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "142",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":100000,\"priceText\":\"10.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 6.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.587Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "8.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "140",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":80000,\"priceText\":\"8.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 7.1
+  },
+  {
+    "at": "2026-09-26T21:29:39.648Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/12/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "TFhaFYfYjzBrdFS_C1ADOfULsboVy7E3Sr4DVLBKoGE"
+      },
+      "body": {
+        "price": "11.00"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "142",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":110000,\"priceText\":\"11.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 68.4
+  },
+  {
+    "at": "2026-09-26T21:29:39.650Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/12/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "1014",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"oldPrice\":\"1.00\",\"newPrice\":\"2.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.581Z\"},{\"oldPrice\":\"2.00\",\"newPrice\":\"3.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.582Z\"},{\"oldPrice\":\"3.00\",\"newPrice\":\"5.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.582Z\"},{\"oldPrice\":\"5.00\",\"newPrice\":\"6.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.583Z\"},{\"oldPrice\":\"6.00\",\"newPrice\":\"7.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.583Z\"},{\"oldPrice\":\"7.00\",\"newPrice\":\"4.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.585Z\"},{\"oldPrice\":\"4.00\",\"newPrice\":\"9.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.585Z\"},{\"oldPrice\":\"9.00\",\"newPrice\":\"10.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.586Z\"},{\"oldPrice\":\"10.00\",\"newPrice\":\"8.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.586Z\"},{\"oldPrice\":\"8.00\",\"newPrice\":\"11.00\",\"changedBy\":\"Pat (rep)\",\"changedAt\":\"2026-09-26T21:29:39.587Z\"}]"
+    },
+    "ms": 1.3
+  },
+  {
+    "at": "2026-09-26T21:29:39.650Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/QA-CONC-PRICE",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "142",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:39 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":12,\"partNumber\":\"QA-CONC-PRICE\",\"description\":\"QA product QA-CONC-PRICE\",\"price\":110000,\"priceText\":\"11.00\",\"status\":\"Open for quoting\"}"
+    },
+    "ms": 0.6
+  }
+]

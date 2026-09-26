@@ -1,0 +1,25 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.365Z",
+    "who": "Pat (rep, price maintainer)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/part-numbers/BWE-R0603-100419",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 404,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "92",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":404,\"message\":\"No product with part number BWE-R0603-100419 is in the store.\"}"
+    },
+    "ms": 1.3
+  }
+]

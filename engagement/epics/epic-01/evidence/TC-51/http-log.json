@@ -1,0 +1,584 @@
+[
+  {
+    "at": "2026-09-26T21:30:21.804Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-lee"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=Hp_It_9A0Vpt_nglR77DLC6mLnr-wvf_cSCEw7oX03o; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 11.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.806Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "174",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Lee (rep)\",\"roles\":[\"discount setter\"],\"isAdmin\":false},\"csrfToken\":\"Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8\"}"
+    },
+    "ms": 2.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.809Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "-1"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "86",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: not a percentage: \\\"-1\\\".\"}"
+    },
+    "ms": 2.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.811Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "473",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 1.8
+  },
+  {
+    "at": "2026-09-26T21:30:21.813Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "0"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "83",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":0,\"standardDiscountText\":\"0 %\"}"
+    },
+    "ms": 2.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.814Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "453",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":0,\"standardDiscountText\":\"0 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.815Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "100"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "89",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":10000,\"standardDiscountText\":\"100 %\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:21.816Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "459",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":10000,\"standardDiscountText\":\"100 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:21.817Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "100.01"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "98",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: a discount cannot be more than 100 %.\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:30:21.818Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "459",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":10000,\"standardDiscountText\":\"100 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.820Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "12.5"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "89",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:30:21.821Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "459",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:30:21.822Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "12.555"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "90",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: not a percentage: \\\"12.555\\\".\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:21.823Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "459",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 1.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.824Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": ""
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "84",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: not a percentage: \\\"\\\".\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:30:21.825Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "459",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:30:21.826Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "12 %"
+      }
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "87",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1200,\"standardDiscountText\":\"12 %\"}"
+    },
+    "ms": 1.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.827Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "457",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1200,\"standardDiscountText\":\"12 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.828Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "1e1"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "87",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: not a percentage: \\\"1e1\\\".\"}"
+    },
+    "ms": 1.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.829Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "457",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1200,\"standardDiscountText\":\"12 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.9
+  },
+  {
+    "at": "2026-09-26T21:30:21.830Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/resellers/1/standard-discount",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "Y3OugooT9RGRFMAYPV1kz6nlvZWYLYv1U-sGXp5fuk8"
+      },
+      "body": {
+        "percent": "101"
+      }
+    },
+    "response": {
+      "status": 400,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "98",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":400,\"message\":\"The discount was not changed: a discount cannot be more than 100 %.\"}"
+    },
+    "ms": 1.2
+  },
+  {
+    "at": "2026-09-26T21:30:21.831Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "457",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"name\":\"Demo Reseller A\",\"standardDiscount\":1200,\"standardDiscountText\":\"12 %\"},{\"id\":2,\"name\":\"Demo Reseller B\",\"standardDiscount\":null,\"standardDiscountText\":\"No standard discount\"},{\"id\":3,\"name\":\"Demo Reseller C\",\"standardDiscount\":1000,\"standardDiscountText\":\"10 %\"},{\"id\":4,\"name\":\"Demo Reseller D\",\"standardDiscount\":1250,\"standardDiscountText\":\"12.5 %\"},{\"id\":5,\"name\":\"Demo Reseller E\",\"standardDiscount\":800,\"standardDiscountText\":\"8 %\"}]"
+    },
+    "ms": 0.8
+  },
+  {
+    "at": "2026-09-26T21:30:21.832Z",
+    "who": "Lee (rep, discount setter)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/resellers/1/discount-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "425",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:30:21 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"oldPercent\":\"None\",\"newPercent\":\"0 %\",\"changedBy\":\"Lee (rep)\",\"changedAt\":\"2026-09-26T21:30:21.812Z\"},{\"oldPercent\":\"0 %\",\"newPercent\":\"100 %\",\"changedBy\":\"Lee (rep)\",\"changedAt\":\"2026-09-26T21:30:21.815Z\"},{\"oldPercent\":\"100 %\",\"newPercent\":\"12.5 %\",\"changedBy\":\"Lee (rep)\",\"changedAt\":\"2026-09-26T21:30:21.819Z\"},{\"oldPercent\":\"12.5 %\",\"newPercent\":\"12 %\",\"changedBy\":\"Lee (rep)\",\"changedAt\":\"2026-09-26T21:30:21.826Z\"}]"
+    },
+    "ms": 1.1
+  }
+]

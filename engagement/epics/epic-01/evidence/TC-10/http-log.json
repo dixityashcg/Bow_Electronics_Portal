@@ -1,0 +1,76 @@
+[
+  {
+    "at": "2026-09-26T21:29:34.395Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/3/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "2",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[]"
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:29:34.396Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/products/3/price",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "content-type": "application/json",
+        "x-csrf-token": "1-J3AKbowL8UmqV-rWgcapI3w7s7KOmkGHp7Yiy1-Yg"
+      },
+      "body": {
+        "price": "99.99"
+      }
+    },
+    "response": {
+      "status": 403,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "74",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"statusCode\":403,\"message\":\"Only a price maintainer can change a price.\"}"
+    },
+    "ms": 1.1
+  },
+  {
+    "at": "2026-09-26T21:29:34.397Z",
+    "who": "Sam (rep, named for nothing)",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products/3/price-history",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "2",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:29:34 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[]"
+    },
+    "ms": 0.6
+  }
+]

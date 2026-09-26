@@ -1,0 +1,355 @@
+[
+  {
+    "at": "2026-09-26T21:28:22.770Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-pat"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:28:22 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=vPdW1h9GJf2XXhyk9miHv0GjqEgcNzQxlA1vbxy2-Ew; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 4.9
+  },
+  {
+    "at": "2026-09-26T21:28:22.771Z",
+    "who": "Pat",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "175",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:22 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Pat (rep)\",\"roles\":[\"price maintainer\"],\"isAdmin\":false},\"csrfToken\":\"iMeUOPalTV_Hqj4FtxQj6ucvphoq8XsfV_yQKOcCmLo\"}"
+    },
+    "ms": 1.4
+  },
+  {
+    "at": "2026-09-26T21:28:22.772Z",
+    "who": "Sam",
+    "request": {
+      "method": "POST",
+      "path": "/dev/api/sign-in",
+      "headers": {
+        "content-type": "application/json"
+      },
+      "body": {
+        "audience": "staff",
+        "subjectId": "local-staff-sam"
+      }
+    },
+    "response": {
+      "status": 204,
+      "headers": {
+        "connection": "keep-alive",
+        "date": "Sat, 26 Sep 2026 21:28:22 GMT",
+        "keep-alive": "timeout=72",
+        "set-cookie": "bow_session=M5C3T8EiZU_o491B4dvXndRs96XbgxtL8xl6obHkdZY; Path=/; HttpOnly; SameSite=Strict"
+      },
+      "body": ""
+    },
+    "ms": 1
+  },
+  {
+    "at": "2026-09-26T21:28:22.773Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/session",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "157",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:22 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"businessTimeZone\":\"UTC\",\"user\":{\"kind\":\"internal\",\"name\":\"Sam (rep)\",\"roles\":[],\"isAdmin\":false},\"csrfToken\":\"6lEM13bDDj4Gnhqu5WE44_tTrKvZmKBZRjoBswcrBOs\"}"
+    },
+    "ms": 0.7
+  },
+  {
+    "at": "2026-09-26T21:28:53.037Z",
+    "who": "Pat",
+    "request": {
+      "method": "POST",
+      "path": "/api/sales/store/load",
+      "headers": {
+        "cookie": "bow_session=<redacted>",
+        "x-csrf-token": "iMeUOPalTV_Hqj4FtxQj6ucvphoq8XsfV_yQKOcCmLo"
+      },
+      "body": "<multipart file>"
+    },
+    "response": {
+      "status": 201,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "272",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "{\"summary\":{\"loadRunId\":1,\"fileName\":\"scale.xlsx\",\"runBy\":\"Pat (rep)\",\"runAt\":\"2026-09-26T21:28:52.660Z\",\"rowsInErp\":250000,\"rowsLoaded\":250000,\"rowsNotLoaded\":0,\"complete\":true,\"statusText\":\"Load complete: all 250000 product rows in the ERP were loaded.\",\"notLoaded\":[]}}"
+    },
+    "ms": 27839.8
+  },
+  {
+    "at": "2026-09-26T21:28:53.062Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=capacitor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7439",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"partNumber\":\"QA-SCALE-000000\",\"description\":\"Capacitor, ceramic 0 0402\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"},{\"id\":7,\"partNumber\":\"QA-SCALE-000006\",\"description\":\"Capacitor, ceramic 6 SO-8\",\"price\":70600,\"priceText\":\"7.06\",\"status\":\"Open for quoting\"},{\"id\":13,\"partNumber\":\"QA-SCALE-000012\",\"description\":\"Capacitor, ceramic 12 0402\",\"price\":131200,\"priceText\":\"13.12\",\"status\":\"Open for quoting\"},{\"id\":19,\"partNumber\":\"QA-SCALE-000018\",\"description\":\"Capacitor, ceramic 18 SO-8\",\"price\":191800,\"priceText\":\"19.18\",\"status\":\"Open for quoting\"},{\"id\":25,\"partNumber\":\"QA-SCALE-000024\",\"description\":\"Capacitor, ceramic 24 0402\",\"price\":252400,\"priceText\":\"25.24\",\"status\":\"Open for quoting\"},{\"id\":31,\"partNumber\":\"QA-SCALE-000030\",\"description\":\"Capacitor, ceramic 30 SO-8\",\"price\":313000,\"priceText\":\"31.30\",\"status\":\"Open for quoting\"},{\"id\":37,\"partNumber\":\"QA-SCALE-000036\",\"description\":\"Capacitor, ceramic 36 0402\",\"price\":373600,\"priceText\":\"37.36\",\"status\":\"Open for quoting\"},{\"id\":43,\"partNumber\":\"QA-SCALE-000042\",\"description\":\"Capacitor, ceramic 42 SO-8\",\"price\":434200,\"priceText\":\"43.42\",\"status\":\"Open for quoting\"},{\"id\":49,\"partNumber\":\"QA-SCALE-000048\",\"description\":\"Capacitor, ceramic 48 0402\",\"price\":494800,\"priceText\":\"49.48\",\"status\":\"Open for quoting\"},{\"id\":55,\"partNumber\":\"QA-SCALE-000054\",\"description\":\"Capacitor, ceramic 54 SO-8\",\"price\":555400,\"priceText\":\"55.54\",\"status\":\"Open for quoting\"},{\"id\":61,\"partNumber\":\"QA-SCALE-000060\",\"description\":\"Capacitor, ceramic 60 0402\",\"price\":616000,\"priceText\":\"61.60\",\"status\":\"Open for quoting\"},{\"id\":67,\"partNumber\":\"QA-SCALE-000066\",\"description\":\"Capacitor, ceramic 66 SO-8\",\"price\":676600,\"priceText\":\"67.66\",\"status\":\"Open for quoting\"},{\"id\":73,\"partNumber\":\"QA-SCALE-000072\",\"description\":\"Capacitor, ceramic 72 0402\",\"price\":737200,\"priceText\":\"73.72\",\"status\":\"Open for quoting\"},{\"id\":79,\"partNumber\":\"QA-SCALE-000078\",\"description\":\"Capacitor, ceramic 78 SO-8\",\"price\":797800,\"priceText\":\"79.78\",\"status\":\"Open for quoting\"},{\"id\":85,\"partNumber\":\"QA-SCALE-000084\",\"description\":\"Capacitor, ceramic 84 0402\",\"price\":858400,\"priceText\":\"85.84\",\"status\":\"Open for quoting\"},{\"id\":91,\"partNumber\":\"QA-SCALE-000090\",\"description\":\"Capacitor, ceramic 90 SO-8\",\"price\":919000,\"priceText\":\"91.90\",\"status\":\"Open for quoting\"},{\"id\":97,\"partNumber\":\"QA-SCALE-000096\",\"description\":\"Capacitor, ceramic 96 0402\",\"price\":979600,\"priceText\":\"97.96\",\"status\":\"Open for quoting\"},{\"id\":103,\"partNumber\":\"QA-SCALE-000102\",\"description\":\"Capacitor, ceramic 5 SO-8\",\"price\":1030200,\"priceText\":\"103.02\",\"status\":\"Open for quoting\"},{\"id\":109,\"partNumber\":\"QA-SCALE-000108\",\"description\":\"Capacitor, ceramic 11 0402\",\"price\":1090800,\"priceText\":\"109.08\",\"status\":\"Open for quoting\"},{\"id\":115,\"partNumber\":\"QA-SCALE-000114\",\"description\":\"Capacitor, ceramic 17 SO-8\",\"price\":1151400,\"priceText\":\"115.14\",\"status\":\"Open for quoting\"},{\"id\":121,\"partNumber\":\"QA-SCALE-000120\",\"description\":\"Cap… (7439 chars)"
+    },
+    "ms": 24.6
+  },
+  {
+    "at": "2026-09-26T21:28:53.147Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=resistor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7588",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":2,\"partNumber\":\"QA-SCALE-000001\",\"description\":\"Resistor, thick film 1 0603\",\"price\":20100,\"priceText\":\"2.01\",\"status\":\"Open for quoting\"},{\"id\":8,\"partNumber\":\"QA-SCALE-000007\",\"description\":\"Resistor, thick film 7 SOT-23\",\"price\":80700,\"priceText\":\"8.07\",\"status\":\"Open for quoting\"},{\"id\":14,\"partNumber\":\"QA-SCALE-000013\",\"description\":\"Resistor, thick film 13 0603\",\"price\":141300,\"priceText\":\"14.13\",\"status\":\"Open for quoting\"},{\"id\":20,\"partNumber\":\"QA-SCALE-000019\",\"description\":\"Resistor, thick film 19 SOT-23\",\"price\":201900,\"priceText\":\"20.19\",\"status\":\"Open for quoting\"},{\"id\":26,\"partNumber\":\"QA-SCALE-000025\",\"description\":\"Resistor, thick film 25 0603\",\"price\":262500,\"priceText\":\"26.25\",\"status\":\"Open for quoting\"},{\"id\":32,\"partNumber\":\"QA-SCALE-000031\",\"description\":\"Resistor, thick film 31 SOT-23\",\"price\":323100,\"priceText\":\"32.31\",\"status\":\"Open for quoting\"},{\"id\":38,\"partNumber\":\"QA-SCALE-000037\",\"description\":\"Resistor, thick film 37 0603\",\"price\":383700,\"priceText\":\"38.37\",\"status\":\"Open for quoting\"},{\"id\":44,\"partNumber\":\"QA-SCALE-000043\",\"description\":\"Resistor, thick film 43 SOT-23\",\"price\":444300,\"priceText\":\"44.43\",\"status\":\"Open for quoting\"},{\"id\":50,\"partNumber\":\"QA-SCALE-000049\",\"description\":\"Resistor, thick film 49 0603\",\"price\":504900,\"priceText\":\"50.49\",\"status\":\"Open for quoting\"},{\"id\":56,\"partNumber\":\"QA-SCALE-000055\",\"description\":\"Resistor, thick film 55 SOT-23\",\"price\":565500,\"priceText\":\"56.55\",\"status\":\"Open for quoting\"},{\"id\":62,\"partNumber\":\"QA-SCALE-000061\",\"description\":\"Resistor, thick film 61 0603\",\"price\":626100,\"priceText\":\"62.61\",\"status\":\"Open for quoting\"},{\"id\":68,\"partNumber\":\"QA-SCALE-000067\",\"description\":\"Resistor, thick film 67 SOT-23\",\"price\":686700,\"priceText\":\"68.67\",\"status\":\"Open for quoting\"},{\"id\":74,\"partNumber\":\"QA-SCALE-000073\",\"description\":\"Resistor, thick film 73 0603\",\"price\":747300,\"priceText\":\"74.73\",\"status\":\"Open for quoting\"},{\"id\":80,\"partNumber\":\"QA-SCALE-000079\",\"description\":\"Resistor, thick film 79 SOT-23\",\"price\":807900,\"priceText\":\"80.79\",\"status\":\"Open for quoting\"},{\"id\":86,\"partNumber\":\"QA-SCALE-000085\",\"description\":\"Resistor, thick film 85 0603\",\"price\":868500,\"priceText\":\"86.85\",\"status\":\"Open for quoting\"},{\"id\":92,\"partNumber\":\"QA-SCALE-000091\",\"description\":\"Resistor, thick film 91 SOT-23\",\"price\":929100,\"priceText\":\"92.91\",\"status\":\"Open for quoting\"},{\"id\":98,\"partNumber\":\"QA-SCALE-000097\",\"description\":\"Resistor, thick film 0 0603\",\"price\":989700,\"priceText\":\"98.97\",\"status\":\"Open for quoting\"},{\"id\":104,\"partNumber\":\"QA-SCALE-000103\",\"description\":\"Resistor, thick film 6 SOT-23\",\"price\":1040300,\"priceText\":\"104.03\",\"status\":\"Open for quoting\"},{\"id\":110,\"partNumber\":\"QA-SCALE-000109\",\"description\":\"Resistor, thick film 12 0603\",\"price\":1100900,\"priceText\":\"110.09\",\"status\":\"Open for quoting\"},{\"id\":116,\"partNumber\":\"QA-SCALE-000115\",\"description\":\"Resistor, thick film 18 SOT-23\",\"price\":1161500,\"priceText\":\"116.15\",\"status\":\"Open for quoting\"},… (7588 chars)"
+    },
+    "ms": 109
+  },
+  {
+    "at": "2026-09-26T21:28:53.148Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=QA-SCALE-12345",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "1549",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":123451,\"partNumber\":\"QA-SCALE-123450\",\"description\":\"Capacitor, ceramic 66 SO-8\",\"price\":34515000,\"priceText\":\"3451.50\",\"status\":\"Open for quoting\"},{\"id\":123452,\"partNumber\":\"QA-SCALE-123451\",\"description\":\"Resistor, thick film 67 SOT-23\",\"price\":34525100,\"priceText\":\"3452.51\",\"status\":\"Open for quoting\"},{\"id\":123453,\"partNumber\":\"QA-SCALE-123452\",\"description\":\"MOSFET, N-channel 68 0402\",\"price\":34535200,\"priceText\":\"3453.52\",\"status\":\"Open for quoting\"},{\"id\":123454,\"partNumber\":\"QA-SCALE-123453\",\"description\":\"Inductor, power 69 0603\",\"price\":34545300,\"priceText\":\"3454.53\",\"status\":\"Open for quoting\"},{\"id\":123455,\"partNumber\":\"QA-SCALE-123454\",\"description\":\"Connector, header 70 SO-8\",\"price\":34555400,\"priceText\":\"3455.54\",\"status\":\"Open for quoting\"},{\"id\":123456,\"partNumber\":\"QA-SCALE-123455\",\"description\":\"Diode, Schottky 71 SOT-23\",\"price\":34565500,\"priceText\":\"3456.55\",\"status\":\"Open for quoting\"},{\"id\":123457,\"partNumber\":\"QA-SCALE-123456\",\"description\":\"Capacitor, ceramic 72 0402\",\"price\":34575600,\"priceText\":\"3457.56\",\"status\":\"Open for quoting\"},{\"id\":123458,\"partNumber\":\"QA-SCALE-123457\",\"description\":\"Resistor, thick film 73 0603\",\"price\":34585700,\"priceText\":\"3458.57\",\"status\":\"Open for quoting\"},{\"id\":123459,\"partNumber\":\"QA-SCALE-123458\",\"description\":\"MOSFET, N-channel 74 SO-8\",\"price\":34595800,\"priceText\":\"3459.58\",\"status\":\"Open for quoting\"},{\"id\":123460,\"partNumber\":\"QA-SCALE-123459\",\"description\":\"Inductor, power 75 SOT-23\",\"price\":34605900,\"priceText\":\"3460.59\",\"status\":\"Open for quoting\"}]"
+    },
+    "ms": 109.4
+  },
+  {
+    "at": "2026-09-26T21:28:53.173Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=MOSFET",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7387",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":3,\"partNumber\":\"QA-SCALE-000002\",\"description\":\"MOSFET, N-channel 2 SO-8\",\"price\":30200,\"priceText\":\"3.02\",\"status\":\"Open for quoting\"},{\"id\":9,\"partNumber\":\"QA-SCALE-000008\",\"description\":\"MOSFET, N-channel 8 0402\",\"price\":90800,\"priceText\":\"9.08\",\"status\":\"Open for quoting\"},{\"id\":15,\"partNumber\":\"QA-SCALE-000014\",\"description\":\"MOSFET, N-channel 14 SO-8\",\"price\":151400,\"priceText\":\"15.14\",\"status\":\"Open for quoting\"},{\"id\":21,\"partNumber\":\"QA-SCALE-000020\",\"description\":\"MOSFET, N-channel 20 0402\",\"price\":212000,\"priceText\":\"21.20\",\"status\":\"Open for quoting\"},{\"id\":27,\"partNumber\":\"QA-SCALE-000026\",\"description\":\"MOSFET, N-channel 26 SO-8\",\"price\":272600,\"priceText\":\"27.26\",\"status\":\"Open for quoting\"},{\"id\":33,\"partNumber\":\"QA-SCALE-000032\",\"description\":\"MOSFET, N-channel 32 0402\",\"price\":333200,\"priceText\":\"33.32\",\"status\":\"Open for quoting\"},{\"id\":39,\"partNumber\":\"QA-SCALE-000038\",\"description\":\"MOSFET, N-channel 38 SO-8\",\"price\":393800,\"priceText\":\"39.38\",\"status\":\"Open for quoting\"},{\"id\":45,\"partNumber\":\"QA-SCALE-000044\",\"description\":\"MOSFET, N-channel 44 0402\",\"price\":454400,\"priceText\":\"45.44\",\"status\":\"Open for quoting\"},{\"id\":51,\"partNumber\":\"QA-SCALE-000050\",\"description\":\"MOSFET, N-channel 50 SO-8\",\"price\":515000,\"priceText\":\"51.50\",\"status\":\"Open for quoting\"},{\"id\":57,\"partNumber\":\"QA-SCALE-000056\",\"description\":\"MOSFET, N-channel 56 0402\",\"price\":575600,\"priceText\":\"57.56\",\"status\":\"Open for quoting\"},{\"id\":63,\"partNumber\":\"QA-SCALE-000062\",\"description\":\"MOSFET, N-channel 62 SO-8\",\"price\":636200,\"priceText\":\"63.62\",\"status\":\"Open for quoting\"},{\"id\":69,\"partNumber\":\"QA-SCALE-000068\",\"description\":\"MOSFET, N-channel 68 0402\",\"price\":696800,\"priceText\":\"69.68\",\"status\":\"Open for quoting\"},{\"id\":75,\"partNumber\":\"QA-SCALE-000074\",\"description\":\"MOSFET, N-channel 74 SO-8\",\"price\":757400,\"priceText\":\"75.74\",\"status\":\"Open for quoting\"},{\"id\":81,\"partNumber\":\"QA-SCALE-000080\",\"description\":\"MOSFET, N-channel 80 0402\",\"price\":818000,\"priceText\":\"81.80\",\"status\":\"Open for quoting\"},{\"id\":87,\"partNumber\":\"QA-SCALE-000086\",\"description\":\"MOSFET, N-channel 86 SO-8\",\"price\":878600,\"priceText\":\"87.86\",\"status\":\"Open for quoting\"},{\"id\":93,\"partNumber\":\"QA-SCALE-000092\",\"description\":\"MOSFET, N-channel 92 0402\",\"price\":939200,\"priceText\":\"93.92\",\"status\":\"Open for quoting\"},{\"id\":99,\"partNumber\":\"QA-SCALE-000098\",\"description\":\"MOSFET, N-channel 1 SO-8\",\"price\":999800,\"priceText\":\"99.98\",\"status\":\"Open for quoting\"},{\"id\":105,\"partNumber\":\"QA-SCALE-000104\",\"description\":\"MOSFET, N-channel 7 0402\",\"price\":1050400,\"priceText\":\"105.04\",\"status\":\"Open for quoting\"},{\"id\":111,\"partNumber\":\"QA-SCALE-000110\",\"description\":\"MOSFET, N-channel 13 SO-8\",\"price\":1111000,\"priceText\":\"111.10\",\"status\":\"Open for quoting\"},{\"id\":117,\"partNumber\":\"QA-SCALE-000116\",\"description\":\"MOSFET, N-channel 19 0402\",\"price\":1171600,\"priceText\":\"117.16\",\"status\":\"Open for quoting\"},{\"id\":123,\"partNumber\":\"QA-SCALE-000122\",\"description\":\"MOSFET, N-channel 25 SO-… (7387 chars)"
+    },
+    "ms": 133.7
+  },
+  {
+    "at": "2026-09-26T21:28:53.248Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=ceramic%200402",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7466",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":1,\"partNumber\":\"QA-SCALE-000000\",\"description\":\"Capacitor, ceramic 0 0402\",\"price\":10000,\"priceText\":\"1.00\",\"status\":\"Open for quoting\"},{\"id\":13,\"partNumber\":\"QA-SCALE-000012\",\"description\":\"Capacitor, ceramic 12 0402\",\"price\":131200,\"priceText\":\"13.12\",\"status\":\"Open for quoting\"},{\"id\":25,\"partNumber\":\"QA-SCALE-000024\",\"description\":\"Capacitor, ceramic 24 0402\",\"price\":252400,\"priceText\":\"25.24\",\"status\":\"Open for quoting\"},{\"id\":37,\"partNumber\":\"QA-SCALE-000036\",\"description\":\"Capacitor, ceramic 36 0402\",\"price\":373600,\"priceText\":\"37.36\",\"status\":\"Open for quoting\"},{\"id\":49,\"partNumber\":\"QA-SCALE-000048\",\"description\":\"Capacitor, ceramic 48 0402\",\"price\":494800,\"priceText\":\"49.48\",\"status\":\"Open for quoting\"},{\"id\":61,\"partNumber\":\"QA-SCALE-000060\",\"description\":\"Capacitor, ceramic 60 0402\",\"price\":616000,\"priceText\":\"61.60\",\"status\":\"Open for quoting\"},{\"id\":73,\"partNumber\":\"QA-SCALE-000072\",\"description\":\"Capacitor, ceramic 72 0402\",\"price\":737200,\"priceText\":\"73.72\",\"status\":\"Open for quoting\"},{\"id\":85,\"partNumber\":\"QA-SCALE-000084\",\"description\":\"Capacitor, ceramic 84 0402\",\"price\":858400,\"priceText\":\"85.84\",\"status\":\"Open for quoting\"},{\"id\":97,\"partNumber\":\"QA-SCALE-000096\",\"description\":\"Capacitor, ceramic 96 0402\",\"price\":979600,\"priceText\":\"97.96\",\"status\":\"Open for quoting\"},{\"id\":109,\"partNumber\":\"QA-SCALE-000108\",\"description\":\"Capacitor, ceramic 11 0402\",\"price\":1090800,\"priceText\":\"109.08\",\"status\":\"Open for quoting\"},{\"id\":121,\"partNumber\":\"QA-SCALE-000120\",\"description\":\"Capacitor, ceramic 23 0402\",\"price\":1212000,\"priceText\":\"121.20\",\"status\":\"Open for quoting\"},{\"id\":133,\"partNumber\":\"QA-SCALE-000132\",\"description\":\"Capacitor, ceramic 35 0402\",\"price\":1333200,\"priceText\":\"133.32\",\"status\":\"Open for quoting\"},{\"id\":145,\"partNumber\":\"QA-SCALE-000144\",\"description\":\"Capacitor, ceramic 47 0402\",\"price\":1454400,\"priceText\":\"145.44\",\"status\":\"Open for quoting\"},{\"id\":157,\"partNumber\":\"QA-SCALE-000156\",\"description\":\"Capacitor, ceramic 59 0402\",\"price\":1575600,\"priceText\":\"157.56\",\"status\":\"Open for quoting\"},{\"id\":169,\"partNumber\":\"QA-SCALE-000168\",\"description\":\"Capacitor, ceramic 71 0402\",\"price\":1696800,\"priceText\":\"169.68\",\"status\":\"Open for quoting\"},{\"id\":181,\"partNumber\":\"QA-SCALE-000180\",\"description\":\"Capacitor, ceramic 83 0402\",\"price\":1818000,\"priceText\":\"181.80\",\"status\":\"Open for quoting\"},{\"id\":193,\"partNumber\":\"QA-SCALE-000192\",\"description\":\"Capacitor, ceramic 95 0402\",\"price\":1939200,\"priceText\":\"193.92\",\"status\":\"Open for quoting\"},{\"id\":205,\"partNumber\":\"QA-SCALE-000204\",\"description\":\"Capacitor, ceramic 10 0402\",\"price\":2050400,\"priceText\":\"205.04\",\"status\":\"Open for quoting\"},{\"id\":217,\"partNumber\":\"QA-SCALE-000216\",\"description\":\"Capacitor, ceramic 22 0402\",\"price\":2171600,\"priceText\":\"217.16\",\"status\":\"Open for quoting\"},{\"id\":229,\"partNumber\":\"QA-SCALE-000228\",\"description\":\"Capacitor, ceramic 34 0402\",\"price\":2292800,\"priceText\":\"229.28\",\"status\":\"Open for quoting\"},{\"id\":241,\"partNumber\":\"QA-SCA… (7466 chars)"
+    },
+    "ms": 209.2
+  },
+  {
+    "at": "2026-09-26T21:28:53.314Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=inductor",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7342",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":4,\"partNumber\":\"QA-SCALE-000003\",\"description\":\"Inductor, power 3 SOT-23\",\"price\":40300,\"priceText\":\"4.03\",\"status\":\"Open for quoting\"},{\"id\":10,\"partNumber\":\"QA-SCALE-000009\",\"description\":\"Inductor, power 9 0603\",\"price\":100900,\"priceText\":\"10.09\",\"status\":\"Open for quoting\"},{\"id\":16,\"partNumber\":\"QA-SCALE-000015\",\"description\":\"Inductor, power 15 SOT-23\",\"price\":161500,\"priceText\":\"16.15\",\"status\":\"Open for quoting\"},{\"id\":22,\"partNumber\":\"QA-SCALE-000021\",\"description\":\"Inductor, power 21 0603\",\"price\":222100,\"priceText\":\"22.21\",\"status\":\"Open for quoting\"},{\"id\":28,\"partNumber\":\"QA-SCALE-000027\",\"description\":\"Inductor, power 27 SOT-23\",\"price\":282700,\"priceText\":\"28.27\",\"status\":\"Open for quoting\"},{\"id\":34,\"partNumber\":\"QA-SCALE-000033\",\"description\":\"Inductor, power 33 0603\",\"price\":343300,\"priceText\":\"34.33\",\"status\":\"Open for quoting\"},{\"id\":40,\"partNumber\":\"QA-SCALE-000039\",\"description\":\"Inductor, power 39 SOT-23\",\"price\":403900,\"priceText\":\"40.39\",\"status\":\"Open for quoting\"},{\"id\":46,\"partNumber\":\"QA-SCALE-000045\",\"description\":\"Inductor, power 45 0603\",\"price\":464500,\"priceText\":\"46.45\",\"status\":\"Open for quoting\"},{\"id\":52,\"partNumber\":\"QA-SCALE-000051\",\"description\":\"Inductor, power 51 SOT-23\",\"price\":525100,\"priceText\":\"52.51\",\"status\":\"Open for quoting\"},{\"id\":58,\"partNumber\":\"QA-SCALE-000057\",\"description\":\"Inductor, power 57 0603\",\"price\":585700,\"priceText\":\"58.57\",\"status\":\"Open for quoting\"},{\"id\":64,\"partNumber\":\"QA-SCALE-000063\",\"description\":\"Inductor, power 63 SOT-23\",\"price\":646300,\"priceText\":\"64.63\",\"status\":\"Open for quoting\"},{\"id\":70,\"partNumber\":\"QA-SCALE-000069\",\"description\":\"Inductor, power 69 0603\",\"price\":706900,\"priceText\":\"70.69\",\"status\":\"Open for quoting\"},{\"id\":76,\"partNumber\":\"QA-SCALE-000075\",\"description\":\"Inductor, power 75 SOT-23\",\"price\":767500,\"priceText\":\"76.75\",\"status\":\"Open for quoting\"},{\"id\":82,\"partNumber\":\"QA-SCALE-000081\",\"description\":\"Inductor, power 81 0603\",\"price\":828100,\"priceText\":\"82.81\",\"status\":\"Open for quoting\"},{\"id\":88,\"partNumber\":\"QA-SCALE-000087\",\"description\":\"Inductor, power 87 SOT-23\",\"price\":888700,\"priceText\":\"88.87\",\"status\":\"Open for quoting\"},{\"id\":94,\"partNumber\":\"QA-SCALE-000093\",\"description\":\"Inductor, power 93 0603\",\"price\":949300,\"priceText\":\"94.93\",\"status\":\"Open for quoting\"},{\"id\":100,\"partNumber\":\"QA-SCALE-000099\",\"description\":\"Inductor, power 2 SOT-23\",\"price\":1009900,\"priceText\":\"100.99\",\"status\":\"Open for quoting\"},{\"id\":106,\"partNumber\":\"QA-SCALE-000105\",\"description\":\"Inductor, power 8 0603\",\"price\":1060500,\"priceText\":\"106.05\",\"status\":\"Open for quoting\"},{\"id\":112,\"partNumber\":\"QA-SCALE-000111\",\"description\":\"Inductor, power 14 SOT-23\",\"price\":1121100,\"priceText\":\"112.11\",\"status\":\"Open for quoting\"},{\"id\":118,\"partNumber\":\"QA-SCALE-000117\",\"description\":\"Inductor, power 20 0603\",\"price\":1181700,\"priceText\":\"118.17\",\"status\":\"Open for quoting\"},{\"id\":124,\"partNumber\":\"QA-SCALE-000123\",\"description\":\"Inductor, power 26 SOT-23\",\"price\":124… (7342 chars)"
+    },
+    "ms": 274.6
+  },
+  {
+    "at": "2026-09-26T21:28:53.396Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=connector",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7393",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":5,\"partNumber\":\"QA-SCALE-000004\",\"description\":\"Connector, header 4 0402\",\"price\":50400,\"priceText\":\"5.04\",\"status\":\"Open for quoting\"},{\"id\":11,\"partNumber\":\"QA-SCALE-000010\",\"description\":\"Connector, header 10 SO-8\",\"price\":111000,\"priceText\":\"11.10\",\"status\":\"Open for quoting\"},{\"id\":17,\"partNumber\":\"QA-SCALE-000016\",\"description\":\"Connector, header 16 0402\",\"price\":171600,\"priceText\":\"17.16\",\"status\":\"Open for quoting\"},{\"id\":23,\"partNumber\":\"QA-SCALE-000022\",\"description\":\"Connector, header 22 SO-8\",\"price\":232200,\"priceText\":\"23.22\",\"status\":\"Open for quoting\"},{\"id\":29,\"partNumber\":\"QA-SCALE-000028\",\"description\":\"Connector, header 28 0402\",\"price\":292800,\"priceText\":\"29.28\",\"status\":\"Open for quoting\"},{\"id\":35,\"partNumber\":\"QA-SCALE-000034\",\"description\":\"Connector, header 34 SO-8\",\"price\":353400,\"priceText\":\"35.34\",\"status\":\"Open for quoting\"},{\"id\":41,\"partNumber\":\"QA-SCALE-000040\",\"description\":\"Connector, header 40 0402\",\"price\":414000,\"priceText\":\"41.40\",\"status\":\"Open for quoting\"},{\"id\":47,\"partNumber\":\"QA-SCALE-000046\",\"description\":\"Connector, header 46 SO-8\",\"price\":474600,\"priceText\":\"47.46\",\"status\":\"Open for quoting\"},{\"id\":53,\"partNumber\":\"QA-SCALE-000052\",\"description\":\"Connector, header 52 0402\",\"price\":535200,\"priceText\":\"53.52\",\"status\":\"Open for quoting\"},{\"id\":59,\"partNumber\":\"QA-SCALE-000058\",\"description\":\"Connector, header 58 SO-8\",\"price\":595800,\"priceText\":\"59.58\",\"status\":\"Open for quoting\"},{\"id\":65,\"partNumber\":\"QA-SCALE-000064\",\"description\":\"Connector, header 64 0402\",\"price\":656400,\"priceText\":\"65.64\",\"status\":\"Open for quoting\"},{\"id\":71,\"partNumber\":\"QA-SCALE-000070\",\"description\":\"Connector, header 70 SO-8\",\"price\":717000,\"priceText\":\"71.70\",\"status\":\"Open for quoting\"},{\"id\":77,\"partNumber\":\"QA-SCALE-000076\",\"description\":\"Connector, header 76 0402\",\"price\":777600,\"priceText\":\"77.76\",\"status\":\"Open for quoting\"},{\"id\":83,\"partNumber\":\"QA-SCALE-000082\",\"description\":\"Connector, header 82 SO-8\",\"price\":838200,\"priceText\":\"83.82\",\"status\":\"Open for quoting\"},{\"id\":89,\"partNumber\":\"QA-SCALE-000088\",\"description\":\"Connector, header 88 0402\",\"price\":898800,\"priceText\":\"89.88\",\"status\":\"Open for quoting\"},{\"id\":95,\"partNumber\":\"QA-SCALE-000094\",\"description\":\"Connector, header 94 SO-8\",\"price\":959400,\"priceText\":\"95.94\",\"status\":\"Open for quoting\"},{\"id\":101,\"partNumber\":\"QA-SCALE-000100\",\"description\":\"Connector, header 3 0402\",\"price\":1010000,\"priceText\":\"101.00\",\"status\":\"Open for quoting\"},{\"id\":107,\"partNumber\":\"QA-SCALE-000106\",\"description\":\"Connector, header 9 SO-8\",\"price\":1070600,\"priceText\":\"107.06\",\"status\":\"Open for quoting\"},{\"id\":113,\"partNumber\":\"QA-SCALE-000112\",\"description\":\"Connector, header 15 0402\",\"price\":1131200,\"priceText\":\"113.12\",\"status\":\"Open for quoting\"},{\"id\":119,\"partNumber\":\"QA-SCALE-000118\",\"description\":\"Connector, header 21 SO-8\",\"price\":1191800,\"priceText\":\"119.18\",\"status\":\"Open for quoting\"},{\"id\":125,\"partNumber\":\"QA-SCALE-000124\",\"description\":\"Connector, header… (7393 chars)"
+    },
+    "ms": 356.7
+  },
+  {
+    "at": "2026-09-26T21:28:53.434Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=Schottky",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7344",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":6,\"partNumber\":\"QA-SCALE-000005\",\"description\":\"Diode, Schottky 5 0603\",\"price\":60500,\"priceText\":\"6.05\",\"status\":\"Open for quoting\"},{\"id\":12,\"partNumber\":\"QA-SCALE-000011\",\"description\":\"Diode, Schottky 11 SOT-23\",\"price\":121100,\"priceText\":\"12.11\",\"status\":\"Open for quoting\"},{\"id\":18,\"partNumber\":\"QA-SCALE-000017\",\"description\":\"Diode, Schottky 17 0603\",\"price\":181700,\"priceText\":\"18.17\",\"status\":\"Open for quoting\"},{\"id\":24,\"partNumber\":\"QA-SCALE-000023\",\"description\":\"Diode, Schottky 23 SOT-23\",\"price\":242300,\"priceText\":\"24.23\",\"status\":\"Open for quoting\"},{\"id\":30,\"partNumber\":\"QA-SCALE-000029\",\"description\":\"Diode, Schottky 29 0603\",\"price\":302900,\"priceText\":\"30.29\",\"status\":\"Open for quoting\"},{\"id\":36,\"partNumber\":\"QA-SCALE-000035\",\"description\":\"Diode, Schottky 35 SOT-23\",\"price\":363500,\"priceText\":\"36.35\",\"status\":\"Open for quoting\"},{\"id\":42,\"partNumber\":\"QA-SCALE-000041\",\"description\":\"Diode, Schottky 41 0603\",\"price\":424100,\"priceText\":\"42.41\",\"status\":\"Open for quoting\"},{\"id\":48,\"partNumber\":\"QA-SCALE-000047\",\"description\":\"Diode, Schottky 47 SOT-23\",\"price\":484700,\"priceText\":\"48.47\",\"status\":\"Open for quoting\"},{\"id\":54,\"partNumber\":\"QA-SCALE-000053\",\"description\":\"Diode, Schottky 53 0603\",\"price\":545300,\"priceText\":\"54.53\",\"status\":\"Open for quoting\"},{\"id\":60,\"partNumber\":\"QA-SCALE-000059\",\"description\":\"Diode, Schottky 59 SOT-23\",\"price\":605900,\"priceText\":\"60.59\",\"status\":\"Open for quoting\"},{\"id\":66,\"partNumber\":\"QA-SCALE-000065\",\"description\":\"Diode, Schottky 65 0603\",\"price\":666500,\"priceText\":\"66.65\",\"status\":\"Open for quoting\"},{\"id\":72,\"partNumber\":\"QA-SCALE-000071\",\"description\":\"Diode, Schottky 71 SOT-23\",\"price\":727100,\"priceText\":\"72.71\",\"status\":\"Open for quoting\"},{\"id\":78,\"partNumber\":\"QA-SCALE-000077\",\"description\":\"Diode, Schottky 77 0603\",\"price\":787700,\"priceText\":\"78.77\",\"status\":\"Open for quoting\"},{\"id\":84,\"partNumber\":\"QA-SCALE-000083\",\"description\":\"Diode, Schottky 83 SOT-23\",\"price\":848300,\"priceText\":\"84.83\",\"status\":\"Open for quoting\"},{\"id\":90,\"partNumber\":\"QA-SCALE-000089\",\"description\":\"Diode, Schottky 89 0603\",\"price\":908900,\"priceText\":\"90.89\",\"status\":\"Open for quoting\"},{\"id\":96,\"partNumber\":\"QA-SCALE-000095\",\"description\":\"Diode, Schottky 95 SOT-23\",\"price\":969500,\"priceText\":\"96.95\",\"status\":\"Open for quoting\"},{\"id\":102,\"partNumber\":\"QA-SCALE-000101\",\"description\":\"Diode, Schottky 4 0603\",\"price\":1020100,\"priceText\":\"102.01\",\"status\":\"Open for quoting\"},{\"id\":108,\"partNumber\":\"QA-SCALE-000107\",\"description\":\"Diode, Schottky 10 SOT-23\",\"price\":1080700,\"priceText\":\"108.07\",\"status\":\"Open for quoting\"},{\"id\":114,\"partNumber\":\"QA-SCALE-000113\",\"description\":\"Diode, Schottky 16 0603\",\"price\":1141300,\"priceText\":\"114.13\",\"status\":\"Open for quoting\"},{\"id\":120,\"partNumber\":\"QA-SCALE-000119\",\"description\":\"Diode, Schottky 22 SOT-23\",\"price\":1201900,\"priceText\":\"120.19\",\"status\":\"Open for quoting\"},{\"id\":126,\"partNumber\":\"QA-SCALE-000125\",\"description\":\"Diode, Schottky 28 0603\",\"price\":126… (7344 chars)"
+    },
+    "ms": 394.4
+  },
+  {
+    "at": "2026-09-26T21:28:53.544Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=SO-8",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7380",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":3,\"partNumber\":\"QA-SCALE-000002\",\"description\":\"MOSFET, N-channel 2 SO-8\",\"price\":30200,\"priceText\":\"3.02\",\"status\":\"Open for quoting\"},{\"id\":7,\"partNumber\":\"QA-SCALE-000006\",\"description\":\"Capacitor, ceramic 6 SO-8\",\"price\":70600,\"priceText\":\"7.06\",\"status\":\"Open for quoting\"},{\"id\":11,\"partNumber\":\"QA-SCALE-000010\",\"description\":\"Connector, header 10 SO-8\",\"price\":111000,\"priceText\":\"11.10\",\"status\":\"Open for quoting\"},{\"id\":15,\"partNumber\":\"QA-SCALE-000014\",\"description\":\"MOSFET, N-channel 14 SO-8\",\"price\":151400,\"priceText\":\"15.14\",\"status\":\"Open for quoting\"},{\"id\":19,\"partNumber\":\"QA-SCALE-000018\",\"description\":\"Capacitor, ceramic 18 SO-8\",\"price\":191800,\"priceText\":\"19.18\",\"status\":\"Open for quoting\"},{\"id\":23,\"partNumber\":\"QA-SCALE-000022\",\"description\":\"Connector, header 22 SO-8\",\"price\":232200,\"priceText\":\"23.22\",\"status\":\"Open for quoting\"},{\"id\":27,\"partNumber\":\"QA-SCALE-000026\",\"description\":\"MOSFET, N-channel 26 SO-8\",\"price\":272600,\"priceText\":\"27.26\",\"status\":\"Open for quoting\"},{\"id\":31,\"partNumber\":\"QA-SCALE-000030\",\"description\":\"Capacitor, ceramic 30 SO-8\",\"price\":313000,\"priceText\":\"31.30\",\"status\":\"Open for quoting\"},{\"id\":35,\"partNumber\":\"QA-SCALE-000034\",\"description\":\"Connector, header 34 SO-8\",\"price\":353400,\"priceText\":\"35.34\",\"status\":\"Open for quoting\"},{\"id\":39,\"partNumber\":\"QA-SCALE-000038\",\"description\":\"MOSFET, N-channel 38 SO-8\",\"price\":393800,\"priceText\":\"39.38\",\"status\":\"Open for quoting\"},{\"id\":43,\"partNumber\":\"QA-SCALE-000042\",\"description\":\"Capacitor, ceramic 42 SO-8\",\"price\":434200,\"priceText\":\"43.42\",\"status\":\"Open for quoting\"},{\"id\":47,\"partNumber\":\"QA-SCALE-000046\",\"description\":\"Connector, header 46 SO-8\",\"price\":474600,\"priceText\":\"47.46\",\"status\":\"Open for quoting\"},{\"id\":51,\"partNumber\":\"QA-SCALE-000050\",\"description\":\"MOSFET, N-channel 50 SO-8\",\"price\":515000,\"priceText\":\"51.50\",\"status\":\"Open for quoting\"},{\"id\":55,\"partNumber\":\"QA-SCALE-000054\",\"description\":\"Capacitor, ceramic 54 SO-8\",\"price\":555400,\"priceText\":\"55.54\",\"status\":\"Open for quoting\"},{\"id\":59,\"partNumber\":\"QA-SCALE-000058\",\"description\":\"Connector, header 58 SO-8\",\"price\":595800,\"priceText\":\"59.58\",\"status\":\"Open for quoting\"},{\"id\":63,\"partNumber\":\"QA-SCALE-000062\",\"description\":\"MOSFET, N-channel 62 SO-8\",\"price\":636200,\"priceText\":\"63.62\",\"status\":\"Open for quoting\"},{\"id\":67,\"partNumber\":\"QA-SCALE-000066\",\"description\":\"Capacitor, ceramic 66 SO-8\",\"price\":676600,\"priceText\":\"67.66\",\"status\":\"Open for quoting\"},{\"id\":71,\"partNumber\":\"QA-SCALE-000070\",\"description\":\"Connector, header 70 SO-8\",\"price\":717000,\"priceText\":\"71.70\",\"status\":\"Open for quoting\"},{\"id\":75,\"partNumber\":\"QA-SCALE-000074\",\"description\":\"MOSFET, N-channel 74 SO-8\",\"price\":757400,\"priceText\":\"75.74\",\"status\":\"Open for quoting\"},{\"id\":79,\"partNumber\":\"QA-SCALE-000078\",\"description\":\"Capacitor, ceramic 78 SO-8\",\"price\":797800,\"priceText\":\"79.78\",\"status\":\"Open for quoting\"},{\"id\":83,\"partNumber\":\"QA-SCALE-000082\",\"description\":\"Connector, header 82 SO-8… (7380 chars)"
+    },
+    "ms": 504.7
+  },
+  {
+    "at": "2026-09-26T21:28:53.586Z",
+    "who": "Sam",
+    "request": {
+      "method": "GET",
+      "path": "/api/sales/store/products?q=thick%20film",
+      "headers": {
+        "cookie": "bow_session=<redacted>"
+      }
+    },
+    "response": {
+      "status": 200,
+      "headers": {
+        "connection": "keep-alive",
+        "content-length": "7588",
+        "content-type": "application/json; charset=utf-8",
+        "date": "Sat, 26 Sep 2026 21:28:53 GMT",
+        "keep-alive": "timeout=72"
+      },
+      "body": "[{\"id\":2,\"partNumber\":\"QA-SCALE-000001\",\"description\":\"Resistor, thick film 1 0603\",\"price\":20100,\"priceText\":\"2.01\",\"status\":\"Open for quoting\"},{\"id\":8,\"partNumber\":\"QA-SCALE-000007\",\"description\":\"Resistor, thick film 7 SOT-23\",\"price\":80700,\"priceText\":\"8.07\",\"status\":\"Open for quoting\"},{\"id\":14,\"partNumber\":\"QA-SCALE-000013\",\"description\":\"Resistor, thick film 13 0603\",\"price\":141300,\"priceText\":\"14.13\",\"status\":\"Open for quoting\"},{\"id\":20,\"partNumber\":\"QA-SCALE-000019\",\"description\":\"Resistor, thick film 19 SOT-23\",\"price\":201900,\"priceText\":\"20.19\",\"status\":\"Open for quoting\"},{\"id\":26,\"partNumber\":\"QA-SCALE-000025\",\"description\":\"Resistor, thick film 25 0603\",\"price\":262500,\"priceText\":\"26.25\",\"status\":\"Open for quoting\"},{\"id\":32,\"partNumber\":\"QA-SCALE-000031\",\"description\":\"Resistor, thick film 31 SOT-23\",\"price\":323100,\"priceText\":\"32.31\",\"status\":\"Open for quoting\"},{\"id\":38,\"partNumber\":\"QA-SCALE-000037\",\"description\":\"Resistor, thick film 37 0603\",\"price\":383700,\"priceText\":\"38.37\",\"status\":\"Open for quoting\"},{\"id\":44,\"partNumber\":\"QA-SCALE-000043\",\"description\":\"Resistor, thick film 43 SOT-23\",\"price\":444300,\"priceText\":\"44.43\",\"status\":\"Open for quoting\"},{\"id\":50,\"partNumber\":\"QA-SCALE-000049\",\"description\":\"Resistor, thick film 49 0603\",\"price\":504900,\"priceText\":\"50.49\",\"status\":\"Open for quoting\"},{\"id\":56,\"partNumber\":\"QA-SCALE-000055\",\"description\":\"Resistor, thick film 55 SOT-23\",\"price\":565500,\"priceText\":\"56.55\",\"status\":\"Open for quoting\"},{\"id\":62,\"partNumber\":\"QA-SCALE-000061\",\"description\":\"Resistor, thick film 61 0603\",\"price\":626100,\"priceText\":\"62.61\",\"status\":\"Open for quoting\"},{\"id\":68,\"partNumber\":\"QA-SCALE-000067\",\"description\":\"Resistor, thick film 67 SOT-23\",\"price\":686700,\"priceText\":\"68.67\",\"status\":\"Open for quoting\"},{\"id\":74,\"partNumber\":\"QA-SCALE-000073\",\"description\":\"Resistor, thick film 73 0603\",\"price\":747300,\"priceText\":\"74.73\",\"status\":\"Open for quoting\"},{\"id\":80,\"partNumber\":\"QA-SCALE-000079\",\"description\":\"Resistor, thick film 79 SOT-23\",\"price\":807900,\"priceText\":\"80.79\",\"status\":\"Open for quoting\"},{\"id\":86,\"partNumber\":\"QA-SCALE-000085\",\"description\":\"Resistor, thick film 85 0603\",\"price\":868500,\"priceText\":\"86.85\",\"status\":\"Open for quoting\"},{\"id\":92,\"partNumber\":\"QA-SCALE-000091\",\"description\":\"Resistor, thick film 91 SOT-23\",\"price\":929100,\"priceText\":\"92.91\",\"status\":\"Open for quoting\"},{\"id\":98,\"partNumber\":\"QA-SCALE-000097\",\"description\":\"Resistor, thick film 0 0603\",\"price\":989700,\"priceText\":\"98.97\",\"status\":\"Open for quoting\"},{\"id\":104,\"partNumber\":\"QA-SCALE-000103\",\"description\":\"Resistor, thick film 6 SOT-23\",\"price\":1040300,\"priceText\":\"104.03\",\"status\":\"Open for quoting\"},{\"id\":110,\"partNumber\":\"QA-SCALE-000109\",\"description\":\"Resistor, thick film 12 0603\",\"price\":1100900,\"priceText\":\"110.09\",\"status\":\"Open for quoting\"},{\"id\":116,\"partNumber\":\"QA-SCALE-000115\",\"description\":\"Resistor, thick film 18 SOT-23\",\"price\":1161500,\"priceText\":\"116.15\",\"status\":\"Open for quoting\"},… (7588 chars)"
+    },
+    "ms": 546.5
+  }
+]
