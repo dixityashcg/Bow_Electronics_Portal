@@ -60,7 +60,7 @@ Industry questions about freight tracking data, certificates of conformance and 
 | C-02 | Bow's staff use Microsoft 365 | Answered by Yash Dixit (FDE), 2026-09-26 | A second workforce sign-in for staff. Hosting on another cloud without a second vendor to manage | Staff sign in with their Microsoft 365 accounts, and hosting is Azure (ADR-02, ADR-03) |
 | C-03 | Resellers are external companies with no shared identity system | BRD §4.1, story-02-01 | Federating each reseller's own directory. Self-registration (story-02-01 DoD) | Invitation-only accounts in Entra External ID, created by reps or reseller admins (ADR-03) |
 | C-04 | No electronic exchange, no orders, no stock, no screening, no payments | BRD §4.2 | Any outbound integration to a fulfilment, finance or screening system | The portal has no outbound integration apart from email and sign-in. An approval creates only a response record and an email |
-| C-05 | **Bow has no IT operations team.** The portal will be run on managed services with an external support partner in business hours | Answered by Yash Dixit (FDE), 2026-09-26 | Self-hosted servers, containers to orchestrate, a message broker, a search cluster, or anything that needs an on-call engineer at Bow | Only managed Azure services, one application, one database, and no broker or separate search engine (ADR-01, ADR-02, ADR-09). Runbooks in §10 are written for the partner |
+| C-05 | **Bow has no IT operations team.** The portal will be run on managed services with an external support partner in business hours | Answered by Yash Dixit (FDE), 2026-09-26. Bow does have a Microsoft 365 administrator, who performs the one-off Azure and Entra setup (Q-06) | Self-hosted servers, containers to orchestrate, a message broker, a search cluster, or anything that needs an on-call engineer at Bow | Only managed Azure services, one application, one database, and no broker or separate search engine (ADR-01, ADR-02, ADR-09). Runbooks in §10 are written for the partner |
 | C-06 | Request records may be US export records, kept five years and not deletable | BRD BR-19, A-08, D-10–D-12 | Soft-delete, purge jobs, or any path that edits a sent quote | Append-only ledger tables (ADR-04). No delete path exists in the application |
 | C-07 | Reseller discount terms are one number per reseller, signed before load | BRD A-07, NF-10 | A pricing rules engine (per-product, per-quantity or contract prices) | One standard discount per reseller with history (story-04-01). If A-07 proves false, that is a BRD change (§11) |
 | C-08 | Volumes are not known | BRD NF-08 | Sizing to measured load | Designed and load-tested against the stated assumptions in §7.1. Revisited when Jensen Huang's counts arrive |
@@ -70,12 +70,12 @@ Industry questions about freight tracking data, certificates of conformance and 
 
 ## 4. Components
 
-One deployable web application (ADR-01), organised as four modules that share one database. The modules are code boundaries, not separate services: each owns its own tables, and another module reaches them only through that module's code, never by querying its tables.
+One deployable web application (ADR-01), written in TypeScript (ADR-10). It has two parts: a browser application that draws the screens, and a server programming interface behind it, served from the same address. The server holds four modules that share one database. The modules are code boundaries, not separate services: each owns its own tables, and another module reaches them only through that module's code, never by querying its tables.
 
 | Component | Responsibility | Owned by | Notes |
 |---|---|---|---|
-| **Reseller pages** | Product search, quote request, My requests, the quote with approve / change / decline, Users (reseller admin) | Built by the delivery team; run by the support partner | Served under `/`; reseller sign-in only |
-| **Internal sales pages** | Open requests list, enter request, request page (take, hand over, reassign), quote builder, resellers page with standard discounts, named users, failed emails list, refused attempts list | As above | Served under `/sales`; staff sign-in only. Every page and action checks the internal user and role on the server |
+| **Reseller pages** (browser application) | Product search, quote request, My requests, the quote with approve / change / decline, Users (reseller admin) | Built by the delivery team; run by the support partner | Served under `/`; reseller sign-in only |
+| **Internal sales pages** (browser application) | Open requests list, enter request, request page (take, hand over, reassign), quote builder, resellers page with standard discounts, named users, failed emails list, refused attempts list | As above | Served under `/sales`; staff sign-in only. Hiding a screen in the browser protects nothing. Every call to the server's programming interface checks the internal user and role on the server |
 | **Catalog and pricing store pages** | Load summary, product page, add product, change price, price history, close for quoting | As above | Under `/sales/store`; price maintainers only for changes |
 | **Access module** | Resellers, reseller users, invitations, deactivation; internal users; the named-user lists (price maintainers, discount setters, internal admins, role managers); authorisation on every request; refused-attempt records | As above | Holds the rule "which reseller does this session belong to" once, for every other module (ADR-03) |
 | **Catalog and pricing module** | Products, open or closed for quoting, prices and price history, standard discounts and discount history, full-text search, the one-off ERP load | As above | Becomes the system of record for part data and price at go-live (C-01) |
@@ -88,7 +88,7 @@ One deployable web application (ADR-01), organised as four modules that share on
 | **Monitoring** | Application Insights: request logs, errors, availability tests, alerts to the support partner | Support partner | §7 and §10 |
 | **Hosting** | Azure App Service (Linux), with a test environment and a production environment | Support partner | Two instances in production, so one can fail or be patched without an outage |
 
-**Not built.** Nothing sends data to a fulfilment, finance, screening or stock system. There is no public programming interface: the only way in is the pages. There is no reseller self-registration, and no bulk import of resellers or discounts (see Q-05).
+**Not built.** Nothing sends data to a fulfilment, finance, screening or stock system. The server's programming interface is private to the portal's own browser application. It accepts calls only from the portal's own address, with the portal's session cookie. It is not offered to resellers' systems (BRD §4.2). There is no reseller self-registration, and no bulk import of resellers or discounts (see Q-05).
 
 ## 5. Data
 
@@ -120,8 +120,8 @@ Everything lives in the one portal database. "Ledger (append-only)" means the da
 ### 5.2 Rules that live in the data, not only in the screens
 
 - **Money.** Prices are held as decimals with 4 places, and net prices and line totals are rounded to 2 places, half away from zero. The rounding rule is **(provisional)**, to be agreed with Jensen Huang, including the 9.99-at-12 % case in story-04-02's DoD. There is one currency (backlog assumption). The currency code is still stored on every quote version, so a second currency is a change of rules, not of records.
-- **Time.** Every timestamp is stored in UTC. Screens show Bow's business time zone. **Today**, for valid-until and expiry, is the calendar date in Bow's business time zone, and a quote is valid to the end of its valid-until date there (story-05-04 DoD). The zone itself is **(provisional)**, until Bow's location is confirmed (Q-03).
-- **Received time** is set by the database when the request is recorded, for every path including a rep's entry (BRD BR-06, BR-15). For a request that arrived by phone or email, this is the time it was **entered**, not when it arrived. See Q-02.
+- **Time.** Every timestamp is stored in UTC. Screens show Bow's business time zone. **Today**, for valid-until and expiry, is the calendar date in Bow's business time zone, and a quote is valid to the end of its valid-until date there (story-05-04 DoD). The zone is Bow's head-office time zone (decided by Yash Dixit, FDE, 2026-09-26). It is set in configuration, and Elon Musk confirms which zone that is once Bow's location is recorded.
+- **Received time** is set by the database when the request is recorded, for every path including a rep's entry (BRD BR-06, BR-15). For a request that arrived by phone or email, this is the time it was **entered**, not when it arrived. On go-live day, reps re-enter the open Excel requests in their original arrival order **before resellers are given access** (§10 runbook 6), so oldest-first still holds (decided by Yash Dixit, FDE, 2026-09-26). The known cost: for those requests, the Waiting column counts from go-live, not from their true arrival.
 - **A request belongs to exactly one reseller**, copied from the requester when the request is recorded. It never changes, even if the requester is later deactivated.
 
 ### 5.3 Guarantees the database enforces
@@ -163,7 +163,7 @@ The full records, with rejected alternatives, costs and revisit conditions, are 
 | ADR-07 | Emails go through an outbox table and a background worker to Azure Communication Services. Refusal after 10 minutes of retries is listed as failed | Proposed |
 | ADR-08 | One stored status per request, changed only by guarded transitions. Expired is worked out when read, from the valid-until date and Bow's business day | Proposed |
 | ADR-09 | Product search uses the database's own full-text index, not a separate search service | Proposed |
-| ADR-10 | Built in C# on ASP.NET Core, with pages rendered on the server | Proposed; confirmed by the FDE at Q-01 |
+| ADR-10 | Built in TypeScript on Node.js: a browser application and a server programming interface, on one address, with a server-held session | Proposed; the language chosen by the FDE |
 
 ## 7. Non-functional targets
 
@@ -179,7 +179,7 @@ Designed and load-tested for: **500 resellers, 3,000 reseller users, 50 internal
 | N-02 | Other page responses | 95 % in ≤ 1.5 s with 100 concurrent users on the §7.1 mix | Same load test | Architect's target, not client-committed |
 | N-03 | New request visible to reps | In the open requests list ≤ 60 s after it is recorded, including on a list already open on a rep's screen (the list refreshes itself every 30 s) | QA submits a request with the list open on a second screen and times its arrival, 20 runs, all ≤ 60 s | BR-08, A-15 |
 | N-04 | Email hand-over | 99 % of emails accepted by the email service ≤ 5 min after the event. Any email not accepted after 10 min of retries appears on the failed emails list ≤ 15 min after the event | Outbox timestamps in the test environment. QA blocks the email service credential and times the failed-list entry | BR-07, BR-13, A-15 |
-| N-05 | Availability | 99.5 % per calendar month (about 3 h 40 min of downtime), excluding maintenance announced two business days ahead | Application Insights availability test from 3 locations every 5 minutes against the sign-in page and a health check that reads the database; monthly report | Architect's proposal. **Not client-committed** until Jensen Huang confirms (Q-04) |
+| N-05 | Availability | 99.5 % per calendar month (about 3 h 40 min of downtime), excluding maintenance announced two business days ahead | Application Insights availability test from 3 locations every 5 minutes against the sign-in page and a health check that reads the database; monthly report | Architect's proposal, endorsed by Yash Dixit (FDE) on 2026-09-26. **Not client-committed** until Jensen Huang confirms at the gate |
 | N-06 | Data loss and recovery | Ordinary failure or mistake: lose ≤ 15 min of data, restored ≤ 4 business hours. Loss of the Azure region: lose ≤ 1 h, restored ≤ 1 business day | A restore drill in the test environment before go-live, timed and recorded by the support partner. Repeated every 12 months | BR-19; C-05 |
 | N-07 | Records kept | Nothing in §5.1 marked ledger (append-only) can be updated or deleted by the application's database login, for at least 5 years | QA attempts an update and a delete on every append-only table with the application's own credentials, and each is refused | BR-19, A-08 |
 | N-08 | Deactivation takes effect | The next page or action by a deactivated user is refused, with no grace period | QA deactivates a signed-in user, then clicks once | story-06-02 c4 |
@@ -230,6 +230,8 @@ The data classes, and who may read and change each, are in §5.4.
 | T-16 | B9 | Someone with database rights edits a sent quote or deletes a request | The export record (A-08) and Bow's evidence of what it offered are false, with no trace | Unlikely; severe | Append-only ledger tables refuse update and delete even from administrators. Ledger digests are kept in immutable storage, so tampering can be detected (ADR-04). **QA:** N-07, plus a ledger verification run. Residual: R-01 |
 | T-17 | B7 | The email credential expires or is revoked (it has a 12-month life) | Every confirmation and quote ready email stops. Resellers phone to ask, and the portal's main promise fails | Likely within a year; high | Failed emails appear on the list within 15 min (N-04), and the support partner is alerted on the first failure. Rotation is in the §10 calendar. **QA:** revoke the credential in test; the list and the alert both fire |
 | T-18 | B7 | Bow's domain has no SPF or DKIM records for the email service | Confirmation emails land in spam or are rejected after acceptance, which the portal cannot see (R-02) | Likely without a control; medium | The domain is verified in Communication Services before go-live. **QA:** send to one Microsoft 365 mailbox and one Gmail mailbox, and check that the headers pass SPF and DKIM |
+| T-20 | B1 | Someone guesses reseller passwords or one-time codes by trying many (credential stuffing against the reseller entrance) | An outsider signs in as a buyer and reads that reseller's quotes (as T-01, for one reseller) | Possible; high | External ID's built-in lockout and throttling stay switched on, and cannot be disabled in the portal's configuration. Staff sign-in inherits Bow's Microsoft 365 policy. **QA:** 10 wrong passwords in a row for a test reseller user; the account is locked or throttled, and the right password is refused until the lockout period ends |
+| T-21 | B3, B6 | A signed-in reseller admin or rep visits another website that silently submits an action to the portal's programming interface with their cookie (cross-site request forgery). ADR-10 makes every action an interface call | An outsider is added to a reseller (as T-03), or a price is changed in a price maintainer's name (as T-07) | Possible; high | The session cookie is sent only on requests from the portal's own site, and every changing call must carry a token that only the portal's own pages hold. **QA:** from a page on another origin, submit "add user" and "change price" while signed in; both are refused and nothing changes |
 | T-19 | B2 | The time a "not found" takes, or its wording, differs for a real foreign ID | Reseller B learns which request IDs exist | Unlikely; low | Accepted (R-05). Random IDs (ADR-06) make guessing impractical |
 
 ### 8.3 Accepted risks
@@ -242,12 +244,13 @@ No client stakeholder has accepted any of these yet. Each is recorded as **provi
 | R-02 | An email the service accepts and that later bounces is not listed (backlog assumption) | Yash Dixit (FDE), provisional; Elon Musk to ratify | 2026-09-26 | Resellers report missing emails that the failed list did not show |
 | R-03 | A rep can add a caller to a reseller, and the reseller's admins are told after the fact, not asked first (D2-C2) | Yash Dixit (FDE), provisional; Elon Musk to ratify | 2026-09-26 | Any report of an outsider added this way |
 | R-04 | Reseller users' names and emails are kept with their requests for at least five years, whatever data protection law turns out to apply (NF-07 open) | Yash Dixit (FDE), provisional; Elon Musk to ratify | 2026-09-26 | NF-07 is answered, or a reseller user asks to be erased |
+| R-06 | No web application firewall in front of the portal. Azure's platform protection alone stands against flooding and automated attacks (T-20 relies on External ID's lockout) | Yash Dixit (FDE), provisional; Elon Musk to ratify | 2026-09-26 | The portal is attacked, or traffic exceeds 10 times §7.1 |
 | R-05 | Existence of a request ID might be inferred from response timing (T-19) | Yash Dixit (FDE), provisional; Elon Musk to ratify | 2026-09-26 | Request IDs become guessable |
 
 ### 8.4 Deliberately not addressed
 
 - **Export screening and classification.** These stay outside the portal (BRD §4.2, A-08). The portal cannot ship anything, so it cannot let a shipment bypass screening. If Bow runs no screening today, that gap exists before and after this work. It is raised in the BRD, not solved here.
-- **Denial of service beyond Azure's platform protection.** No web application firewall is included at these volumes. Revisit if the portal is attacked or traffic exceeds 10 times §7.1.
+- **Denial of service beyond Azure's platform protection.** This is accepted as R-06, not left unaddressed.
 - **Bounce handling.** See R-02.
 
 ## 9. Traceability
@@ -319,7 +322,7 @@ Only epic-01 needs a large set of work before it can be shown, and epic-02 adds 
 
 ## 10. Running it
 
-**Who.** A support partner under contract, in Bow's business hours, is a go-live precondition (C-05). Bow names one person as the partner's contact. The partner holds Azure contributor rights. Azure owner rights are held by two named people only (R-01).
+**Who.** A support partner under contract, in Bow's business hours, is a **go-live precondition** (C-05). It is strongly advised, but it does not block: if the contract is not signed by go-live, the delivery team provides interim support for a period Jensen Huang and the FDE agree in writing before go-live, and the partner runs the restore drill (N-06) within 30 days of signing (decided by Yash Dixit, FDE, 2026-09-26). Until the contract is signed, Bow depends on the delivery team to restore, rotate credentials and answer alerts. Bow names one person as the partner's contact. The partner holds Azure contributor rights. Azure owner rights are held by two named people only (R-01).
 
 **Monitoring.** Application Insights alerts the partner on: the availability test failing twice in a row; any email reaching the failed list; database storage over 80 %; error rate over 2 % of requests in 15 minutes.
 
@@ -329,14 +332,18 @@ Only epic-01 needs a large set of work before it can be shown, and epic-02 adds 
 3. **Seeding.** Two role managers (Jensen Huang and a deputy he names) are set in configuration at first deployment. From then on, all naming is done on the named users page.
 4. **Credential rotation.** Rotate the email-sending credential every 12 months, 30 days before it expires (T-17).
 5. **Restore drill.** Run it every 12 months (N-06).
+6. **Go-live re-entry.** Before resellers are given access, reps re-enter every request still open in the Excel request logs, oldest first by the date in the log (NF-05, Q-02). Resellers get access only once the last one is entered.
 
-## 11. Open points carried to the gate
+## 11. Points decided with the FDE, and what still goes to the gate
 
-| # | Point | Recommended answer | Who confirms |
+| # | Point | Decided (Yash Dixit, FDE, 2026-09-26) | Still to confirm |
 |---|---|---|---|
-| Q-01 | Programming language and framework (ADR-10) | C# on ASP.NET Core | Yash Dixit (FDE), then Elon Musk |
-| Q-02 | A request entered by a rep carries the time it was entered, not when the call or email arrived, including every request re-entered on go-live day (NF-05) | See the critique | Jensen Huang |
-| Q-03 | Bow's business time zone for "today" and valid-until | Bow's head-office time zone | Elon Musk |
-| Q-04 | Availability target N-05 | 99.5 % a month, business-hours support | Jensen Huang |
-| Q-05 | No bulk loader for resellers, users or standard discounts. At the §7.1 sizing, entering 500 resellers by hand is days of rep time before go-live | Keep as approved. Count the real number first (NF-08) | Jensen Huang |
+| Q-01 | Programming language and framework | TypeScript on Node.js (ADR-10). The architect had recommended C#, which is recorded as the rejected alternative | Elon Musk at g3 |
+| Q-02 | A rep-entered request carries its entry time | Keep BR-06 as approved. Re-enter open Excel requests in arrival order before resellers get access (§10 runbook 6). No change request | Jensen Huang, that the Waiting-column cost is acceptable |
+| Q-03 | Time zone for "today" and valid-until | Bow's head-office time zone | Elon Musk names the zone |
+| Q-04 | Availability N-05 | 99.5 % a month, business-hours support | Jensen Huang |
+| Q-05 | No bulk loader for resellers, users or discounts | Keep as approved. Jensen Huang counts resellers now (NF-08). If there are more than about 100, the FDE raises a change request for a one-off import | Jensen Huang (the count) |
+| Q-06 | Technical setup before a partner exists | Bow's Microsoft 365 administrator performs the Azure and Entra steps (`demo-topology.md`) | Elon Musk names that person |
+| Q-07 | Support partner at go-live | A precondition, not a blocker. Interim support from the delivery team for an agreed period (§10) | Jensen Huang owns procuring the partner |
+| Q-08 | Accepted risks R-01 to R-06 | Provisionally accepted by Yash Dixit (FDE) | Elon Musk ratifies or refuses each at g3 |
 | — | A-07: one discount per reseller | As approved. If terms prove richer, that is a BRD change | Elon Musk, Jensen Huang |

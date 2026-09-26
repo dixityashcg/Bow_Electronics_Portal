@@ -11,6 +11,8 @@ For the "email sending switched off" steps (epic-02 step 10), the test environme
 
 `<test>` below means the test environment's address, which is assigned when the environment is provisioned.
 
+**Who performs the setup.** Bow has no IT operations team, but it does have a Microsoft 365 administrator. That person performs the one-off Azure and Entra steps below: creating the subscription, registering the application, creating the External ID tenant, and creating test accounts and mailboxes (decided by Yash Dixit, FDE, 2026-09-26). Elon Musk owns naming them and making sure it happens. Yash Dixit's team supplies step-by-step instructions for each step, so the administrator needs no Azure experience. Rows marked *(M365 admin)* are performed by that person.
+
 The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `ea-elon` (Elon Musk), `po-jensen` (Jensen Huang), and `partner`, meaning the support partner once contracted; until then, `fde-yash` stands in.
 
 ## Epic: epic-01
@@ -20,11 +22,12 @@ The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Bow Azure subscription created, with two named owners (R-01) | ea-elon | 10 business days |
-| Bow's Microsoft 365 administrator named, and the portal registered as an application in Bow's Entra ID | ea-elon | 5 business days |
+| Bow Azure subscription created, with two named owners (R-01) *(M365 admin)* | ea-elon | 10 business days |
+| Bow's Microsoft 365 administrator named, as the person who performs the setup (Q-06) | ea-elon | 3 business days |
+| Portal registered as an application in Bow's Entra ID *(M365 admin)* | ea-elon | 2 business days after the administrator is named |
 | Excel ERP owner named (NF-03, C-10) | ea-elon | 5 business days |
 | A copy of the real ERP spreadsheet, and its columns mapped with the ERP owner (story-01-01 DoD) | ea-elon (via the named ERP owner) | 5 business days after the owner is named |
-| Test staff accounts in Bow's Entra ID for Jensen Huang (role manager), a price maintainer, rep Pat, and a rep with no role | ea-elon | 2 business days |
+| Test staff accounts in Bow's Entra ID for Jensen Huang (role manager), a price maintainer, rep Pat, and a rep with no role | ea-elon | 2 business days (M365 admin) |
 | Two role managers named for seeding (architecture §10) | po-jensen | 2 business days |
 | Test environment provisioned and the build pipeline deploying to it | fde-yash | 3 business days after the subscription |
 
@@ -36,9 +39,9 @@ The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
 | epic-01 demo data still in the test database (loaded store) | fde-yash | none |
-| Entra External ID tenant for the portal created in Bow's subscription | fde-yash | 2 business days |
+| Entra External ID tenant for the portal created in Bow's subscription *(M365 admin, following the FDE's instructions)* | ea-elon | 3 business days |
 | A sending domain for test email (a Bow subdomain), with its SPF and DKIM records added by Bow's DNS owner | ea-elon | 5 business days |
-| Four test mailboxes in Bow's Microsoft 365 (Reseller A admin, Reseller A buyer, Reseller B user, rep) | ea-elon | 2 business days |
+| Four test mailboxes in Bow's Microsoft 365 (Reseller A admin, Reseller A buyer, Reseller B user, rep) | ea-elon | 2 business days (M365 admin) |
 | A product closed for quoting in the epic-01 demo (demo step 3) | fde-yash | none |
 
 ## Epic: epic-03
@@ -48,7 +51,7 @@ The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Test staff accounts for rep Sam, rep Alex and internal admin Jo | ea-elon | 2 business days |
+| Test staff accounts for rep Sam, rep Alex and internal admin Jo | ea-elon | 2 business days (M365 admin) |
 | Jensen Huang confirms who gives the internal admin role (story-03-06 DoD) | po-jensen | before the demo |
 | A second browser profile or machine, so two reps are signed in at once (demo step 5) | fde-yash | none |
 
@@ -81,4 +84,4 @@ The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Two further Microsoft 365 test mailboxes (a new buyer and a second buyer at Reseller A) | ea-elon | 2 business days |
+| Two further Microsoft 365 test mailboxes (a new buyer and a second buyer at Reseller A) | ea-elon | 2 business days (M365 admin) |

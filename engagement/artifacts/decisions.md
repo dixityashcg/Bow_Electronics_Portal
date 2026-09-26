@@ -20,7 +20,7 @@ The backlog asks for about 25 screens across two audiences, a catalog and pricin
 
 **Decision**
 
-One ASP.NET Core web application (ADR-10), deployed as a single unit. It holds four modules: Access, Catalog and pricing, Quote workflow, and Notifications. Each owns its own tables in one Azure SQL database, and another module may use them only through that module's code.
+One TypeScript web application (ADR-10), deployed as a single unit: a browser application and its server programming interface on one address. It holds four modules: Access, Catalog and pricing, Quote workflow, and Notifications. Each owns its own tables in one Azure SQL database, and another module may use them only through that module's code.
 
 **Alternatives rejected**
 
@@ -276,7 +276,7 @@ BR-16 requires the reseller and the internal sales team to see the same status, 
 
 - A request holds one stored status: Received, Being quoted, Quote sent, Change requested, Approved or Declined. It changes only through one transition function that states, for each move, the status it requires. For example, "take" requires no owner; "approve" requires that the version is the current one, Quote sent, and not expired. Each move is a single conditional database update, so a second simultaneous attempt finds the condition false and is refused with the winner's name.
 - **Expired is never stored.** A request shows Expired when its stored status is Quote sent and today, in Bow's business time zone, is after the current version's valid-until date. Both page sets and the approve action use the same function.
-- Bow's business time zone is a configuration setting, **provisional** until Q-03.
+- Bow's business time zone is Bow's head-office time zone (decided by Yash Dixit, FDE, 2026-09-26). It is held as a configuration setting, and Elon Musk confirms which zone that is.
 
 **Alternatives rejected**
 
@@ -332,34 +332,41 @@ The real catalog is over 500,000 products, N-01 is missed in the load test, or J
 
 ---
 
-## ADR-10 — Built in C# on ASP.NET Core, with pages rendered on the server
+## ADR-10 — Built in TypeScript on Node.js: a browser application and a server programming interface on one address, with the session held on the server
 
-- **Status**: Proposed. The FDE confirms or changes it at Q-01
+- **Status**: Proposed
 - **Date**: 2026-09-26
-- **Decided by**: Yash Dixit (FDE). To be agreed by Elon Musk (EA) at g3
+- **Decided by**: Yash Dixit (FDE), who chose TypeScript on 2026-09-26 **against the architect's recommendation of C#**. To be agreed by Elon Musk (EA) at g3
 
 **Context**
 
-The language and framework decide who can support the portal for years. Bow's support partner will come from the Microsoft ecosystem (ADR-02, ADR-03). The screens are forms and lists with no rich interaction. The forcing question: what stack is the partner most likely to already know, with the fewest parts?
+The language and framework decide who can support the portal for years. The screens are forms and lists. The backlog repeatedly requires that an action "sent directly, without using the page" is refused (story-01-04 c5, story-02-03 c4, story-05-01 c7, story-05-07 c3, story-06-03 c2). The forcing question: which stack is the portal built in, and how is the browser trusted with the session?
 
 **Decision**
 
-C# on ASP.NET Core (a current long-term-support release), with server-rendered pages (Razor Pages), a small amount of script for the self-refreshing list, and Entity Framework Core for the database, with the ledger tables created by explicit migrations.
+- TypeScript throughout, on a current long-term-support Node.js release on Azure App Service.
+- A browser application draws the screens and calls a server programming interface. Both are served from the same address.
+- The server holds the session. Sign-in with Entra ID or External ID happens on the server, and the browser receives only a session cookie. That cookie cannot be read by page script and is sent only on the portal's own requests. Access tokens never reach the browser.
+- Every changing call also carries an anti-forgery token (T-21).
+- Every authorisation check happens on the server's interface. The browser hiding a button is never the control.
+- Database access uses a TypeScript data library that supports SQL Server. The ledger tables, column grants and full-text index are created by hand-written SQL migrations, because such libraries do not model them.
 
 **Alternatives rejected**
 
 | Alternative | Why not |
 |---|---|
-| TypeScript: a browser application calling a Node.js programming interface | A competent, common choice. Rejected because it doubles what is built and secured (an interface and a browser application), and every "sent directly" test in the backlog becomes an interface to defend. Microsoft-ecosystem partners are less likely to support it |
-| Java with Spring | Equally capable. Rejected because it is less common among Microsoft-ecosystem support partners |
-| Blazor (C# interactive components) | Adds a persistent connection per user and more state on the server, for screens that do not need it |
+| C# on ASP.NET Core with pages rendered on the server (the architect's recommendation) | Fewer moving parts: no separate interface to secure, and the skill set most common among Microsoft-ecosystem support partners (ADR-02). **Rejected by the FDE's decision on 2026-09-26.** The FDE's reason is to be stated at the gate, so the EA can weigh it. The architect's case is kept here so it can be revisited |
+| TypeScript with tokens held in the browser (a pure single-page application talking to the interface with bearer tokens) | Tokens in the browser can be stolen by any script injected into the page, and signing out cannot revoke them before they expire. The server-held session keeps N-08 and N-09 (next action refused) simple |
+| Java with Spring | Capable, but less common among Microsoft-ecosystem partners and not what the FDE chose |
 
 **Consequences**
 
-- The partner must have .NET skills. This is a selection criterion for the partner contract.
-- Server-rendered pages give fewer moving parts but a plainer feel than a browser application.
-- The build team works in C#.
+- Two things to build and secure: the browser application and the interface. Every backlog "sent directly" criterion is now a direct call to the interface, and QA tests each one at the interface, not through the screen.
+- Cross-site request forgery becomes a live threat (T-21) and needs its own control and test.
+- The support partner must have TypeScript/Node skills as well as Azure skills. Among Microsoft-ecosystem partners that narrows the field, and it becomes a selection criterion for the partner contract (Q-07).
+- The ledger tables and full-text search sit outside what the data library understands. Those parts are plain SQL that the partner must be able to read.
+- A richer, more responsive interface is possible. The self-refreshing open requests list (N-03) is natural in this stack.
 
 **Revisit when**
 
-The chosen support partner has no .NET capability. Or Bow later needs a public programming interface for electronic quote exchange, which would then be added beside the pages, not in place of them.
+The support partner Bow contracts has no Node capability. Or Bow later needs a public interface for electronic quote exchange (BRD §4.2), which would be a separate, versioned interface, never the portal's private one.

@@ -30,6 +30,12 @@
 - **request statuses** — Received, Being quoted, Quote sent, Change requested, Approved, Declined, Expired. (BRD BR-16)
 - **named users** — the Bow users Jensen Huang names to maintain prices, or to set standard discounts. (BRD BR-17, BR-20)
 
+- **internal admin** — a Bow user who can reassign any open request from one rep to another, for example when its owner has left. (backlog story-03-06, decision D2-C1)
+- **role manager** — a Bow user who decides who is on the named-user lists (price maintainers, discount setters, internal admins) and the internal users list. Jensen Huang and a deputy he names. (architecture §10, from story-01-05 c5; set in Architecture)
+- **internal users list** — the Bow staff the portal admits to the internal side. A Bow Microsoft 365 account alone is not enough. (architecture ADR-03, T-05; set in Architecture)
+- **refused attempts list** — where internal admins read the record of refused attempts. (backlog story-01-04; set in Architecture §9.2)
+- **Entra ID / Entra External ID** — Microsoft's sign-in services: Entra ID holds Bow's staff accounts (Microsoft 365), and External ID holds the reseller users' accounts. (architecture ADR-03)
+
 ## Rejected synonyms
 - customer → use **reseller** (the client says reseller for the companies that buy through this portal)
 - reseller buyer → use **reseller user** (the BRD's term)
