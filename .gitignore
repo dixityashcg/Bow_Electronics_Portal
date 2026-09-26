@@ -6,3 +6,11 @@
 .devin/skills/raise-*/
 .github/prompts/raise-*.prompt.md
 .codex/prompts/raise-*.md
+
+# Portal — dependencies, builds and the local Stage 1 database.
+node_modules/
+dist/
+.local/
+.env.local
+*.tsbuildinfo
+.DS_Store

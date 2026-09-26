@@ -1,0 +1,32 @@
+{
+  "name": "bow-reseller-portal",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "workspaces": [
+    "packages/shared",
+    "apps/server",
+    "apps/web"
+  ],
+  "scripts": {
+    "test": "node scripts/test.mjs",
+    "typecheck": "tsc -p packages/shared && tsc -p apps/server && tsc -p apps/web",
+    "build": "npm run typecheck && npm run build --workspace apps/web && npm run build --workspace apps/server",
+    "dev": "npm run dev --workspace apps/server",
+    "seed:sample-erp": "npm run seed:sample-erp --workspace apps/server"
+  },
+  "devDependencies": {
+    "typescript": "^5.9.0",
+    "vitest": "^4.1.11"
+  },
+  "allowScripts": {
+    "better-sqlite3@12.11.1": true,
+    "esbuild@0.25.12": true,
+    "esbuild@0.28.2": true
+  },
+  "overrides": {
+    "fastify": "^5.12.5"
+  }
+}
