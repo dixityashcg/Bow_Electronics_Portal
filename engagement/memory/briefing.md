@@ -1,4 +1,4 @@
-# Briefing — d2-backlog
+# Briefing — v1-architecture
 
 Compiled by rule from the memory stores — nothing here was written by a model. Read it before the inputs; act on what applies; note what you learn with `raise memory note`.
 
@@ -8,19 +8,29 @@ Compiled by rule from the memory stores — nothing here was written by a model.
 
 ## From the practice
 
-- **2026-09-23 · d2-backlog** — A requirement that says an unclassifiable case is admitted rather than refused makes the reference list optional to the build without making it optional to the business: every criterion about the list can pass while the list is empty, and the epic can then be demonstrated and accepted in a state where the eligibility rule never fires at all. Write the empty-list case as its own criterion so the behaviour is deliberate, name populating the list as a dependency with an owner outside the build, and say in the assessment that the demo must not be run against an empty list. Worth checking wherever a fallback for unknown values exists alongside a lookup table somebody else owns. _(voltway-warranty-claims, note)_
-- **2026-09-23 · d2-backlog** — When a change request takes a value out of a decision path but keeps it for reporting, the value's failure mode goes from loud to silent, and the acceptance criteria guarding it have to move with it. A part classification that had decided how long a part was covered became a class recorded only so a class of claim stayed separable in a later report: an empty list stopped being a blocker, because every customer is now answered correctly without it, and a list that is present but wrong stopped reaching any customer at all — it now only misreports, and nobody argues with a report they cannot see. The criteria that used to sit on the answer must be rewritten onto the record: what class reaches the queue and the refusal record, what happens when the list contradicts itself, and that a claim's class is fixed when the claim is made so a month already reported does not change when the list is later corrected. Also worth writing the empty-list case as its own criterion in the story that reports, because every criterion about counting by class passes when every claim carries the same not-established value, so the epic can be demonstrated and accepted with the report separating nothing. Worth checking wherever a change makes an input reporting-only rather than removing it. _(voltway-warranty-claims, note)_
-- **2026-09-23 · d2-backlog** — An approved scope exclusion survives decomposition only when it is written into a story as an observable absence someone can check at the demo. Exclusions left in the requirements document alone get built by accident, because the person building reads the stories and not the exclusion list. Turning each exclusion into a criterion of the form 'when the page is searched for X, then no such field is present' also converts it from prose nobody tests into a case QA can fail. _(voltway-returns-portal, note)_
+- **2026-09-23 · v1-architecture** — A mitigation that refuses the empty configuration misses the way the configuration actually goes wrong. An allowlist guard that refuses to start on an absent or empty list still starts cleanly on a list somebody widened to a default route at 6pm to prove the application worked — which is how the restriction is really lost. Make the start-up check refuse the over-broad value too, and have QA start the system once with each bad configuration rather than only with the missing one. _(voltway-returns-portal, note)_
+- **2026-09-23 · v1-architecture** — A start-up guard that refuses the absent configuration can be exactly the wrong guard when the absent value is the legitimate one. Here an empty part-classification list is a required state — before the owning team has populated it, every claim must be admitted rather than refused — so refusing to start on an empty list, which is the reflex and is what the same codebase correctly does for its network allowlist, would have broken an approved criterion. The dangerous value was the malformed one: a list carrying a class outside the two, or the same part twice, silently changes what the system applies to a customer. Ask of each configuration guard which value is legal-but-empty and which is present-but-wrong, point the refusal at the second, and have QA start the system once with each bad value rather than once with the missing one. _(voltway-warranty-claims, note)_
+- **2026-09-23 · v1-architecture** — When a system takes over an identifier series that customers hold on paper, check what the backup regime does to the counter. A nightly snapshot restores the counter along with the data, so the system re-issues numbers already printed on customers' documents and two records end up sharing one identifier permanently. The lost day is unavoidable; the re-issue is not. Make advancing the counter past the highest number ever issued a mandatory step in the restore procedure, and have the system refuse to accept work until a restore marker is cleared. _(voltway-returns-portal, note)_
+- **2026-09-23 · v1-architecture** — A passing check that pins an absence can be satisfied by design rather than widened. A check asserting a data directory holds exactly four named files would have failed the moment a fifth log was added — and the reflex is to add the name to the list, which is how such a check stops meaning anything. Opening the new log's handle on its first write instead left the check passing unmodified and made the file's existence evidence that the event it records actually happened. Before widening an absence check to admit new work, ask whether the new thing can be built so the absence is still true; where it genuinely cannot, scope the change to the surface the criterion is about and name what is allowed to break it, so a later addition still fails. _(voltway-warranty-claims, note)_
 - **2026-09-23 · d1-brd** — A client asking for a rule to refuse a request at the door, in a system with no customer identity and no way to reach a customer afterwards, is asking for two things that pull apart: fewer refusals reaching the desk, and fewer arguments. The first is delivered by the rule; the second is not, because an unidentified visitor who is refused can resubmit with a better answer, and the desk that by design never sees the refusal cannot tell the second attempt from an honest one. The refusal also stops being evidence — where a human refusal left a thread, an automated one leaves nothing unless a requirement says otherwise. Two requirements follow and neither is in the request: record every door refusal with the values it was computed from, and treat the refusal screen as the only sentence the organisation gets to say, because nothing reaches the visitor after it. Worth applying wherever an eligibility, entitlement or qualification check is being moved from a person to a form. _(voltway-warranty-claims, note)_
 
 ## Practice for this phase
 
-_Nothing in the declared method matches what this engagement says about d2-backlog._
-That is an honest empty, not an omission: promotion reads the declared
-modules against the Epic's own stories and the architecture decisions, and
-promotes nothing when it finds nothing.
+Selected by rule from the declared modules — 1 of them, the most
+specific first. **When you act on one of these, name it in the artifact**: a
+citation is the only way anyone can tell later whether this reached the work.
+
+For this phase that means: **name it in the architecture or the decision it informed** — in artifacts/architecture.md or artifacts/decisions.md.
+Nothing refuses if you do not; whether a piece of practice fits this Epic is
+your judgement. What is not your judgement is whether anyone can tell later.
+
+### as-is assessment · `ed-allocation-rule-assessment`
+
+**When**: Read when assessing an existing allocation rule before a new demand channel — shows finding who actually owns it and how often it is overridden.
+
+From electronics-distribution (example) — matched on assessment, existing, finding. Full text: `domains/electronics-distribution/examples/ed-allocation-rule-assessment.md`
 
 ## Compiled from
 
-- `engagement/memory/lessons.md` · 98ba05a6c0b1
+- `engagement/memory/lessons.md` · 9d08a3fd4605
 - `~/.raise/memory/practice/lessons.md` · 6c2778ff4ce6
