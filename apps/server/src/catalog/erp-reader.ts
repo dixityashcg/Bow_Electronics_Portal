@@ -55,31 +55,49 @@ function rawText(value: CellValue): string | null {
   return null;
 }
 
-/**
- * A part number or description held as a number or a date is read as the ERP
- * shows it — 1.10 stays "1.10", 00123 stays "00123" — not as the number
- * underneath, so a lookup by what the ERP shows finds the product (adversarial
- * review, story-01-01 c2). Prices are read as numbers; this is only for text fields.
- */
-function displayed(cell: ExcelJS.Cell): CellValue {
-  const value = cell.value;
-  if (typeof value === 'number') return formatAsShown(value, cell.numFmt);
-  if (value instanceof Date) return cell.text;
-  return value;
+/** A text field whose cell the reader cannot show exactly as the ERP does. */
+type CannotShow = { cannotShow: string };
+
+function cannotShow(value: unknown): value is CannotShow {
+  return typeof value === 'object' && value !== null && 'cannotShow' in value;
 }
 
 /**
- * Applies the plain number formats a part-number column uses: zero padding
- * ("00000") and fixed decimals ("0.00"). Any other format falls back to the
- * number as written (a risk carried to QA until the real ERP is seen).
+ * A part number or description held as a number is read as the ERP shows it —
+ * 1.10 stays "1.10", 00123 stays "00123" — so a lookup by what the ERP shows
+ * finds the product (adversarial review, story-01-01 c2). Where the reader
+ * cannot be sure what the ERP shows (another number format, a date), the row
+ * is listed as not loaded with the reason, so a mismatch always reaches the
+ * summary instead of loading under a different part number (round 2).
  */
-function formatAsShown(value: number, numFmt: string | undefined): string {
-  const plain = /^(0+)(?:\.(0+))?$/.exec(numFmt ?? '');
-  if (!plain || value < 0) return String(value);
+function displayed(cell: ExcelJS.Cell, field: string): CellValue | CannotShow {
+  const value = cell.value;
+  if (value instanceof Date) return { cannotShow: `${field} is a date` };
+  if (typeof value !== 'number') return value;
+  const shown = formatAsShown(value, cell.numFmt);
+  return shown ?? { cannotShow: `${field} is a number formatted "${cell.numFmt ?? 'General'}", which the load cannot show as the ERP does` };
+}
+
+/**
+ * The number formats a part-number column plausibly uses and the reader can
+ * render exactly as Excel does: General, zero padding ("00000") and fixed
+ * decimals ("0.00"). Rounds the way Excel displays, at 15 significant digits.
+ * Anything else, including negative numbers, returns null.
+ */
+function formatAsShown(value: number, numFmt: string | undefined): string | null {
+  if (!Number.isFinite(value) || value < 0 || value >= 1e15) return null;
+  const format = numFmt ?? 'General';
+  if (format === 'General') {
+    const text = String(Number(value.toPrecision(15)));
+    return /e/i.test(text) ? null : text;
+  }
+  const plain = /^(0+)(?:\.(0+))?$/.exec(format);
+  if (!plain) return null;
   const decimals = plain[2]?.length ?? 0;
-  const [whole = '0', fraction] = value.toFixed(decimals).split('.');
-  const padded = whole.padStart(plain[1]!.length, '0');
-  return fraction === undefined ? padded : `${padded}.${fraction}`;
+  const scaled = Math.round(Number((value * 10 ** decimals).toPrecision(15)));
+  const digits = String(scaled).padStart(decimals + 1, '0');
+  const whole = digits.slice(0, digits.length - decimals).padStart(plain[1]!.length, '0');
+  return decimals === 0 ? whole : `${whole}.${digits.slice(digits.length - decimals)}`;
 }
 
 function isBlank(value: CellValue): boolean {
@@ -89,7 +107,8 @@ function isBlank(value: CellValue): boolean {
 
 type TextRead = { ok: true; text: string } | { ok: false; reason: string };
 
-function readText(value: CellValue, field: string): TextRead {
+function readText(value: CellValue | CannotShow, field: string): TextRead {
+  if (cannotShow(value)) return { ok: false, reason: value.cannotShow };
   if (isFormula(value)) return { ok: false, reason: `${field} is a formula` };
   if (isError(value)) return { ok: false, reason: `${field} is an error value: "${value.error}"` };
   return { ok: true, text: (rawText(value) ?? '').trim() };
@@ -151,6 +170,7 @@ export async function readErpWorkbook(buffer: Buffer | ArrayBuffer): Promise<Erp
 
   let headingRow: number | null = null;
   const columns: Partial<Record<ErpField, number>> = {};
+  const repeated = new Set<string>();
   for (let r = 1; r <= sheet.rowCount; r++) {
     const row = sheet.getRow(r);
     if (!row.hasValues) continue;
@@ -158,12 +178,22 @@ export async function readErpWorkbook(buffer: Buffer | ArrayBuffer): Promise<Erp
     row.eachCell((cell, col) => {
       const heading = (rawText(cell.value) ?? '').trim().toLowerCase();
       for (const [field, names] of Object.entries(erpColumnMapping) as [ErpField, readonly string[]][]) {
-        if (names.includes(heading) && columns[field] === undefined) columns[field] = col;
+        if (!names.includes(heading)) continue;
+        // A heading that appears twice means a second table beside the first,
+        // which the load would not read: refuse rather than miss it (round 2).
+        if (columns[field] !== undefined) repeated.add(names[0]!);
+        else columns[field] = col;
       }
     });
     break;
   }
   if (headingRow === null) throw new ErpFileRefused('The first worksheet is empty.');
+  if (repeated.size > 0) {
+    const names = [...repeated].map((n) => `"${n}"`).join(', ');
+    throw new ErpFileRefused(
+      `The heading row (row ${headingRow}) has more than one column headed ${names}. The load reads one table, so nothing was loaded.`,
+    );
+  }
   const missing = (Object.keys(erpColumnMapping) as ErpField[]).filter((f) => columns[f] === undefined);
   if (missing.length > 0) {
     const names = missing.map((f) => `"${erpColumnMapping[f][0]}"`).join(', ');
@@ -175,8 +205,8 @@ export async function readErpWorkbook(buffer: Buffer | ArrayBuffer): Promise<Erp
 
   for (let r = headingRow + 1; r <= sheet.rowCount; r++) {
     const row = sheet.getRow(r);
-    const partCell = displayed(row.getCell(columns.partNumber!));
-    const descriptionCell = displayed(row.getCell(columns.description!));
+    const partCell = displayed(row.getCell(columns.partNumber!), 'part number');
+    const descriptionCell = displayed(row.getCell(columns.description!), 'description');
     const priceCell = row.getCell(columns.price!).value;
     // A row with nothing in any cell is not a product row; a row with anything
     // in any cell is, and is either loaded or listed with its reason.
@@ -195,7 +225,7 @@ export async function readErpWorkbook(buffer: Buffer | ArrayBuffer): Promise<Erp
     const price = readPrice(priceCell);
     if (!price.ok) reasons.push(price.reason);
 
-    const candidate: Candidate = { rowNumber: r, rawPartNumber: rawText(partCell), rawPrice: rawText(priceCell), reasons };
+    const candidate: Candidate = { rowNumber: r, rawPartNumber: rawText(row.getCell(columns.partNumber!).value), rawPrice: rawText(priceCell), reasons };
     if (partNumber !== null) candidate.key = normalisedPartNumber(partNumber);
     if (reasons.length === 0 && partNumber !== null && description.ok && price.ok) {
       candidate.row = { rowNumber: r, partNumber, description: description.text, price: price.price };

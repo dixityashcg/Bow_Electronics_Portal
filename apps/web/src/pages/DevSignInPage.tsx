@@ -22,9 +22,13 @@ export default function DevSignInPage() {
     try {
       await api.post('/dev/api/sign-in', { audience: person.audience, subjectId: person.subjectId });
       await queryClient.invalidateQueries();
-      // Only a path on this site: never another origin or a javascript: address.
+      // Only a path on this site: parsed the way the browser will, then held to this origin (review R-8).
       const next = new URLSearchParams(window.location.search).get('next');
-      const safeNext = next && next.startsWith('/') && !next.startsWith('//') && !next.startsWith('/\\') ? next : null;
+      let safeNext: string | null = null;
+      if (next) {
+        const target = new URL(next, window.location.origin);
+        if (target.origin === window.location.origin) safeNext = `${target.pathname}${target.search}`;
+      }
       window.location.assign(safeNext ?? (person.audience === 'staff' ? '/sales' : '/'));
     } catch (e) {
       setError(e);

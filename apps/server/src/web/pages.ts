@@ -28,7 +28,16 @@ export function canonicalPath(path: string): string {
   } catch {
     // An undecodable path is compared as it came.
   }
-  return decoded.replace(/\/{2,}/g, '/').toLowerCase().replace(/(.)\/$/, '$1');
+  // Backslashes and dot segments are resolved the way a browser resolves them (review N-2).
+  const slashed = decoded.replace(/\\/g, '/').replace(/\/{2,}/g, '/');
+  let resolved = slashed;
+  try {
+    resolved = new URL(slashed, 'http://portal.invalid').pathname;
+    resolved = decodeURIComponent(resolved);
+  } catch {
+    // Compared as it came.
+  }
+  return resolved.replace(/\/{2,}/g, '/').toLowerCase().replace(/(.)\/$/, '$1');
 }
 
 function escapeHtml(text: string): string {
@@ -70,9 +79,10 @@ export class PagesController {
     // /sales%2Fstore) is sent to the one spelling the guard protects, so it is
     // refused and recorded like the page itself, never served here.
     if (canonical === '/sales' || canonical.startsWith('/sales/')) {
-      // Already in the guarded spelling yet not matched by the guarded route: never serve it.
-      if (canonical === path) throw new NotFoundException();
-      return reply.redirect(`${canonical}${query !== undefined ? `?${query}` : ''}`, 308);
+      // Already in the guarded spelling yet not matched by the guarded route,
+      // or holding characters no address should: never serve it (review N-1).
+      if (canonical === path || /[\u0000-\u001f\u007f-\u009f\u2028\u2029]/.test(canonical)) throw new NotFoundException();
+      return reply.redirect(`${encodeURI(canonical)}${query !== undefined ? `?${query}` : ''}`, 308);
     }
     // The /dev pages exist only when the dev module is loaded; everything else under /api or /dev is not found.
     if (!isPageRequest(canonical) || canonical === '/dev' || canonical.startsWith('/dev/')) throw new NotFoundException();

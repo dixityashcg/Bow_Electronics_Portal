@@ -243,13 +243,59 @@ describe('hand-built ERP files', () => {
     sheet.addRow([1.1, 'Numeric part shown with two decimals', 2]).getCell(1).numFmt = '0.00';
     sheet.addRow([123, 'Numeric part shown with leading zeros', 3]).getCell(1).numFmt = '00000';
     sheet.addRow([4711, 'Plain numeric part', 4]);
+    sheet.addRow([1.005, 'Rounded the way Excel shows it', 5]).getCell(1).numFmt = '0.00';
     const response = await pat.upload(LOAD, 'numeric.xlsx', Buffer.from(await book.xlsx.writeBuffer()));
     expect(response.status, response.body).toBe(201);
-    for (const [shown, description] of <[string, string][]>[['1.10', 'Numeric part shown with two decimals'], ['00123', 'Numeric part shown with leading zeros'], ['4711', 'Plain numeric part']]) {
+    const shownAs: [string, string][] = [
+      ['1.10', 'Numeric part shown with two decimals'],
+      ['00123', 'Numeric part shown with leading zeros'],
+      ['4711', 'Plain numeric part'],
+      ['1.01', 'Rounded the way Excel shows it'],
+    ];
+    for (const [shown, description] of shownAs) {
       const found = await pat.get(lookup(shown));
       expect(found.status, shown).toBe(200);
       expect(found.json).toMatchObject({ partNumber: shown, description });
     }
+  });
+
+  test('[story-01-01#2] a text field the load cannot show as the ERP does is listed as not loaded, never loaded under another form (review round 2)', async () => {
+    await portal.close();
+    portal = await startPortal();
+    const pat = await portal.signIn(PAT);
+    const book = new ExcelJS.Workbook();
+    const sheet = book.addWorksheet('ERP');
+    sheet.addRow(['Part number', 'Description', 'Price']);
+    sheet.addRow([1234, 'Thousands separator format', 1]).getCell(1).numFmt = '#,##0';
+    sheet.addRow([123, 'Prefixed format', 1]).getCell(1).numFmt = '"BW-"00000';
+    sheet.addRow(['BWE-DATED', new Date(Date.UTC(2024, 0, 2)), 1]);
+    sheet.addRow([12345678901234567890, 'Too many digits', 1]);
+    sheet.addRow(['BWE-FINE', 'Fine', 1]);
+    const response = await pat.upload(LOAD, 'formats.xlsx', Buffer.from(await book.xlsx.writeBuffer()));
+    expect(response.status, response.body).toBe(201);
+    const summary = response.json.summary;
+    expect(summary.notLoaded.map((r: any) => [r.rowNumber, r.reason])).toEqual([
+      [2, 'part number is a number formatted "#,##0", which the load cannot show as the ERP does'],
+      [3, 'part number is a number formatted ""BW-"00000", which the load cannot show as the ERP does'],
+      [4, 'description is a date'],
+      [5, 'part number is a number formatted "General", which the load cannot show as the ERP does'],
+    ]);
+    expect(summary.rowsLoaded).toBe(1);
+    expect(summary.complete).toBe(false);
+  });
+
+  test('[story-01-01#1] a heading row that repeats a mapped heading (a second table beside the first) is refused whole (review round 2)', async () => {
+    await portal.close();
+    portal = await startPortal();
+    const pat = await portal.signIn(PAT);
+    const response = await pat.upload(
+      LOAD,
+      'side-by-side.xlsx',
+      await workbook([['BWE-A', 'Alpha', 1, null, 'BWE-B', 'Beta', 2]], ['Part number', 'Description', 'Price', '', 'Part number', 'Description', 'Price']),
+    );
+    expect(response.status).toBe(400);
+    expect(response.json.message).toMatch(/more than one column headed "part number", "description", "price"/);
+    expect(await productCount(portal)).toBe(0);
   });
 
   test('[story-01-01#3] a numeric price too large to hold exactly is listed with its reason', async () => {

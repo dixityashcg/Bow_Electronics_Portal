@@ -85,6 +85,24 @@ describe('store changes are refused to anyone not named', () => {
     }
   });
 
+  test('[story-01-04#3] spellings with control characters or dot segments are refused or resolved, never a server error (review round 2)', async () => {
+    for (const spelling of ['/SALES/%0d%0aSet-Cookie:%20x=1', '/SALES/%00', '/SALES/x%0aY', '/SALES/%E2%80%A8']) {
+      const response = await casey.get(spelling);
+      expect([308, 404], spelling).toContain(response.status);
+      expect(response.headers['set-cookie'], spelling).toBeUndefined();
+      if (response.status === 308) {
+        const location = String(response.headers.location);
+        expect(location, spelling).toMatch(/^\/sales(\/[\x21-\x7e]*)?$/);
+        expect((await casey.get(location)).status, location).toBe(403);
+      }
+    }
+    const dots = await casey.get('/SALES/store/..%2F..%2Fsales%2Fstore');
+    expect(dots.status).toBe(308);
+    expect(dots.headers.location).toBe('/sales/store');
+    const away = await casey.get('/sales%2f..%2fdev%2fmailbox');
+    expect(away.status).toBe(404);
+  });
+
   test('[story-01-04#4] a store page opened under another spelling is recorded as a refused page', async () => {
     const first = await casey.get('/SALES/Store/Load-Summary');
     await casey.get(String(first.headers.location));

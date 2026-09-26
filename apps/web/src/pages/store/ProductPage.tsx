@@ -45,6 +45,7 @@ export function ProductPage() {
   const refresh = () => queryClient.invalidateQueries({ predicate: (q) => q.queryKey[0] !== 'session' });
   const changePrice = useMutation({
     mutationFn: () => api.post<Product>(`/api/sales/store/products/${id}/price`, { price }),
+    onMutate: (): void => close.reset(),
     onSuccess: (p) => {
       close.reset();
       setDone(`Price changed to ${p.priceText}.`);
@@ -55,6 +56,7 @@ export function ProductPage() {
   });
   const close = useMutation({
     mutationFn: () => api.post<Product>(`/api/sales/store/products/${id}/close`),
+    onMutate: (): void => changePrice.reset(),
     onSuccess: () => {
       changePrice.reset();
       setDone('Closed for quoting.');

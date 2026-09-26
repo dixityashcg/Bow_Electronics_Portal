@@ -36,6 +36,7 @@ export function NamedUsersPage() {
   const refresh = () => queryClient.invalidateQueries({ queryKey: ['named-users'] });
   const add = useMutation({
     mutationFn: (v: { role: NameableRole; internalUserId: number }) => api.post('/api/sales/named-users', v),
+    onMutate: (): void => remove.reset(),
     onSuccess: (_, v) => {
       setChoice((c) => ({ ...c, [v.role]: '' }));
       remove.reset();
@@ -45,6 +46,7 @@ export function NamedUsersPage() {
   const remove = useMutation({
     mutationFn: (v: { role: NameableRole; internalUserId: number }) =>
       api.delete(`/api/sales/named-users/${v.internalUserId}/${encodeURIComponent(v.role)}`),
+    onMutate: (): void => add.reset(),
     onSuccess: () => {
       add.reset();
       return refresh();
