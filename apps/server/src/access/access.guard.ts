@@ -65,19 +65,22 @@ export class AccessGuard implements CanActivate {
     const session = await this.access.resolveSession(request.cookies?.[SESSION_COOKIE]);
     if (!session) throw new UnauthorizedException('Sign in to continue.');
 
+    const { user } = session;
+    const page = isPageRequest(request.url);
+    const path = request.url.split('?')[0] ?? request.url;
+    const action = rule.audience === 'signed-in' ? 'act' : rule.action;
+    const attempted = page ? `open page ${path}` : `${action} (${request.method} ${path})`;
+
     if (!SAFE_METHODS.has(request.method)) {
       const token = request.headers[CSRF_HEADER];
       if (typeof token !== 'string' || !sameToken(token, session.csrfToken)) {
+        // Recorded like every other refusal under BR-03 (senior review R-3).
+        await this.access.recordRefusal(user.kind, user.id, user.name, `${attempted} without the anti-forgery token`);
         throw new ForbiddenException('The request did not carry the portal’s anti-forgery token.');
       }
     }
     request.portal = session;
     if (rule.audience === 'signed-in') return true;
-
-    const { user } = session;
-    const page = isPageRequest(request.url);
-    const path = request.url.split('?')[0] ?? request.url;
-    const attempted = page ? `open page ${path}` : `${rule.action} (${request.method} ${path})`;
 
     if (user.kind !== rule.audience) {
       await this.access.recordRefusal(user.kind, user.id, user.name, attempted);

@@ -20,6 +20,21 @@ export const WEB_INDEX = Symbol('WebIndexHtml');
 const NOT_BUILT = `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Bow Reseller Portal</title></head>
 <body><p>The browser application has not been built. Run <code>./scripts/dev.sh</code>.</p></body></html>`;
 
+/** Decoded, lower-cased, with repeated slashes collapsed: how a browser router may read a path. */
+export function canonicalPath(path: string): string {
+  let decoded = path;
+  try {
+    decoded = decodeURIComponent(path);
+  } catch {
+    // An undecodable path is compared as it came.
+  }
+  return decoded.replace(/\/{2,}/g, '/').toLowerCase().replace(/(.)\/$/, '$1');
+}
+
+function escapeHtml(text: string): string {
+  return text.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
+}
+
 export function loadIndexHtml(file: string): string {
   return existsSync(file) ? readFileSync(file, 'utf8') : NOT_BUILT;
 }
@@ -27,7 +42,7 @@ export function loadIndexHtml(file: string): string {
 function page(title: string, message: string): string {
   return `<!doctype html><html lang="en"><head><meta charset="utf-8"><title>${title} — Bow Reseller Portal</title>
 <style>body{font-family:system-ui,sans-serif;margin:48px auto;max-width:560px;padding:0 16px;color:#242424}a{color:#0f6cbd}</style></head>
-<body><h1>${title}</h1><p>${message}</p><p><a href="/">Back to the portal</a></p></body></html>`;
+<body><h1>${escapeHtml(title)}</h1><p>${escapeHtml(message)}</p><p><a href="/">Back to the portal</a></p></body></html>`;
 }
 
 /**
@@ -49,9 +64,18 @@ export class PagesController {
   @Public()
   @Get('*')
   otherPage(@Req() request: FastifyRequest, @Res() reply: FastifyReply) {
-    const path = request.url.split('?')[0] ?? '/';
+    const [path = '/', query] = request.url.split('?');
+    const canonical = canonicalPath(path);
+    // Another spelling of an internal page (/SALES/store, //sales/store,
+    // /sales%2Fstore) is sent to the one spelling the guard protects, so it is
+    // refused and recorded like the page itself, never served here.
+    if (canonical === '/sales' || canonical.startsWith('/sales/')) {
+      // Already in the guarded spelling yet not matched by the guarded route: never serve it.
+      if (canonical === path) throw new NotFoundException();
+      return reply.redirect(`${canonical}${query !== undefined ? `?${query}` : ''}`, 308);
+    }
     // The /dev pages exist only when the dev module is loaded; everything else under /api or /dev is not found.
-    if (!isPageRequest(path) || path === '/dev' || path.startsWith('/dev/')) throw new NotFoundException();
+    if (!isPageRequest(canonical) || canonical === '/dev' || canonical.startsWith('/dev/')) throw new NotFoundException();
     return reply.type('text/html').header('cache-control', 'no-store').send(this.indexHtml);
   }
 }

@@ -46,6 +46,7 @@ export function ProductPage() {
   const changePrice = useMutation({
     mutationFn: () => api.post<Product>(`/api/sales/store/products/${id}/price`, { price }),
     onSuccess: (p) => {
+      close.reset();
       setDone(`Price changed to ${p.priceText}.`);
       setPrice('');
       void refresh();
@@ -55,6 +56,7 @@ export function ProductPage() {
   const close = useMutation({
     mutationFn: () => api.post<Product>(`/api/sales/store/products/${id}/close`),
     onSuccess: () => {
+      changePrice.reset();
       setDone('Closed for quoting.');
       void refresh();
     },

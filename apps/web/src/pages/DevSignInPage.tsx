@@ -22,8 +22,10 @@ export default function DevSignInPage() {
     try {
       await api.post('/dev/api/sign-in', { audience: person.audience, subjectId: person.subjectId });
       await queryClient.invalidateQueries();
+      // Only a path on this site: never another origin or a javascript: address.
       const next = new URLSearchParams(window.location.search).get('next');
-      window.location.assign(next ?? (person.audience === 'staff' ? '/sales' : '/'));
+      const safeNext = next && next.startsWith('/') && !next.startsWith('//') && !next.startsWith('/\\') ? next : null;
+      window.location.assign(safeNext ?? (person.audience === 'staff' ? '/sales' : '/'));
     } catch (e) {
       setError(e);
     }

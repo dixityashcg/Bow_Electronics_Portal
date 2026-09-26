@@ -56,10 +56,21 @@ export function Layout() {
   );
 }
 
-/** Wraps a page that needs a signed-in internal user. The server decides; this only avoids a blank page. */
+/**
+ * Wraps a page for internal users. The server decides every call; this only
+ * keeps the internal screens from rendering for anyone else, whatever the
+ * address was typed as.
+ */
 export function InternalOnly({ children }: { children: ReactNode }) {
   const session = useSession();
   if (session.isPending) return <Spinner label="Loading" />;
+  if (session.data?.user && session.data.user.kind !== 'internal') {
+    return (
+      <MessageBar intent="error">
+        <MessageBarBody>You do not have access to this page.</MessageBarBody>
+      </MessageBar>
+    );
+  }
   if (!session.data?.user) {
     return (
       <MessageBar intent="warning">

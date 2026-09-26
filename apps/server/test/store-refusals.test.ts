@@ -70,6 +70,41 @@ describe('store changes are refused to anyone not named', () => {
     expect(await priceNow()).toBe(100_000);
   });
 
+  test('[story-01-04#3] another spelling of a store page address is sent to the guarded page and refused, never served (review finding)', async () => {
+    // Already the guarded spelling: refused directly.
+    expect((await casey.get('/sales/store/')).status).toBe(403);
+    for (const spelling of ['/SALES/store', '/Sales/Store/products/1', '//sales/store', '/sales%2Fstore', '/SALES']) {
+      const first = await casey.get(spelling);
+      expect(first.status, spelling).toBe(308);
+      expect(first.body, spelling).not.toContain(INDEX_HTML);
+      const location = String(first.headers.location);
+      expect(location, spelling).toMatch(/^\/sales(\/|$)/);
+      const followed = await casey.get(location);
+      expect(followed.status, `${spelling} → ${location}`).toBe(403);
+      expect(followed.body).not.toContain(INDEX_HTML);
+    }
+  });
+
+  test('[story-01-04#4] a store page opened under another spelling is recorded as a refused page', async () => {
+    const first = await casey.get('/SALES/Store/Load-Summary');
+    await casey.get(String(first.headers.location));
+    const jo = await portal.signIn(JO);
+    const list = (await jo.get('/api/sales/refused-attempts')).json;
+    expect(list[0]).toMatchObject({ user: 'Casey (Reseller A, buyer)', action: 'open page /sales/store/load-summary' });
+  });
+
+  test('[story-01-04#4] a store change sent without the anti-forgery token is refused and recorded too', async () => {
+    expect((await casey.post(`${PRODUCTS}/${productId}/price`, { price: '1.00' }, { csrf: false })).status).toBe(403);
+    expect((await sam.post(`${PRODUCTS}/${productId}/close`, {}, { csrf: false })).status).toBe(403);
+    const jo = await portal.signIn(JO);
+    const actions = (await jo.get('/api/sales/refused-attempts')).json.slice(0, 2).map((r: any) => `${r.user}: ${r.action}`);
+    expect(actions).toEqual([
+      `Sam (rep): close a product for quoting (POST ${PRODUCTS}/${productId}/close) without the anti-forgery token`,
+      `Casey (Reseller A, buyer): change a price (POST ${PRODUCTS}/${productId}/price) without the anti-forgery token`,
+    ]);
+    expect(await priceNow()).toBe(100_000);
+  });
+
   test('[story-01-04#4] after a reseller user is refused a store page, the refused attempts record holds the user, the page, and the date and time', async () => {
     const before = new Date().toISOString();
     expect((await casey.get('/sales/store/load-summary')).status).toBe(403);

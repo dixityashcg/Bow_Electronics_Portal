@@ -1,3 +1,4 @@
+import ExcelJS from 'exceljs';
 import { afterAll, beforeAll, describe, expect, test } from 'vitest';
 import { buildSampleErp, type SampleErpFacts } from '../src/seed/sample-erp.ts';
 import { PAT, SAM, startPortal, workbook, type Client, type Portal } from './harness.ts';
@@ -210,6 +211,50 @@ describe('hand-built ERP files', () => {
     const oneBad = await freshLoad([['BWE-A', 'A', 1], ['BWE-B', 'B', '$2']]);
     expect(oneBad.summary.complete).toBe(false);
     expect(oneBad.summary.statusText).toMatch(/^Load not complete: 1 of 2/);
+  });
+
+  test('[story-01-01#1] a workbook with products on more than one worksheet is refused whole, so no product can go missing unlisted (review R-1)', async () => {
+    await portal.close();
+    portal = await startPortal();
+    const pat = await portal.signIn(PAT);
+    const book = new ExcelJS.Workbook();
+    const a = book.addWorksheet('Passives');
+    a.addRow(['Part number', 'Description', 'Price']);
+    a.addRow(['BWE-A', 'Alpha', 1]);
+    a.addRow(['BWE-B', 'Beta', 2]);
+    const b = book.addWorksheet('Actives');
+    b.addRow(['Part number', 'Description', 'Price']);
+    b.addRow(['BWE-C', 'Gamma', 3]);
+    book.addWorksheet('Empty notes');
+    const response = await pat.upload(LOAD, 'two-sheets.xlsx', Buffer.from(await book.xlsx.writeBuffer()));
+    expect(response.status).toBe(400);
+    expect(response.json.message).toMatch(/data on 2 worksheets \("Passives", "Actives"\)/);
+    expect(await productCount(portal)).toBe(0);
+    expect((await pat.get('/api/sales/store/load-summary')).json.summary).toBeNull();
+  });
+
+  test('[story-01-01#2] a part number held as a number is stored as the ERP shows it, and found by that (review finding)', async () => {
+    await portal.close();
+    portal = await startPortal();
+    const pat = await portal.signIn(PAT);
+    const book = new ExcelJS.Workbook();
+    const sheet = book.addWorksheet('ERP');
+    sheet.addRow(['Part number', 'Description', 'Price']);
+    sheet.addRow([1.1, 'Numeric part shown with two decimals', 2]).getCell(1).numFmt = '0.00';
+    sheet.addRow([123, 'Numeric part shown with leading zeros', 3]).getCell(1).numFmt = '00000';
+    sheet.addRow([4711, 'Plain numeric part', 4]);
+    const response = await pat.upload(LOAD, 'numeric.xlsx', Buffer.from(await book.xlsx.writeBuffer()));
+    expect(response.status, response.body).toBe(201);
+    for (const [shown, description] of <[string, string][]>[['1.10', 'Numeric part shown with two decimals'], ['00123', 'Numeric part shown with leading zeros'], ['4711', 'Plain numeric part']]) {
+      const found = await pat.get(lookup(shown));
+      expect(found.status, shown).toBe(200);
+      expect(found.json).toMatchObject({ partNumber: shown, description });
+    }
+  });
+
+  test('[story-01-01#3] a numeric price too large to hold exactly is listed with its reason', async () => {
+    const { summary } = await freshLoad([['BWE-HUGE', 'Huge price', 1e15], ['BWE-FINE', 'Fine', 1]]);
+    expect(summary.notLoaded).toEqual([expect.objectContaining({ rowNumber: 2, reason: 'price is too large: "1000000000000000"' })]);
   });
 
   test('a file whose heading row lacks a mapped column is refused whole, and nothing is loaded', async () => {

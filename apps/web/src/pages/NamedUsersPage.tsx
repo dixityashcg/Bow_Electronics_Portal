@@ -36,12 +36,19 @@ export function NamedUsersPage() {
   const refresh = () => queryClient.invalidateQueries({ queryKey: ['named-users'] });
   const add = useMutation({
     mutationFn: (v: { role: NameableRole; internalUserId: number }) => api.post('/api/sales/named-users', v),
-    onSuccess: refresh,
+    onSuccess: (_, v) => {
+      setChoice((c) => ({ ...c, [v.role]: '' }));
+      remove.reset();
+      return refresh();
+    },
   });
   const remove = useMutation({
     mutationFn: (v: { role: NameableRole; internalUserId: number }) =>
       api.delete(`/api/sales/named-users/${v.internalUserId}/${encodeURIComponent(v.role)}`),
-    onSuccess: refresh,
+    onSuccess: () => {
+      add.reset();
+      return refresh();
+    },
   });
   const isRoleManager = session.data?.user?.roles.includes('role manager') ?? false;
 
@@ -92,10 +99,7 @@ export function NamedUsersPage() {
               <Button
                 appearance="primary"
                 disabled={!choice[role]}
-                onClick={() => {
-                  add.mutate({ role, internalUserId: Number(choice[role]) });
-                  setChoice({ ...choice, [role]: '' });
-                }}
+                onClick={() => add.mutate({ role, internalUserId: Number(choice[role]) })}
               >
                 Name
               </Button>
