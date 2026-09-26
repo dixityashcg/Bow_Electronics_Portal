@@ -4,7 +4,7 @@
 - **reseller** — a company that buys products from Bow Electronics to resell; its people log in to the portal to request quotes. (D-01)
 - **reseller admin** — a person at a reseller who manages their own company's users on the portal. Named in the request as "their admins"; the role is an assumption to confirm. (D-01)
 - **internal sales team** / **rep** — Bow Electronics staff who take reseller requests and build quotes. The client uses both "internal sales team" and "reps". (D-02, D-04)
-- **quote request** — a reseller's request for a price on a product in a stated quantity. Each one gets a **request ID**. (D-01)
+- **quote request** — a reseller's request for a price on one or more products, each in a stated quantity. Each one gets a **request ID**. (D-01; several products per request from BRD A-02)
 - **request ID** — the reference a reseller receives in the confirmation email and uses to track a quote request. (D-01)
 - **quote** — the price and terms a rep builds in answer to a quote request, based on the reseller relationship and taking pricing from the catalog. The reseller can approve it, request a change or decline it. (D-01)
 - **reseller relationship** — the standing commercial terms between Bow and a reseller that decide which discounts a rep may apply. Where it is recorded today is not known. (D-01, D-04)
@@ -18,6 +18,19 @@
 - **export classification** — the category a part falls into under export control law, which decides whether a licence is needed to export it. (D-13)
 - **restricted-party screening** — checking a customer against government lists of parties that may not be sold to without further checks. (D-14)
 
+- **reseller user** — a person at a reseller who logs in to the portal; "buyer" in the BRD's process description. (BRD BR-01, §6.2)
+- **standard discount** — the one discount held for each reseller that pre-fills its quotes. (BRD BR-20, A-07)
+- **open for quoting / closed for quoting** — whether a product can be found and quoted; a closed product disappears from search. (BRD BR-17, BR-18)
+- **valid-until date** — the last day a reseller can approve a quote. (BRD BR-12)
+- **open requests list** — the internal sales team's one list of every open request, oldest first. (BRD BR-09; name set in the backlog)
+- **failed emails list** — where the internal sales team sees emails the portal could not send. (BRD BR-07, BR-13; name set in the backlog)
+- **My requests** — the page where a reseller user sees their reseller's requests and statuses. (BRD BR-16; name set in the backlog)
+- **take / owner / hand over** — a rep takes a request and becomes its owner; only the owner hands it to another rep. (BRD BR-10; backlog decision D2-Q4)
+- **quote version** — each quote sent for a request; a revised quote is a new version and earlier ones stay visible. (BRD BR-14)
+- **request statuses** — Received, Being quoted, Quote sent, Change requested, Approved, Declined, Expired. (BRD BR-16)
+- **named users** — the Bow users Jensen Huang names to maintain prices, or to set standard discounts. (BRD BR-17, BR-20)
+
 ## Rejected synonyms
 - customer → use **reseller** (the client says reseller for the companies that buy through this portal)
+- reseller buyer → use **reseller user** (the BRD's term)
 - order → use **quote request** or **quote** (the portal does not take orders; an approved quote is not an order in this scope)
