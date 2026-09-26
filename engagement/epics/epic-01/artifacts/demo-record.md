@@ -18,13 +18,13 @@ The steps follow the backlog's demo-notes (1)–(6) in order. Steps 7–10 add t
    - a formula;
    - two rows of `BWE-C0402X7R104K` at 0.0045 and 0.005, both "duplicate part number".
 2. **Pick a part at random and compare it with the ERP.** Open the spreadsheet in Excel, pick any row, and type its part number into the store search. The product's description and price are the ERP row's, and its status is *Open for quoting*.
-3. **Change its price and open the history.** On the product page, enter a new price and press **Change price**. The price history shows one line: old price, new price, "Pat (rep)", and the date and time.
+3. **Change its price and open the history.** On the product page, enter a new price and press **Change price**. The price history shows one line: old price, new price, "Pat (rep)", and the date and time. Change the price twice more: the history shows three lines, oldest first.
 4. **Add a product.** *Add a product*: part number, description, price. Save. The product page opens, and a search for the part number finds it.
 5. **Close a product for quoting.** On any product page press **Close for quoting**. The status badge reads *Closed*.
 6. **Take Pat off the price maintainers and watch Pat be refused.** In a second browser window (private, so the sessions stay separate) sign in as **Morgan (role manager)**, who stands in for Jensen Huang. Open *Named users* and press **Remove** next to Pat under *Price maintainers*. Back in Pat's window, on the product page that is still open, enter a new price and press **Change price**. The page shows "Only a price maintainer can change a price." Reload: the price is unchanged, and the history has not grown.
 7. **A reseller opens the store (failure path, story-01-04 c3–c4).** Sign in as **Casey (Reseller A, buyer)** and type `http://localhost:3000/sales/store` into the address bar. The page is "Access refused". Sign in as **Jo (internal admin)** and open *Refused attempts*. It lists Casey, "open page /sales/store" and the time, and Pat's refused price change from step 6.
 8. **Name a discount setter (story-01-05 c3–c4).** As Morgan, name **Alex (rep)** under *Discount setters*. As Alex, open *Resellers and standard discounts* and set Demo Reseller A to 12. It shows 12 %. As Morgan, remove **Lee (rep)** from *Discount setters*. As Lee, try to change Demo Reseller C from 10 %. The change is refused and C stays at 10 %.
-9. **A rep named for nothing tries to name someone (story-01-05 c5).** As **Sam (rep)**, open *Named users* and try to name themself a price maintainer. Refused. Then load the ERP spreadsheet a second time as a price maintainer. That is refused too, because the store already holds products, and nothing changes (T-15).
+9. **A rep named for nothing tries to change the store and the lists (story-01-04 c1–c2, story-01-05 c5).** As **Sam (rep)**, open a product page and try **Change price**, then **Close for quoting**, then *Add a product*: each is refused and the store is unchanged. Open *Named users* and try to name themself a price maintainer. Refused. Then load the ERP spreadsheet a second time as a price maintainer. That is refused too, because the store already holds products, and nothing changes (T-15).
 
 10. **A price change sent directly, without the product page (story-01-04 c5).** In a terminal, sign in as Sam (rep) the way the browser does, then send the price change straight to the interface with a valid session and anti-forgery token. Replace `<id>` with the product id from any product page's address:
     ```sh
@@ -47,10 +47,10 @@ The same path was run end to end against the running portal (`dev.sh`) during th
 | story-01-01 | c5 not reported complete when rows are not loaded | Step 1: the warning "Load not complete…" |
 | story-01-02 | c1 added product found by part number | Step 4 |
 | story-01-02 | c2 price change adds a history line (old, new, who, when) | Step 3 |
-| story-01-02 | c3 three changes, three lines, oldest first | Step 3 repeated twice more on the same product |
+| story-01-02 | c3 three changes, three lines, oldest first | Step 3: two further changes, three lines, oldest first |
 | story-01-03 | c1 closed product shows Closed | Step 5 |
 | story-01-04 | c1 rep not named refused a price change, price unchanged | Step 6 (Pat, after removal) and step 9 (Sam) |
-| story-01-04 | c2 rep not named refused add / close, store unchanged | Step 9: as Sam, *Add a product* and **Close for quoting**, both refused |
+| story-01-04 | c2 rep not named refused add / close, store unchanged | Step 9: as Sam, **Close for quoting** and *Add a product*, both refused |
 | story-01-04 | c3 reseller refused store pages | Step 7 |
 | story-01-04 | c4 refused attempt recorded: user, page or action, time | Step 7, the *Refused attempts* list |
 | story-01-04 | c5 direct price change refused | Step 10: Sam's request sent directly with curl, refused, price unchanged, attempt listed |
@@ -74,7 +74,7 @@ The same path was run end to end against the running portal (`dev.sh`) during th
 - **Shared** (`packages/shared`): money and percentage handling in whole numbers, and the validation schemas both sides use.
 - **Scripts**: `scripts/dev.sh`, `scripts/reset.sh` (with `--after-epic 01`), and `scripts/test.mjs` (the per-criterion check runner).
 - **Seed**: `seed/sample-erp.xlsx`, generated by `npm run seed:sample-erp`.
-- **Tests**: 100 Vitest tests. The criteria's checks are declared in `artifacts/dod.md`, and all 19 passed as machine-run checks at c71983d.
+- **Tests**: 109 Vitest tests. The criteria's checks are declared in `artifacts/dod.md`, and all 19 passed as machine-run checks at 95974a6, after two review rounds.
 
 ## Senior review
 
@@ -89,6 +89,7 @@ Not captured. No screenshots or recording of the demo run exist yet. The build r
 - **story-01-01 is not done until it has run against the real ERP spreadsheet.** Its definition of done requires a run against a copy of the real ERP from the ERP owner, with the columns mapped with that owner. No ERP owner is named (architecture C-10, Q-11). The column mapping in `apps/server/src/catalog/erp-mapping.ts` is therefore **provisional**: it is the sample file's headings "Part number", "Description" and "Price" on the first worksheet. The Epic Review runs on the synthetic sample, as the architecture directs.
 - **Standard discounts are built only as far as story-01-05 needs.** The FDE decided on 2026-09-26 that epic-01 builds the set action and its history for story-01-05 c3–c4. The full resellers page and story-04-01's other criteria (refusal records for discounts, a reseller never seeing its discount, the history screen) arrive with epic-04.
 - **SQL Server and the pipeline are deferred to Stage 2** (FDE decision, 2026-09-26). The database rules are proved on SQLite only. Nothing here proves them on Azure SQL: ledger immunity against administrators, true simultaneous writers, full-text ranking. There is no GitHub Actions pipeline yet.
+- **Workbook shapes the load refuses rather than guesses.** A workbook with data on more than one worksheet, or with a heading repeated in the heading row, is refused whole. A part number or description held as a number in any format other than General, zero padding or fixed decimals, or held as a date, is listed as not loaded with the reason. The real ERP may need one of these relaxed, which is a decision to take once it has been seen.
 - **Not exercised in a browser by the build.** The build agent had no browser. The screens were typechecked and built, and every behaviour behind them was driven over HTTP, but nobody has yet clicked through them. Cross-browser runs (Playwright, N-14) are not set up.
 - **Maintaining the internal users list has no screen.** Who is admitted to the internal side is seeded. A Bow account not on the list (Chris) is refused and recorded (T-05), but adding or removing internal users, internal admins and role managers is not on any screen in this Epic. No epic-01 story asks for it.
 - **Times show in UTC.** Bow's business time zone is still open (architecture Q-03). Times are held in UTC and shown in the zone set by `BUSINESS_TIME_ZONE`, which defaults to UTC with the zone named on screen.
