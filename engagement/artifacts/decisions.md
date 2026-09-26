@@ -4,11 +4,19 @@
 
 Each record below is a decision that would be expensive to reverse: where state lives, how people sign in, how records are kept, and what Bow is committing to run. Every record is **Proposed**. The operator made it on 2026-09-26, and it becomes **Accepted** only when Elon Musk (Enterprise Architect) agrees it at the architecture gate. No record claims a client stakeholder's agreement that has not been given.
 
-The answers the FDE gave on 2026-09-26 are quoted where a decision rests on them: managed services plus a support partner, Microsoft 365, a managed identity service, and random request IDs.
+The answers the FDE gave on 2026-09-26 are quoted where a decision rests on them: managed services plus a support partner, Microsoft 365, a managed identity service, random request IDs, TypeScript, and Node 24.
+
+**Revision 2 (2026-09-26).** The FDE rejected revision 1 at g3 and asked for rework within the approved scope. As a result:
+- ADR-01 now compares three candidate architectures.
+- ADR-07 now sends email with a managed identity instead of an expiring SMTP password.
+- ADR-10 names the frameworks.
+- ADR-11 (the catalog and pricing store versus Business Central), ADR-12 (CI/CD) and ADR-13 (adapters and local stand-ins, at the EA's direction) are new.
+
+Because no record here was ever accepted, the revised records are edited in place. The change is noted in each, so the reasoning that moved stays visible.
 
 ---
 
-## ADR-01 — One web application with four modules and one database, built for Bow
+## ADR-01 — Candidate A: one web application with four modules and one database, built for Bow
 
 - **Status**: Proposed
 - **Date**: 2026-09-26
@@ -16,7 +24,9 @@ The answers the FDE gave on 2026-09-26 are quoted where a decision rests on them
 
 **Context**
 
-The backlog asks for about 25 screens across two audiences, a catalog and pricing store, and one email path. Bow has no IT operations team and will run the portal through a support partner in business hours (architecture C-05). The volumes are unknown but, on every indication in the brief, small (§7.1). The forcing question: what is the smallest number of moving parts that delivers all six Epics and that a support partner can run without an on-call engineer?
+*Revised for revision 2: the three candidates of architecture §2.5 are now compared here.*
+
+The backlog asks for about 25 screens across two audiences, a catalog and pricing store, and one email path. It must be delivered as written (C-12). Bow has no IT operations team and will run the portal through a support partner in business hours (architecture C-05). The volumes are unknown but, on every indication in the brief, small (§7.1). The forcing question: what is the smallest number of moving parts that delivers all six Epics and that a support partner can run without an on-call engineer?
 
 **Decision**
 
@@ -27,8 +37,9 @@ One TypeScript web application (ADR-10), deployed as a single unit: a browser ap
 | Alternative | Why not |
 |---|---|
 | Separate services per area (catalog service, quote service, notification service), talking over a message broker | C-05: Bow cannot operate several deployables, a broker, and the distributed failure modes between them. Nothing in the backlog needs parts to scale or ship separately at these volumes |
-| A low-code portal on Microsoft Power Pages with Dataverse | A competent choice for a Microsoft 365 company. Rejected on two constraints. First, BR-19 and A-08 need records that nobody can edit or delete, and in Dataverse an administrator can. Second, reseller users are licensed per user per month, so the cost grows with every reseller Bow onboards. It would also need Power Platform skills that Bow does not have and its partner may not have |
-| Buying a packaged quoting or B2B portal product | Not put to the client. The brief records a preference to build a portal, and on 2026-09-26 the FDE chose not to reopen buy-versus-build. Recorded so that the EA can reopen it at the gate if he wants to |
+| **Candidate B**: portal built on Azure, catalog and pricing in Dynamics 365 Business Central | The strongest alternative, and the right one if Bow buys an ERP for orders, invoicing and stock (ADR-11). Rejected on C-12: it cannot deliver epic-01 and story-04-01 as written (architecture §2.4). It also adds a second system to keep consistent, and a second partner |
+| **Candidate C**: a low-code portal on Microsoft Power Pages with Dataverse | A competent choice for a Microsoft 365 company. Rejected on two constraints. First, BR-19 and A-08 need records that nobody can edit or delete, and in Dataverse an administrator can. Second, reseller users are licensed per user per month: US$200 per 100 authenticated users per site per month at list price, so about US$6,000 a month if 3,000 reseller users are active. The cost grows with every reseller Bow onboards. It would also need Power Platform skills that Bow does not have and its partner may not have |
+| Buying a packaged quoting or B2B portal product | Not analysed in depth. The brief records a preference to build a portal, and the revision 2 instruction asks for the build-versus-buy analysis on the **catalog and pricing store** specifically, which is ADR-11 |
 | Separate applications for the reseller side and the internal side | Would make the BR-03 boundary physical. But stories 01-04, 02-06 and 04-01 require a reseller user who reaches an internal page to be **refused and recorded by name**, which needs the reseller's session on the internal side. It would also be two deployments for the partner to run |
 
 **Consequences**
@@ -56,7 +67,7 @@ Something has to run the application, the database, email and sign-in, and Bow c
 
 **Decision**
 
-Use Azure App Service (Linux, two instances in production), Azure SQL Database (General Purpose, 35-day point-in-time restore, geo-redundant backups), Azure Communication Services Email, Azure Key Vault and Application Insights. Production and test run in one Azure subscription owned by Bow. The region is **provisional**: Bow's home geography, confirmed by Elon Musk once NF-07 (which data protection law applies) is answered.
+Use Azure App Service (Linux, two instances in production), Azure SQL Database (vCore General Purpose, serverless, 0.5–2 vCores, auto-pause off in production; 35-day point-in-time restore, geo-redundant backups), Azure Communication Services Email, Azure Key Vault and Application Insights. Production and test run in one Azure subscription owned by Bow. The region is **provisional**: Bow's home geography, confirmed by Elon Musk once NF-07 (which data protection law applies) is answered.
 
 **Alternatives rejected**
 
@@ -65,13 +76,14 @@ Use Azure App Service (Linux, two instances in production), Azure SQL Database (
 | AWS or Google Cloud equivalents | Technically equal. Rejected because staff sign-in is Bow's Microsoft Entra ID either way, so another cloud adds a second vendor, a second bill and a second set of partner skills for no gain |
 | Azure Container Apps or Kubernetes (AKS) | Container orchestration is more than a business-hours partner should have to run for one application (C-05). App Service gives deployment slots, scaling and patching without it |
 | Virtual machines | Bow, or the partner, would own patching, backups and failover. That is exactly the capability Bow lacks |
+| Azure SQL Database, DTU Standard S2 (≈ US$59 a month) | Much cheaper. Rejected by the FDE on 2026-09-26: Microsoft's documentation shows ledger (ADR-04) with vCore tiers, and support on DTU Standard could not be confirmed. The whole of BR-19's guarantee rests on ledger |
 | A single App Service instance | Cheaper. But every platform patch or instance fault is then an outage, and N-05 (99.5 %) would depend on luck |
 
 **Consequences**
 
 - Bow is committed to Azure for this portal. Moving would mean re-platforming the database, email and hosting, although the application itself uses no Azure-only programming interface except the sign-in services.
 - Bow must hold an Azure subscription, pay a monthly bill, and name who owns it (at most two people with owner rights, R-01).
-- Running cost is indicatively in the low hundreds of US dollars a month for production and test together at §7.1 volumes. The FDE produces the real figure with Azure's pricing calculator for Bow's region before the gate.
+- Running cost is about US$540–710 a month for production and test together at §7.1 volumes (architecture §10.3). *(Revised for revision 2: revision 1 said "low hundreds", before the App Service and General Purpose prices were checked.)* The FDE produces the real figure with Azure's pricing calculator for Bow's region before the gate.
 - The region, once data is in it, is expensive to change. That is why it waits for NF-07 and is not guessed.
 
 **Revisit when**
@@ -224,7 +236,7 @@ Resellers or reps report that IDs are misheard on the phone often enough to matt
 
 ---
 
-## ADR-07 — Emails go through an outbox in the database and a background worker to Azure Communication Services
+## ADR-07 — Emails go through an outbox in the database and a background worker to Azure Communication Services, signed in with the application's managed identity
 
 - **Status**: Proposed
 - **Date**: 2026-09-26
@@ -237,7 +249,7 @@ BR-07 and BR-13 require an email within 15 minutes, and require that when one ca
 **Decision**
 
 - The event (a request recorded, a quote sent, a response given, a user added) and its email are written in **one database transaction**, with the email as a row in an outbox table.
-- A background worker inside the application picks pending rows every 30 seconds, using a database lock so that two instances never pick the same row. It sends them over SMTP to Azure Communication Services Email, from Bow's domain.
+- A background worker inside the application picks pending rows every 30 seconds, using a database lock so that two instances never pick the same row. It sends them to Azure Communication Services Email, from Bow's domain, through the service's own programming library, signed in with the application's **managed identity**. *(Revised for revision 2: revision 1 used SMTP with a password that expires every 12 months. A managed identity has no password, so that failure disappears.)* Locally, the email adapter captures mail instead of sending it (ADR-13).
 - A refusal is retried every minute for 10 minutes. After that the row is marked failed with the provider's reason. Failed confirmation and quote ready emails show on the failed emails list, and the partner is alerted on any failure.
 - "Cannot be sent" means refused when sending (backlog assumption). An email accepted and later bounced is not caught (R-02).
 
@@ -247,13 +259,14 @@ BR-07 and BR-13 require an email within 15 minutes, and require that when one ca
 |---|---|
 | Send the email inside the page request | If email is down, either the request fails (breaks BR-07's "stays recorded") or the email is lost silently (breaks "Bow can see it failed") |
 | A message queue service (Azure Service Bus) between the application and the sender | Solves the same problem with one more managed service to pay for, watch and understand (C-05). The outbox gives the same guarantee inside the database the partner already runs |
+| SMTP to Communication Services with an application password (revision 1's choice) | Works, but the password expires every 12 months, and when nobody rotates it all email stops (the old T-17). The managed identity removes the secret entirely |
 | Send from a Bow Microsoft 365 mailbox | Microsoft 365 limits how much a mailbox may send and is moving away from the sign-in method applications use to send mail. Failures come back as bounce messages in a mailbox, not as refusals the portal can list |
 
 **Consequences**
 
 - An email can occasionally be sent twice: if the worker crashes after the service accepts it but before the row is marked. A duplicate confirmation is harmless. This is accepted.
 - Bow's DNS owner must add the service's domain records (SPF, DKIM) before go-live, or emails land in spam (T-18).
-- The sending credential expires every 12 months, and if nobody rotates it all email stops. The failed list and the alert make that visible within 15 minutes, and the runbook schedules the rotation (T-17).
+- The email adapter now depends on Azure's managed identity, so Stage 1 needs a stand-in (ADR-13). The permission to send can still be removed by mistake during a change. The failed list and the alert make that visible within 15 minutes (T-17).
 - The worker shares the web application's process (ADR-01).
 
 **Revisit when**
@@ -311,7 +324,7 @@ BR-04 requires search by full part number and by words in the description, exclu
 
 **Decision**
 
-Part numbers are matched exactly, ignoring case, on an index. Description words use Azure SQL Database full-text search. Search text is passed as a parameter and treated only as words (T-13). Closed products are excluded in the same query.
+Part numbers are matched exactly, ignoring case, on an index. Description words use Azure SQL Database full-text search, on a `product_search` table kept in step with `product` in the same transaction. *(Revised for revision 2: SQL Server does not allow full-text indexes on ledger tables, and `product` is one.)* Locally the same search runs on SQLite FTS5 (ADR-13). Search text is passed as a parameter and treated only as words (T-13). Closed products are excluded in the same query.
 
 **Alternatives rejected**
 
@@ -344,12 +357,13 @@ The language and framework decide who can support the portal for years. The scre
 
 **Decision**
 
-- TypeScript throughout, on a current long-term-support Node.js release on Azure App Service.
+- TypeScript throughout, on **Node.js 24 LTS**: on the FDE's Mac (Stage 1) and on Azure App Service (Stage 2). *(The EA's direction named Node 20. It reached end-of-life on 30 April 2026, and the FDE chose Node 24 on 2026-09-26. Elon Musk to confirm.)*
+- Browser: React 19 built with Vite 7, React Router 7, Fluent UI React v9, TanStack Query 5. Server: NestJS 11 on Fastify 5. Shared validation: Zod 4. Database access: Kysely 0.28. Full stack and versions in architecture §4.3.
 - A browser application draws the screens and calls a server programming interface. Both are served from the same address.
 - The server holds the session. Sign-in with Entra ID or External ID happens on the server, and the browser receives only a session cookie. That cookie cannot be read by page script and is sent only on the portal's own requests. Access tokens never reach the browser.
 - Every changing call also carries an anti-forgery token (T-21).
 - Every authorisation check happens on the server's interface. The browser hiding a button is never the control.
-- Database access uses a TypeScript data library that supports SQL Server. The ledger tables, column grants and full-text index are created by hand-written SQL migrations, because such libraries do not model them.
+- Database access uses Kysely, a typed query builder with dialects for both SQL Server and SQLite (ADR-13). The ledger tables, column grants, triggers and full-text indexes are hand-written SQL migrations for each database, because no data library models them.
 
 **Alternatives rejected**
 
@@ -358,6 +372,9 @@ The language and framework decide who can support the portal for years. The scre
 | C# on ASP.NET Core with pages rendered on the server (the architect's recommendation) | Fewer moving parts: no separate interface to secure, and the skill set most common among Microsoft-ecosystem support partners (ADR-02). **Rejected by the FDE's decision on 2026-09-26.** The FDE's reason is to be stated at the gate, so the EA can weigh it. The architect's case is kept here so it can be revisited |
 | TypeScript with tokens held in the browser (a pure single-page application talking to the interface with bearer tokens) | Tokens in the browser can be stolen by any script injected into the page, and signing out cannot revoke them before they expire. The server-held session keeps N-08 and N-09 (next action refused) simple |
 | Java with Spring | Capable, but less common among Microsoft-ecosystem partners and not what the FDE chose |
+| Prisma (an object-relational mapper) instead of Kysely | Popular and productive, but it models neither ledger tables nor SQLite triggers. It would hide the SQL where the design's guarantees live (§5.3, §5.6) |
+| Next.js (server-rendered React framework) instead of NestJS and a Vite React app | Merges browser and server into one framework. But its server side is built for rendering pages rather than for a guarded interface with modules, and its release pace would be harder for a business-hours partner to follow |
+| Node 20, as the EA's direction worded it | End-of-life since 30 April 2026: no security fixes, and libraries are dropping it. The FDE chose Node 24 |
 
 **Consequences**
 
@@ -370,3 +387,117 @@ The language and framework decide who can support the portal for years. The scre
 **Revisit when**
 
 The support partner Bow contracts has no Node capability. Or Bow later needs a public interface for electronic quote exchange (BRD §4.2), which would be a separate, versioned interface, never the portal's private one.
+
+---
+
+## ADR-11 — The catalog and pricing store is built in the portal's database; Business Central is recorded as the future path, not adopted
+
+- **Status**: Proposed (new in revision 2)
+- **Date**: 2026-09-26
+- **Decided by**: Yash Dixit (FDE), who instructed that the store must deliver the approved backlog as written and that a bought product which would change the backlog is recorded as a considered option, not the decision. To be agreed by Elon Musk (EA) at g3
+
+**Context**
+
+Bow is replacing a spreadsheet ERP. It already pays for Microsoft 365, so Dynamics 365 Business Central is an obvious question. The store must deliver epic-01 and story-04-01 as written (C-12). The forcing question: should Bow's product and price master live in a product it buys, or in the portal?
+
+**Decision**
+
+Build the store as the portal's catalog and pricing module (architecture §2.4, option 1). Keep that module's storage behind its own code, so that it is the only thing that moves if Bow later adopts an ERP.
+
+**Alternatives rejected**
+
+| Alternative | Why not |
+|---|---|
+| **Dynamics 365 Business Central** as the store (candidate B) | Cannot deliver the approved backlog as written (C-12, architecture §2.4). story-01-01 c4 (duplicate rows both refused) needs a pre-check outside Business Central. The price and discount history lives in a change log that permitted users can delete, which is weaker than BR-17 with BR-19. story-01-04 c3–c4 and story-04-01 c4 (a reseller refused **and recorded** on a store page) cannot be tested when resellers have no Business Central account. story-01-05's naming becomes Business Central administration. Search needs a synchronised copy, so closing a product disappears from search late (BR-18). Costs about US$240 a month in licences for 3 named users (Essentials at US$80, list), plus a second partner |
+| Dataverse as the store | Administrators can delete audit history (BR-17, BR-19). Per-user licensing (ADR-01, candidate C) |
+| Keep the Excel ERP and read it from the portal | Forbidden by NF-01 and D-06 |
+
+**Consequences**
+
+- Bow gets a store that does exactly what the backlog asks and nothing more. It is not an ERP. Orders, invoicing and stock, if Bow later wants them, will need a real ERP.
+- If that ERP is Business Central, the store's data must be migrated into it, and epic-01's stories revisited through the change process. The catalog and pricing module is drawn so that only its storage moves. Quote lines keep their copied prices (ADR-05), so past quotes are unaffected.
+- Converting approved quotes into Business Central sales orders would open a path to shipment. Before that is built, a screening gate that shipment cannot bypass must be designed, following the `electronics-distribution-compliance-screening-gate` playbook (architecture §2.4, §8.4).
+
+**Revisit when**
+
+Bow decides to buy an ERP for orders, invoicing or stock. Or the reseller terms prove richer than one discount per reseller (A-07), which would make an ERP's pricing engine worth its cost.
+
+---
+
+## ADR-12 — GitHub Actions and Bicep: one artifact built once, promoted from test to production through a staging slot, with contract tests on both databases
+
+- **Status**: Proposed (new in revision 2)
+- **Date**: 2026-09-26
+- **Decided by**: Yash Dixit (FDE). To be agreed by Elon Musk (EA) at g3
+
+**Context**
+
+Bow has no IT team, and will inherit the repository and the pipeline at handover. A partner must be able to rebuild everything, including after losing a region (§7.3). The forcing question: where do code, pipeline and infrastructure definitions live, and what stops an unreviewed change reaching production?
+
+**Decision**
+
+- The repository is on GitHub, in an organisation owned by Bow from the start. The delivery team works inside it.
+- GitHub Actions runs the pull request checks, builds one artifact, deploys it to test, and then, after a named approval, deploys it to the production staging slot and swaps it in (architecture §4.6).
+- Every Azure resource is defined in Bicep in the same repository.
+- The pipeline signs in to Azure by federated identity, with no stored secret.
+- Database contract tests run on SQLite and on SQL Server 2022 (a container on the CI runner) for every pull request (§5.6).
+
+**Alternatives rejected**
+
+| Alternative | Why not |
+|---|---|
+| Azure DevOps (Repos and Pipelines) | Equally capable and Microsoft's own. Rejected because GitHub's free organisation plan covers this pipeline's use, GitHub is more commonly known by TypeScript developers (ADR-10), and its code scanning and dependency alerts come with it. It would be the right choice if Bow's partner works only in Azure DevOps |
+| Terraform instead of Bicep | Works across clouds, which Bow does not need (ADR-02). It is one more tool and state file for the partner to manage |
+| Deploying from developers' machines | Nothing records what reached production, or who approved it (T-22). A lost laptop loses the ability to redeploy |
+
+**Consequences**
+
+- Bow must own a GitHub organisation, and name who holds its owner role. Two people, as for Azure (R-01).
+- The SQL Server contract tests make each CI run a few minutes longer. That is the price of the Mac staying free of Docker.
+- Every production change needs a named approver who is reachable. In business-hours support, releases happen in business hours.
+
+**Revisit when**
+
+The support partner works only in Azure DevOps. Or CI minutes exceed the free allowance for three months running.
+
+---
+
+## ADR-13 — Every external dependency sits behind an adapter with a local stand-in and a real implementation; Stage 1 runs entirely on the FDE's Mac
+
+- **Status**: Proposed (new in revision 2)
+- **Date**: 2026-09-26
+- **Decided by**: Directed by Elon Musk (EA), relayed by Yash Dixit (FDE) on 2026-09-26. Designed by the architect. Node 24 instead of the direction's Node 20 was the FDE's decision. To be confirmed by Elon Musk at g3
+
+**Context**
+
+Elon Musk directed that demos and Epic Reviews run locally on the FDE's Mac, with stand-ins for every external dependency and real integrations later. One command starts, one resets, the only prerequisite is Node, and there is no Docker, Azure or Microsoft 365 account. Revision 1's demo plan needed an Azure subscription, two sign-in tenants and a verified email domain before the first demo: about three weeks of lead time on a client with no IT team. The forcing question: how does the same code run against stand-ins on a Mac and against Microsoft's services in production, without the stand-ins ever reaching production?
+
+**Decision**
+
+- Six dependencies each sit behind an interface: staff sign-in, reseller sign-in and invitations, database, email, clock, and telemetry. Each has a local stand-in and a real implementation, chosen by configuration at start-up (architecture §4.7). Configuration and secrets are also read through one interface.
+- The local database is SQLite (via `better-sqlite3`, installed by npm). The same Kysely queries run on both engines, with per-engine migrations where they differ (§5.6).
+- A start-up guard refuses to run with any stand-in on a non-local address or in production mode, and refuses mixed configurations that were not declared. The `/dev` pages are left out of the production build.
+- `./scripts/dev.sh` starts everything, and `./scripts/reset.sh` restores the fictional seed (§4.8).
+- Stage 2 switches the real adapters on in Azure before go-live. No Epic Review depends on it.
+
+**Alternatives rejected**
+
+| Alternative | Why not |
+|---|---|
+| Demos in the Azure test environment (revision 1) | Contradicts the EA's direction. It also puts about three weeks of Bow-side setup (subscription, tenants, domain) in front of the first demo |
+| Local SQL Server in a container, so the Mac runs the production engine | Needs Docker, which the direction excludes, and SQL Server images with full-text search are not official for Apple silicon |
+| PGlite (PostgreSQL compiled for Node) as the local database | Installable by npm too, but its dialect is no closer to SQL Server than SQLite's. Kysely's SQLite support is more mature, and `better-sqlite3` is the most widely used embedded database for Node |
+| Stand-ins built into the production code with runtime flags, and no guard | The pick-a-user sign-in would then be one wrong setting away from letting anyone in as anyone (T-23) |
+| Mocking Microsoft's own services locally (emulators) | No emulator exists for Entra ID or External ID. Communication Services has none either. The stand-ins would be incomplete copies of services Bow does not control |
+
+**Consequences**
+
+- **Epic Reviews prove the portal's behaviour, not Microsoft's.** Lockout (T-20), invitation expiry by External ID (T-11), real delivery and spam placement (T-18), ledger immunity against administrators (T-16), true concurrency (N-10) and speed (N-01) are proved only in CI on SQL Server or in Stage 2. Architecture §4.7 and §5.6 list each one. Stage 2 is **required before go-live**, even though no Epic Review depends on it.
+- Two database migration sets must be kept in step. The contract tests on both engines are what keep them honest, and a gap between them is the most likely thing to go wrong.
+- Money and percentages are whole numbers in both databases (§5.2), because SQLite has no exact decimal type.
+- The start-up guard and the `/dev` pages are security-relevant code (T-23), and QA tests them.
+- The definition-of-done runs of story-01-01 and story-02-02 against the real ERP file happen locally on the FDE's Mac when the ERP owner supplies it (Q-11). The file is commercially sensitive and is deleted afterwards.
+
+**Revisit when**
+
+Stage 2 begins (the real adapters become the default in Azure; the stand-ins remain for development). Or a stand-in behaves differently enough from its real service that a Stage 2 test fails on something an Epic Review passed.

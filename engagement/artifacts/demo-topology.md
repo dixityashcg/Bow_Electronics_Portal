@@ -1,87 +1,81 @@
 # Demo topology — Bow Electronics Reseller Portal
 
-Each Epic's demonstration runs in the **Azure test environment** (architecture §4, ADR-02), not on a laptop. There are three reasons:
-- Both sign-in services are Microsoft cloud tenants, and they are needed from the first demo.
-- The epic-01 demo loads a copy of Bow's real price list, which should not sit on a laptop.
-- The epic-05 demo needs a quote sent the day before, kept in a database that stays up overnight.
+**Revision 2, 2026-09-26.** At the direction of Elon Musk (EA), relayed by Yash Dixit (FDE), every Epic's demonstration and Epic Review runs **locally on the FDE's Mac**, with a stand-in for every external dependency (architecture §4.7, ADR-13). Revision 1's plan ran demos in an Azure test environment. That environment, and every real integration, is now a later stage and is not a condition of any Epic Review (below).
 
-The test environment is an App Service and an Azure SQL database in Bow's Azure subscription. Emails go to real test mailboxes in Bow's Microsoft 365 tenant, so the demo shows real email delivery. The build team's own development runs locally. That is not where demos happen.
+**What every demo runs on.**
+- **The runtime.** One command, `./scripts/dev.sh`, starts the whole portal on `http://localhost:3000`: both sign-in entrances, the internal side, the store, the local mailbox at `/dev/mailbox` and the development sign-in at `/dev/sign-in`. Before each Epic Review, `./scripts/reset.sh` restores the fictional seed data (architecture §4.8). `./scripts/reset.sh --after-epic NN` starts from the state the previous Epic's demo leaves.
+- **The only prerequisite** is Node.js 24 LTS on the Mac. There is no Docker, and no Azure or Microsoft 365 account. The EA's direction said Node 20, but Node 20 reached end-of-life on 30 April 2026, so the FDE chose Node 24 on 2026-09-26. Elon Musk to confirm (architecture Q-10).
+- **Sign-in.** At `/dev/sign-in`, pick a seeded user: reseller admin, reseller buyer, rep, price maintainer, discount setter, internal admin or role manager. This is the same interface that Entra ID and External ID will sit behind in Stage 2.
+- **Email.** Every email is captured, not sent. "Open the mailbox" in the backlog's demo-notes means `/dev/mailbox`, filtered to that recipient. "Email sending switched off" (epic-02 step 10) means the **Refuse sending** switch on that page.
+- **Data.** A synthetic Excel price list of about 2,000 fictional parts, including deliberately bad rows. Fictional resellers, users and signed standard discounts. No real Bow data is used in any demo.
 
-For the "email sending switched off" steps (epic-02 step 10), the test environment's sending credential is replaced with an invalid one in the App Service settings and restored afterwards. The test environment's retry window is set to 1 minute (production: 10) so that the failure appears during the demo.
+**Not an Epic Review prerequisite, but still required by the approved backlog.** story-01-01's definition of done requires one run against a copy of the real ERP spreadsheet, and story-02-02's a check against the loaded ERP data. Those runs happen **on the same Mac, with the same command**, once the ERP owner (named by Elon Musk, architecture C-10) supplies the file. The file is deleted afterwards. The two stories count as done only after that. The Epic Review itself does not wait for it (architecture Q-11).
 
-`<test>` below means the test environment's address, which is assigned when the environment is provisioned.
+## Later stage — Azure and the real integrations (not a condition of any Epic Review)
 
-**Who performs the setup.** Bow has no IT operations team, but it does have a Microsoft 365 administrator. That person performs the one-off Azure and Entra steps below: creating the subscription, registering the application, creating the External ID tenant, and creating test accounts and mailboxes (decided by Yash Dixit, FDE, 2026-09-26). Elon Musk owns naming them and making sure it happens. Yash Dixit's team supplies step-by-step instructions for each step, so the administrator needs no Azure experience. Rows marked *(M365 admin)* are performed by that person.
+Required before go-live, in this order. None of it blocks an Epic Review. Where the owner is `ea-elon`, Elon Musk owns naming the person and making sure the step happens, and **Bow's Microsoft 365 administrator performs it** (architecture Q-06), following the FDE's written instructions.
 
-The owners in the tables are the engagement's people: `fde-yash` (Yash Dixit), `ea-elon` (Elon Musk), `po-jensen` (Jensen Huang), and `partner`, meaning the support partner once contracted; until then, `fde-yash` stands in.
+| Stage 2 step | Owner | Lead time |
+| --- | --- | --- |
+| Bow Azure subscription with two named owners (R-01), set up by Bow's Microsoft 365 administrator (Q-06) | ea-elon | 10 business days |
+| The portal registered as an application in Bow's Entra ID | ea-elon | 2 business days after the administrator is named |
+| Entra External ID tenants (test and production) | ea-elon | 3 business days |
+| A sending domain in Communication Services, with SPF and DKIM records added by Bow's DNS owner | ea-elon | 5 business days |
+| Test and production environments provisioned from Bicep, and the pipeline deploying to them (ADR-12) | fde-yash | 3 business days after the subscription |
+| Real adapters switched on in test; the Stage 2 checks run (architecture §4.7, §5.6: lockout, invitation expiry, delivery and SPF/DKIM, ledger verification, concurrency, the N-01 load test, the restore drill) | fde-yash | 10 business days |
+| Go-live load rehearsal with the real ERP file in test | ea-elon (via the ERP owner) | 5 business days after the owner is named |
 
 ## Epic: epic-01
-- **runtime**: Azure test environment — App Service `https://<test>/sales` (HTTPS, port 443), Azure SQL test database, empty store; the store is filled during the demo by the go-live load from a copy of the real ERP spreadsheet; deployed from the build pipeline
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh` (empty store; the demo loads `seed/sample-erp.xlsx` through the real load, story-01-01); sign in at `/dev/sign-in` as rep Pat (price maintainer), rep Sam, and role manager Morgan
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Bow Azure subscription created, with two named owners (R-01) *(M365 admin)* | ea-elon | 10 business days |
-| Bow's Microsoft 365 administrator named, as the person who performs the setup (Q-06) | ea-elon | 3 business days |
-| Portal registered as an application in Bow's Entra ID *(M365 admin)* | ea-elon | 2 business days after the administrator is named |
-| Excel ERP owner named (NF-03, C-10) | ea-elon | 5 business days |
-| A copy of the real ERP spreadsheet, and its columns mapped with the ERP owner (story-01-01 DoD) | ea-elon (via the named ERP owner) | 5 business days after the owner is named |
-| Test staff accounts in Bow's Entra ID for Jensen Huang (role manager), a price maintainer, rep Pat, and a rep with no role | ea-elon | 2 business days (M365 admin) |
-| Two role managers named for seeding (architecture §10) | po-jensen | 2 business days |
-| Test environment provisioned and the build pipeline deploying to it | fde-yash | 3 business days after the subscription |
+| Node.js 24 LTS installed on the Mac (`nvm install 24`) | fde-yash | 10 minutes, once |
+| `./scripts/reset.sh` run before the review | fde-yash | 1 minute |
 
 ## Epic: epic-02
-- **runtime**: Azure test environment — `https://<test>/` (reseller entrance) and `https://<test>/sales`, port 443; store already loaded in the epic-01 demo; reseller sign-in via the portal's External ID test tenant; emails through Azure Communication Services to Bow Microsoft 365 test mailboxes
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh --after-epic 01` (store loaded, one product closed for quoting); sign in at `/dev/sign-in` as a rep, then Demo Reseller A's admin and Demo Reseller B's user; emails at `/dev/mailbox`, with **Refuse sending** for step 10
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| epic-01 demo data still in the test database (loaded store) | fde-yash | none |
-| Entra External ID tenant for the portal created in Bow's subscription *(M365 admin, following the FDE's instructions)* | ea-elon | 3 business days |
-| A sending domain for test email (a Bow subdomain), with its SPF and DKIM records added by Bow's DNS owner | ea-elon | 5 business days |
-| Four test mailboxes in Bow's Microsoft 365 (Reseller A admin, Reseller A buyer, Reseller B user, rep) | ea-elon | 2 business days (M365 admin) |
-| A product closed for quoting in the epic-01 demo (demo step 3) | fde-yash | none |
+| `./scripts/reset.sh --after-epic 01` run before the review | fde-yash | 1 minute |
 
 ## Epic: epic-03
-- **runtime**: Azure test environment — `https://<test>/sales`, port 443; data from the epic-01 and epic-02 demos; two rep accounts and one internal admin account
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh --after-epic 02`; sign in as rep Sam and rep Alex in two browser windows (one of them private, so their sessions stay separate), and as internal admin Jo; emails at `/dev/mailbox`
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Test staff accounts for rep Sam, rep Alex and internal admin Jo | ea-elon | 2 business days (M365 admin) |
-| Jensen Huang confirms who gives the internal admin role (story-03-06 DoD) | po-jensen | before the demo |
-| A second browser profile or machine, so two reps are signed in at once (demo step 5) | fde-yash | none |
+| `./scripts/reset.sh --after-epic 02` run before the review | fde-yash | 1 minute |
 
 ## Epic: epic-04
-- **runtime**: Azure test environment — `https://<test>/sales` and `https://<test>/`, port 443; an open request from the epic-03 demo; Reseller A with no discount at the start, Reseller B left with none
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh --after-epic 03` (open requests from Demo Resellers A and B; neither has a standard discount, while seeded Resellers C–E carry signed discounts); sign in as rep Lee (discount setter), a rep not named, and rep Sam; emails at `/dev/mailbox`
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| A discount setter named (story-01-05) with a test account | po-jensen | 2 business days |
-| Default quote validity period named (A-14, story-04-05 DoD) | po-jensen | before the demo |
-| Net price rounding rule agreed (story-04-02 DoD, architecture §5.2) | po-jensen | before the build of story-04-02 |
+| `./scripts/reset.sh --after-epic 03` run before the review | fde-yash | 1 minute |
 
 ## Epic: epic-05
-- **runtime**: Azure test environment — `https://<test>/` and `https://<test>/sales`, port 443; a sent quote from the epic-04 demo, plus a second quote sent the business day before the demo with valid-until set to that day
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh --after-epic 04`, which seeds one sent quote and a second quote sent "yesterday" with valid-until yesterday, created through the portal's own operations with the clock adapter moved back a day (architecture §4.7); sign in as a Demo Reseller A user who is not the requester, and as rep Sam; emails at `/dev/mailbox`
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| The second quote sent the day before, valid until that day (demo-notes) | fde-yash | 1 business day |
-| Bow's business time zone configured (Q-03, ADR-08) | ea-elon | before the build of story-05-04 |
-| Wording of the approval statement agreed (story-05-01 DoD) | po-jensen | before the demo |
+| `./scripts/reset.sh --after-epic 04` run before the review | fde-yash | 1 minute |
 
 ## Epic: epic-06
-- **runtime**: Azure test environment — `https://<test>/`, port 443; Reseller A with an admin and a buyer who has made a request (from the epic-02 demo)
+- **runtime**: local — `./scripts/dev.sh` on the FDE's Mac, `http://localhost:3000`; start from `./scripts/reset.sh --after-epic 02` (Demo Reseller A with an admin and a buyer who has made a request); sign in as Demo Reseller A's admin, another buyer, and Demo Reseller B's user; invitations at `/dev/mailbox`
 - **run by**: fde-yash
 - **prerequisites**:
 
 | Prerequisite | Owner | Lead time |
 | --- | --- | --- |
-| Two further Microsoft 365 test mailboxes (a new buyer and a second buyer at Reseller A) | ea-elon | 2 business days (M365 admin) |
+| `./scripts/reset.sh --after-epic 02` run before the review | fde-yash | 1 minute |

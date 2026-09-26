@@ -1,68 +1,87 @@
 # Critique — Bow Electronics Reseller Portal
 
-**Status**: Final for the gate · **Prepared by**: Yash Dixit (reviewing persona) · **For**: the g3-architecture decision
+**Status**: Final for the gate, revision 2 · **Prepared by**: Yash Dixit (reviewing persona) · **For**: the g3-architecture decision
 
 ## 1. What was challenged
 
-**Under critique:** `artifacts/architecture.md`, `artifacts/decisions.md` (ADR-01 to ADR-10) and `artifacts/demo-topology.md`, read against the approved BRD and backlog, `inputs/brief.md` and the engagement's lessons.
+**Under critique:** revision 2 of `artifacts/architecture.md`, `artifacts/decisions.md` (ADR-01 to ADR-13) and `artifacts/demo-topology.md`, reworked after Yash Dixit (FDE) rejected revision 1 at g3 on 2026-09-26. The rework was checked against:
+- the rejection comments;
+- the EA's local-first direction relayed the same day;
+- the approved BRD and backlog.
 
-**Reviewer.** A differently composed persona, a sceptical delivery lead and security tester who did not write the design. It ran on a **second model** (Claude Sonnet; the author was Claude Opus). What was diversified is the model and the persona. The inputs were the same. It had read-only access.
+**Reviewer.** A differently composed persona: a sceptical delivery lead and security tester who also knows Business Central and Azure. It ran on a **second model** (Claude Sonnet; the author was Claude Opus). The model and the persona were diversified. It had read-only access.
 
-**Lenses:**
-- **Pre-mortem:** the portal has failed a year after go-live; why?
-- **Red-team:** attack every trust boundary, and look for requirements weakened in silence.
-- **Socratic consistency check:** decision prose against the data model, the component table and traceability; every cross-reference resolved; the arithmetic checked.
+**Lenses:** pre-mortem, red-team and a Socratic consistency check, as in revision 1. All four reconciliation checks were then run over the **whole** artifact set.
+
+**The author's own check.** The author then checked the critique's factual claims against Microsoft's ledger documentation, which found a defect the reviewer had not (§2, finding 0).
+
+Revision 1's critique and its eight decided questions are superseded by this record. Their decisions stand, and are carried in architecture §11 (Q-01 to Q-08).
 
 ## 2. Where it is weakest
 
 Ranked. Each finding shows what was done about it.
 
-1. **The received time for rep-entered requests corrupts go-live day** (pre-mortem). Requests re-entered from the Excel log on go-live day (NF-05) take the go-live timestamp. If portal requests arrive first, the re-entered requests queue behind them, on the day prioritisation matters most. This engagement's own backlog lesson named this failure, and the first draft had only deferred it (§11 said "See the critique"). *Resolved:* the FDE decided on re-entry in arrival order before resellers get access (architecture §5.2, §10 runbook 6). The remaining cost is that the Waiting column counts from go-live for those requests, and Jensen Huang confirms at the gate that this is acceptable.
-2. **No threat covered guessing passwords or one-time codes at sign-in** (red-team). T-11 covered only forwarded invitations. *Fixed:* T-20 added, relying on External ID's lockout, with a QA attempt.
-3. **"No web application firewall" was prose, not an accepted risk** (consistency). *Fixed:* it is now R-06, provisionally accepted by the FDE with a revisit condition, and §8.4 points to it.
-4. **The demo topology gave technical Azure and Entra setup to a stakeholder, at a client with no IT team** (consistency, C-05 against `demo-topology.md`). *Resolved by the FDE:* Bow's Microsoft 365 administrator performs these steps, following the FDE's written instructions. Elon Musk owns naming that person (Q-06). **Residual:** if Bow has no such administrator after all, epic-01's timeline does not hold, and that is the first thing to confirm with Elon Musk.
-5. **A rep adding a caller to a reseller weakens the admin's gatekeeping in BR-02** (red-team). D2-C2 notifies the admin after the fact rather than asking first. This was already disclosed as R-03. The critique asks that it be ratified explicitly rather than read as a footnote. *Carried:* R-03 goes to Elon Musk and Jensen Huang by name at the gate.
-6. **The support partner is the largest running cost and a go-live precondition, but has no figure, no procurement date and no fallback** (pre-mortem). *Resolved by the FDE:* it is a precondition, not a blocker, with interim support from the delivery team for a period agreed in writing before go-live (architecture §10, Q-07). **Residual:** until the partner exists, Bow's ability to recover the system rests on the delivery team. The self-assessment keeps `operable-by-this-client` as a Fail for exactly this reason.
+0. **A full-text index on a ledger table cannot be built** (found by the author while verifying finding 1). Microsoft's *Ledger considerations and limitations* page states: "Ledger tables can't have full-text indexes." Revision 2 made `product` an updatable ledger table **and** gave its description a full-text index, which would have failed at the first Stage 2 migration. The SQLite stand-in would never have shown it. *Fixed:* search reads a separate ordinary `product_search` table, written in the same transaction as `product` and checked against it by a contract test (architecture §5.1, §5.6; ADR-09 revised). **Lesson:** the dual-engine design needs its SQL Server contract tests from the first story, not from Stage 2, and ADR-12 already runs them in CI on every pull request.
+1. **The database tier was stated two ways, and the stated one might not carry ledger** (consistency; severe). ADR-02 said General Purpose, left over from revision 1. §4.3, §4.4 and §10.3 said DTU Standard S2. Microsoft documents ledger with vCore tiers, and support on S2 could not be confirmed. *Decided by the FDE:* **General Purpose serverless**, which is documented. ADR-02, §4.3, §4.4, §10.2 and §10.3 were made consistent. The cost rises accordingly.
+2. **Two database engines will drift** (pre-mortem). An administrator fix, a restore or a concurrency race could behave differently in production from how every Epic Review showed it. *Carried with a mitigation:* the SQL Server contract tests in CI on every pull request (ADR-12), and §5.6 states which guarantees only Azure proves. **Residual:** CI's SQL Server 2022 container is not Azure SQL itself. Tier-specific behaviour is proved only in Stage 2, which has no date (self-assessment, weakest point 2).
+3. **Node 24 replaced the EA's Node 20 before the gate** (red-team). This is defensible, since Node 20 is end-of-life, but it is built into the design ahead of Elon Musk's confirmation. *Carried:* architecture Q-10 and the deliberation record's open questions put it to Elon Musk. If he refuses it, the change is confined to the runtime row in §4.3, the CI matrix and `dev.sh`'s version check.
+4. **The cost arithmetic did not add up, and one unit price was low** (consistency). The rows summed to US$254–331 against a stated total of 290–340, and P0v3 was about half its likely price. *Fixed:* the rows were re-priced (P0v3 ≈ US$140 per instance; General Purpose serverless ≈ US$200–330), and the total now equals the sum of its rows (≈ US$540–710). The two unit prices from secondary sources are marked unverified.
+5. **Cost was committed against an uncommitted target** (red-team). The second instance and the availability tests exist for N-05, which Jensen Huang has not committed to. *Decided by the FDE:* keep them in the total. They are now marked as N-05 lines, so dropping N-05 visibly saves about US$150.
+6. **The Stage 2 table named Elon Musk as the owner of steps the Microsoft 365 administrator performs** (referent consistency). *Fixed:* `demo-topology.md` now states who owns each step and who performs it.
 
-**Raised after the critique by a later decision.** The FDE chose TypeScript on Node.js over the recommended C# (ADR-10). This brings cross-site request forgery into play (T-21 added, with a QA attempt). The support partner now also needs Node skills, which narrows the field among Microsoft-ecosystem partners. ADR-10 records C# as the rejected alternative, and the FDE's reason is to be stated at the gate.
+**Expected, and not a defect.** `raise env check` reports `scripts/dev.sh` and `scripts/reset.sh` missing. They are part of epic-01's walking skeleton, and this phase may not write code. They exist from the first build.
 
 ## 3. What survives the challenge
 
-- ADR-04 (append-only ledger), ADR-05 (copy on start), ADR-06 (random IDs) and ADR-08 (one status, Expired worked out when read) were checked line by line against §5 and stories 03-01, 05-04 c5, 05-05 and 05-06. No contradiction was found. "Still listed with status Expired in its received-time position" fits the read-time design.
-- The ID arithmetic in ADR-06 checks out. 31⁸ is about 853 billion; 1.8 million draws give about 1.95 expected repeats.
-- T-01, T-02 and T-06 (isolation between resellers) are well formed and can genuinely be executed by QA.
-- Every sampled story and section reference resolves (16 stories checked). No component lacks a trace.
-- The absence of a bulk loader is flagged honestly as a go-live risk (Q-05), not hidden.
+- **Every rejection item is delivered:**
+  - capability-to-system-of-record map (§2.3);
+  - build-versus-buy with Business Central, story by story (§2.4);
+  - three candidates compared (§2.5);
+  - C4 context, container and deployment views (§2.2, §4.1, §4.4);
+  - data model (§5.1) and request-to-quote sequence (§5.5);
+  - versioned stack (§4.3);
+  - cost by service (§10.3);
+  - RTO and RPO (§7.3);
+  - CI/CD and environments (§4.5, §4.6).
+- **Every EA direction item is delivered:**
+  - one-command start and reset;
+  - development sign-in behind the real interface;
+  - an npm-only database, with its differences stated;
+  - a local mailbox;
+  - a fictional sample price list and seed;
+  - adapters recorded as ADR-13;
+  - an all-local demo topology.
+- The start-up guard is treated as security code, with its own QA (T-23).
+- The operator's limits hold. Stock stays out (C-04). No change request is raised. Business Central is recorded as considered (ADR-11), not adopted.
+- The seed's roles match the backlog's demo-notes: Pat is the price maintainer and Lee the discount setter, consistently across the backlog, architecture §4.8 and `demo-topology.md`.
 
 ## 4. Open questions for the decider
 
-All were put to Yash Dixit (FDE) in this session on 2026-09-26, each with a recommended answer. The decisions are recorded in architecture §11.
+Put to Yash Dixit (FDE) in this session on 2026-09-26, each with a recommended answer:
 
 | # | Question | Recommended | Decided |
 |---|---|---|---|
-| 1 | Received time for re-entered requests (Q-02) | Re-enter in arrival order before resellers get access | As recommended |
-| 2 | Who performs Azure and Entra setup before a partner exists | The FDE's team under an interim statement of work | **Bow's Microsoft 365 administrator** (the FDE's own choice) |
-| 3 | Record R-01 to R-06 as provisionally accepted by the FDE | Yes | As recommended |
-| 4 | Language and framework (Q-01) | C# on ASP.NET Core | **TypeScript on Node.js** (the FDE's own choice); ADR-10 rewritten |
-| 5 | Time zone for expiry (Q-03) | Bow's head-office zone | As recommended |
-| 6 | Availability N-05 (Q-04) | 99.5 %, business hours | As recommended |
-| 7 | Bulk loader (Q-05) | Count first, keep as approved | As recommended |
-| 8 | Support partner as a go-live blocker | Keep as a blocker | **Precondition, not blocker** (the FDE's own choice) |
+| 1 | Local runtime: the EA said Node 20, which reached end-of-life in April 2026 | Node 24 LTS | As recommended (Q-10); Elon Musk to confirm |
+| 2 | Real-ERP definition-of-done runs (story-01-01, story-02-02) against a synthetic-only demo | Demo synthetic; real run locally when the file arrives | As recommended (Q-11) |
+| 3 | Database tier for ledger | DTU S2, proved first in Stage 2 | **General Purpose now** (the FDE's own choice) |
+| 4 | N-05-dependent cost lines | Mark as conditional | **Keep in the total** (the FDE's own choice); the lines are still labelled as N-05 lines |
 
 **Still for the gate** (Elon Musk and Jensen Huang):
+- confirm Node 24 against his wording;
+- confirm the database tier and the re-priced total;
+- confirm the region (NF-07), which is still open;
 - ratify or refuse R-01 to R-06;
-- name Bow's Microsoft 365 administrator and the ERP owner;
-- confirm the head-office time zone;
 - hear the FDE's reason for TypeScript;
-- confirm N-05 and the Waiting-column cost.
+- confirm N-05;
+- agree the rounding rule before story-04-02 is built, because a wrong rule is written permanently into append-only quote lines.
 
-## 5. Reconciliation (revisions only)
+## 5. Reconciliation
 
-This is not a revision. The four checks were run anyway on the whole artifact set, because the critique produced them.
+Run on the whole artifact set after the rework.
 
 | Check | Result | Where |
 |---|---|---|
-| Referent existence — every "defined in …" claim resolves to a definition | No dangling reference in 16 sampled stories and all § cross-references. The one deferral that pointed nowhere ("See the critique", §11 Q-02) was replaced by a decision | architecture §11 |
-| Reverse traceability — no component, table or endpoint that no story demands | Every §4 component traces (§9.2). "No web application firewall" had no anchor and is now R-06. T-21's anti-forgery token traces to ADR-10 and the backlog's "sent directly" criteria | architecture §8.3, §9.2 |
-| Cross-artifact synthesis — assessment constraints re-joined to every new operational claim | Found C-05 ("no IT team") contradicting the topology's setup owners. Resolved by naming Bow's Microsoft 365 administrator as the performer. The baseline in `assessment.md` now carries C-01, C-02, C-05 and C-10 | demo-topology.md; assessment.md |
-| Internal consistency — decision prose against the data model and the component table | ADR-04, 05, 06 and 08 are consistent with §5. §8.3 and §8.4 were inconsistent in how rigorously accepted risks were recorded, now fixed. After the TypeScript decision, ADR-01, ADR-10, §4 and §6 were re-aligned; no remaining mention of the rejected stack outside ADR-10's alternatives and §11 | decisions.md; architecture §4, §6 |
+| Referent existence — every "defined in …" claim resolves to a definition | Every §, ADR, Q, T, R, N and C reference sampled resolves. One attribution mismatch: Stage 2 owners versus the performer named in Q-06. Fixed | demo-topology.md, Stage 2 table |
+| Reverse traceability — no component, table or endpoint that no story demands | Clean. New components (adapters, `/dev` pages, scripts, seed, `product_search`, SQLite triggers, pipeline, Key Vault, digest storage) each trace in architecture §9.2 to a story, a constraint (C-13) or a threat. The N-05 cost lines trace to a target not yet client-committed, and are labelled so | architecture §9.2, §10.3 |
+| Cross-artifact synthesis — assessment constraints re-joined to every new operational claim | C-13 is joined across §4.7, §4.8, §5.6, ADR-13 and the topology. C-05's performer now matches the topology. Microsoft's ledger limits were re-joined to the data model, which found finding 0 | architecture §5.1; ADR-09 |
+| Internal consistency — decision prose against the data model and the component table | Failed on the database tier (finding 1) and on the cost total (finding 4). Both fixed. The price maintainer and discount setter identities are consistent | ADR-02; architecture §4.3, §4.4, §10.3 |

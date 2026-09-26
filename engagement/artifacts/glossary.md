@@ -36,6 +36,9 @@
 - **refused attempts list** — where internal admins read the record of refused attempts. (backlog story-01-04; set in Architecture §9.2)
 - **Entra ID / Entra External ID** — Microsoft's sign-in services: Entra ID holds Bow's staff accounts (Microsoft 365), and External ID holds the reseller users' accounts. (architecture ADR-03)
 
+- **Stage 1 / Stage 2** — Stage 1: the portal built and demonstrated on the FDE's Mac, with local stand-ins; every Epic Review runs here. Stage 2: the real Microsoft services switched on in Azure before go-live. (architecture §1, ADR-13; set at the EA's direction)
+- **adapter / stand-in** — an adapter is the interface through which the portal uses an outside service (sign-in, database, email, clock); a stand-in is its local replacement for Stage 1. (architecture §4.7, ADR-13)
+
 ## Rejected synonyms
 - customer → use **reseller** (the client says reseller for the companies that buy through this portal)
 - reseller buyer → use **reseller user** (the BRD's term)
