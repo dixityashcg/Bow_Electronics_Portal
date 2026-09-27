@@ -14,3 +14,6 @@ dist/
 .env.local
 *.tsbuildinfo
 .DS_Store
+# Operating-system files that are never engagement content (4.12.0).
+Thumbs.db
+desktop.ini
